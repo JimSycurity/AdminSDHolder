@@ -1,2 +1,3 @@
 # AdminSDHolder
-Additional documentation for AdminSDHolder Misconceptions &amp; Misconfigurations research paper
+
+Additional documentation for AdminSDHolder Misconceptions and Misconfigurations research paper

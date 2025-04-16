@@ -1,0 +1,252 @@
+Expanding base 'CN=AdminSDHolder,CN=System,DC=AD2000,DC=lan'...
+Result <0>: (null)
+Matched DNs:
+Getting 1 entries:
+>> Dn: CN=AdminSDHolder,CN=System,DC=AD2000,DC=lan
+	1> cn: AdminSDHolder;
+	1> instanceType: 4;
+	1> isCriticalSystemObject: TRUE;
+	1> distinguishedName: CN=AdminSDHolder,CN=System,DC=AD2000,DC=lan;
+	1> objectCategory: CN=Container,CN=Schema,CN=Configuration,DC=AD2000,DC=lan;
+	2> objectClass: top; container;
+	1> objectGUID: 22b3621d-ed58-4ed4-8e21-c0b85427b38a;
+	1> name: AdminSDHolder;
+	1> showInAdvancedViewOnly: TRUE;
+	1> systemFlags: -1946157056;
+	1> uSNChanged: 2748;
+	1> uSNCreated: 1358;
+	1> whenChanged: 8/20/2023 19:24:41 Central Standard Time Central Daylight Time;
+	1> whenCreated: 8/20/2023 19:8:4 Central Standard Time Central Daylight Time;
+-----------
+***Calling Security...
+Security Descriptor:
+String Format:
+O:DAG:DAD:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;EA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)S:AI(AU;CIIDSAFA;CCDCSWWPDTCRSDWDWO;;;WD)
+---
+Revision:   1
+Sbz1:       0
+Control:    (0x9c14)
+    SE_DACL_PRESENT
+    SE_SACL_PRESENT
+    SE_DACL_AUTO_INHERITED
+    SE_SACL_AUTO_INHERITED
+    SE_DACL_PROTECTED
+    SE_SELF_RELATIVE
+Owner:
+            S-1-0x000005--0x15-0x62e26657-0x7112b3f1-0x320a1743-0x200
+            AD2000\Domain Admins
+Group:
+            S-1-0x000005--0x15-0x62e26657-0x7112b3f1-0x320a1743-0x200
+            AD2000\Domain Admins
+Dacl:
+    Revision:   4
+    Sbz1:       0
+    Size:       528
+    No of Aces: 12
+    Sbz2:       0
+    Ace[0]:
+        Type: (0)
+            ACCESS_ALLOWED_ACE_TYPE
+        AceSize: 0x14
+        AceFlags: (0x0)
+        Mask: 0x00020094
+        Sid:
+            S-1-0x000005--0xb
+            NT AUTHORITY\Authenticated Users
+    Ace[1]:
+        Type: (0)
+            ACCESS_ALLOWED_ACE_TYPE
+        AceSize: 0x18
+        AceFlags: (0x0)
+        Mask: 0x000f01bf
+        Sid:
+            S-1-0x000005--0x20-0x220
+            BUILTIN\Administrators
+    Ace[2]:
+        Type: (0)
+            ACCESS_ALLOWED_ACE_TYPE
+        AceSize: 0x24
+        AceFlags: (0x0)
+        Mask: 0x000e01bf
+        Sid:
+            S-1-0x000005--0x15-0x62e26657-0x7112b3f1-0x320a1743-0x207
+            AD2000\Enterprise Admins
+    Ace[3]:
+        Type: (0)
+            ACCESS_ALLOWED_ACE_TYPE
+        AceSize: 0x24
+        AceFlags: (0x0)
+        Mask: 0x000e01bf
+        Sid:
+            S-1-0x000005--0x15-0x62e26657-0x7112b3f1-0x320a1743-0x200
+            AD2000\Domain Admins
+    Ace[4]:
+        Type: (0)
+            ACCESS_ALLOWED_ACE_TYPE
+        AceSize: 0x14
+        AceFlags: (0x0)
+        Mask: 0x000f01ff
+        Sid:
+            S-1-0x000005--0x12
+            NT AUTHORITY\SYSTEM
+    Ace[5]:
+        Type: (5)
+            ACCESS_ALLOWED_OBJECT_ACE_TYPE
+        AceSize: 0x3c
+        AceFlags: (0x0)
+        Mask: 0x00000010
+        Flags: 0x3
+        ACE_OBJECT_TYPE_PRESENT
+        ACE_INHERITED_OBJECT_TYPE_PRESENT
+        Object Type:
+            (in HEX)(037088f8-0ae1-11d2-b4-22-00-a0-c9-68-f9-39)
+
+        Inherited Object Type:
+            (in HEX)(bf967aba-0de6-11d0-a2-85-00-aa-00-30-49-e2)
+
+            GUID_C_USER
+
+       Sid:
+            S-1-0x000005--0x20-0x22a
+            BUILTIN\Pre-Windows 2000 Compatible Access
+    Ace[6]:
+        Type: (5)
+            ACCESS_ALLOWED_OBJECT_ACE_TYPE
+        AceSize: 0x3c
+        AceFlags: (0x0)
+        Mask: 0x00000010
+        Flags: 0x3
+        ACE_OBJECT_TYPE_PRESENT
+        ACE_INHERITED_OBJECT_TYPE_PRESENT
+        Object Type:
+            (in HEX)(59ba2f42-79a2-11d0-90-20-00-c0-4f-c2-d3-cf)
+
+            GUID_PS_GENERAL_INFO
+
+        Inherited Object Type:
+            (in HEX)(bf967aba-0de6-11d0-a2-85-00-aa-00-30-49-e2)
+
+            GUID_C_USER
+
+       Sid:
+            S-1-0x000005--0x20-0x22a
+            BUILTIN\Pre-Windows 2000 Compatible Access
+    Ace[7]:
+        Type: (5)
+            ACCESS_ALLOWED_OBJECT_ACE_TYPE
+        AceSize: 0x3c
+        AceFlags: (0x0)
+        Mask: 0x00000010
+        Flags: 0x3
+        ACE_OBJECT_TYPE_PRESENT
+        ACE_INHERITED_OBJECT_TYPE_PRESENT
+        Object Type:
+            (in HEX)(bc0ac240-79a9-11d0-90-20-00-c0-4f-c2-d4-cf)
+
+            GUID_PS_MEMBERSHIP
+
+        Inherited Object Type:
+            (in HEX)(bf967aba-0de6-11d0-a2-85-00-aa-00-30-49-e2)
+
+            GUID_C_USER
+
+       Sid:
+            S-1-0x000005--0x20-0x22a
+            BUILTIN\Pre-Windows 2000 Compatible Access
+    Ace[8]:
+        Type: (5)
+            ACCESS_ALLOWED_OBJECT_ACE_TYPE
+        AceSize: 0x3c
+        AceFlags: (0x0)
+        Mask: 0x00000010
+        Flags: 0x3
+        ACE_OBJECT_TYPE_PRESENT
+        ACE_INHERITED_OBJECT_TYPE_PRESENT
+        Object Type:
+            (in HEX)(4c164200-20c0-11d0-a7-68-00-aa-00-6e-05-29)
+
+            GUID_PS_USER_ACCOUNT_RESTRICTIONS
+
+        Inherited Object Type:
+            (in HEX)(bf967aba-0de6-11d0-a2-85-00-aa-00-30-49-e2)
+
+            GUID_C_USER
+
+       Sid:
+            S-1-0x000005--0x20-0x22a
+            BUILTIN\Pre-Windows 2000 Compatible Access
+    Ace[9]:
+        Type: (5)
+            ACCESS_ALLOWED_OBJECT_ACE_TYPE
+        AceSize: 0x3c
+        AceFlags: (0x0)
+        Mask: 0x00000010
+        Flags: 0x3
+        ACE_OBJECT_TYPE_PRESENT
+        ACE_INHERITED_OBJECT_TYPE_PRESENT
+        Object Type:
+            (in HEX)(5f202010-79a5-11d0-90-20-00-c0-4f-c2-d4-cf)
+
+            GUID_PS_USER_LOGON
+
+        Inherited Object Type:
+            (in HEX)(bf967aba-0de6-11d0-a2-85-00-aa-00-30-49-e2)
+
+            GUID_C_USER
+
+       Sid:
+            S-1-0x000005--0x20-0x22a
+            BUILTIN\Pre-Windows 2000 Compatible Access
+    Ace[10]:
+        Type: (5)
+            ACCESS_ALLOWED_OBJECT_ACE_TYPE
+        AceSize: 0x2c
+        AceFlags: (0x0)
+        Mask: 0x00020094
+        Flags: 0x2
+        ACE_INHERITED_OBJECT_TYPE_PRESENT
+        Inherited Object Type:
+            (in HEX)(bf967aba-0de6-11d0-a2-85-00-aa-00-30-49-e2)
+
+            GUID_C_USER
+
+       Sid:
+            S-1-0x000005--0x20-0x22a
+            BUILTIN\Pre-Windows 2000 Compatible Access
+    Ace[11]:
+        Type: (5)
+            ACCESS_ALLOWED_OBJECT_ACE_TYPE
+        AceSize: 0x28
+        AceFlags: (0x0)
+        Mask: 0x00000100
+        Flags: 0x1
+        ACE_OBJECT_TYPE_PRESENT
+        Object Type:
+            (in HEX)(ab721a53-1e2f-11d0-98-19-00-aa-00-40-52-9b)
+
+            GUID_CONTROL_UserChangePassword
+
+       Sid:
+            S-1-0x000001--0x0
+            Everyone
+Sacl:
+    Revision:   4
+    Sbz1:       0
+    Size:       28
+    No of Aces: 1
+    Sbz2:       0
+    Ace[0]:
+        Type: (2)
+            SYSTEM_AUDIT_ACE_TYPE
+        AceSize: 0x14
+        AceFlags: (0xd2)
+            CONTAINER_INHERIT_ACE
+            INHERITED_ACE
+            SUCCESSFUL_ACCESS_ACE_FLAG
+            FAILED_ACCESS_ACE_FLAG
+        Mask: 0x000d016b
+        Sid:
+            S-1-0x000001--0x0
+            Everyone
+Security for "CN=AdminSDHolder,CN=System,DC=AD2000,DC=lan"
+-----------
