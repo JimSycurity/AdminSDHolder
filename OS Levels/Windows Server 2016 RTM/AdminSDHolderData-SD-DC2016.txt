@@ -1,11 +1,11 @@
 **********************
 Windows PowerShell transcript start
-Start time: 20250416122216
+Start time: 20250418103209
 Username: AD2016\Administrator
 RunAs User: AD2016\Administrator
 Machine: SD-DC2016 (Microsoft Windows NT 10.0.14393.0)
-Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-Process ID: 4612
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe C:\Scripts\Get-PowerShellSD.ps1
+Process ID: 1028
 PSVersion: 5.1.14393.1884
 PSEdition: Desktop
 PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14393.1884
@@ -15,62 +15,39 @@ WSManStackVersion: 3.0
 PSRemotingProtocolVersion: 2.3
 SerializationVersion: 1.1.0.1
 **********************
-Transcript started, output file is C:\Scripts\AdminSDHolderData-SD-DC2016-20250416122215.txt
-PS C:\scripts> # Operating System and Platform Enumeration
-PS C:\scripts> Write-Host "Hostname: $hostname"
+Transcript started, output file is C:\Scripts\AdminSDHolderData-SD-DC2016-20250418103209.txt
 Hostname: SD-DC2016
-PS C:\scripts> Write-Host "PSVersion: $($PSVersionTable.PSVersion.ToString())"
 PSVersion: 5.1.14393.1884
-PS C:\scripts> Write-Host 'Gathering OS and Platform data'
 Gathering OS and Platform data
-PS C:\scripts> (Get-WmiObject win32_operatingsystem).name
 Microsoft Windows Server 2016 Datacenter|C:\Windows|\Device\Harddisk0\Partition4
-PS C:\scripts> (Get-WmiObject win32_operatingsystem).OSArchitecture
 64-bit
-PS C:\scripts> (Get-WmiObject win32_operatingsystem).CSName
 SD-DC2016
-PS C:\scripts> [Environment]::OSVersion.Platform
 Win32NT
-PS C:\scripts> [Environment]::OSVersion.Version
 
 Major  Minor  Build  Revision
 -----  -----  -----  --------
 10     0      14393  0
 
-
-PS C:\scripts> [Environment]::OSVersion.ServicePack
-
-PS C:\scripts> [Environment]::OSVersion.VersionString
 Microsoft Windows NT 10.0.14393.0
-PS C:\scripts> # Gather Base AD Data
-PS C:\scripts> Write-Host 'Gathering base AD data'
 Gathering base AD data
-PS C:\scripts> $rootDSE = [adsi]"LDAP://rootdse"
-PS C:\scripts> $rootDSE | Select-Object -Property *
 
-
-currentTime                   : {20250416172216.0Z}
+currentTime                   : {20250418153210.0Z}
 subschemaSubentry             : {CN=Aggregate,CN=Schema,CN=Configuration,DC=AD2016,DC=lan}
-dsServiceName                 : {CN=NTDS Settings,CN=SD-DC2016,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Config
-                                uration,DC=AD2016,DC=lan}
-namingContexts                : {DC=AD2016,DC=lan, CN=Configuration,DC=AD2016,DC=lan,
-                                CN=Schema,CN=Configuration,DC=AD2016,DC=lan, DC=DomainDnsZones,DC=AD2016,DC=lan...}
+dsServiceName                 : {CN=NTDS Settings,CN=SD-DC2016,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=AD2016,DC=lan}
+namingContexts                : {DC=AD2016,DC=lan, CN=Configuration,DC=AD2016,DC=lan, CN=Schema,CN=Configuration,DC=AD2016,DC=lan, DC=DomainDnsZones,DC=AD2016,DC=lan...}
 defaultNamingContext          : {DC=AD2016,DC=lan}
 schemaNamingContext           : {CN=Schema,CN=Configuration,DC=AD2016,DC=lan}
 configurationNamingContext    : {CN=Configuration,DC=AD2016,DC=lan}
 rootDomainNamingContext       : {DC=AD2016,DC=lan}
-supportedControl              : {1.2.840.113556.1.4.319, 1.2.840.113556.1.4.801, 1.2.840.113556.1.4.473,
-                                1.2.840.113556.1.4.528...}
+supportedControl              : {1.2.840.113556.1.4.319, 1.2.840.113556.1.4.801, 1.2.840.113556.1.4.473, 1.2.840.113556.1.4.528...}
 supportedLDAPVersion          : {3, 2}
 supportedLDAPPolicies         : {MaxPoolThreads, MaxPercentDirSyncRequests, MaxDatagramRecv, MaxReceiveBuffer...}
-highestCommittedUSN           : {72936}
+highestCommittedUSN           : {73844}
 supportedSASLMechanisms       : {GSSAPI, GSS-SPNEGO, EXTERNAL, DIGEST-MD5}
 dnsHostName                   : {SD-DC2016.AD2016.lan}
 ldapServiceName               : {AD2016.lan:sd-dc2016$@AD2016.LAN}
-serverName                    : {CN=SD-DC2016,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=AD2016
-                                ,DC=lan}
-supportedCapabilities         : {1.2.840.113556.1.4.800, 1.2.840.113556.1.4.1670, 1.2.840.113556.1.4.1791,
-                                1.2.840.113556.1.4.1935...}
+serverName                    : {CN=SD-DC2016,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=AD2016,DC=lan}
+supportedCapabilities         : {1.2.840.113556.1.4.800, 1.2.840.113556.1.4.1670, 1.2.840.113556.1.4.1791, 1.2.840.113556.1.4.1935...}
 isSynchronized                : {TRUE}
 isGlobalCatalogReady          : {TRUE}
 domainFunctionality           : {7}
@@ -95,15 +72,8 @@ Options                       : {}
 Site                          :
 Container                     :
 
-
-
-PS C:\scripts> $defaultNC = $rootDSE.defaultNamingContext
-PS C:\scripts> $AdminSDHolderDN = "CN=AdminSDHolder,CN=System,$defaultNC"
-PS C:\scripts> Write-Host "Legacy Methods"
 Legacy Methods
-PS C:\scripts> Write-Host "DSACLS:"
 DSACLS:
-PS C:\scripts> dsacls $AdminSDHolderDN -A
 Owner: AD2016\Domain Admins
 Group: AD2016\Domain Admins
 
@@ -237,18 +207,10 @@ Allow NT AUTHORITY\SELF               SPECIAL ACCESS for Private Information
                                       CONTROL ACCESS
 
 The command completed successfully
-PS C:\scripts> $AdminSDHolderDE = [adsi]"LDAP://$AdminSDHolderDN"
-PS C:\scripts> $AdminSDHolderDESD = $AdminSDHolderDE.ObjectSecurity
-PS C:\scripts> Write-Host "DE SD Type: $($AdminSDHolderDESD.GetType())"
 DE SD Type: System.DirectoryServices.ActiveDirectorySecurity
-PS C:\scripts> Write-Host "DE Owner: $($AdminSDHolderDESD.Owner)"
 DE Owner: AD2016\Domain Admins
-PS C:\scripts> Write-Host "DE Group: $($AdminSDHolderDESD.Group)"
 DE Group: AD2016\Domain Admins
-PS C:\scripts> Write-Host "DE Access:"
 DE Access:
-PS C:\scripts> $AdminSDHolderDESD.Access
-
 
 ActiveDirectoryRights : GenericRead
 InheritanceType       : None
@@ -261,6 +223,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : GenericAll
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
@@ -272,8 +235,8 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl,
-                        WriteOwner
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl, WriteOwner
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
 InheritedObjectType   : 00000000-0000-0000-0000-000000000000
@@ -284,8 +247,8 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
-                        WriteOwner
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl, WriteOwner
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
 InheritedObjectType   : 00000000-0000-0000-0000-000000000000
@@ -296,8 +259,8 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
-                        WriteOwner
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl, WriteOwner
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
 InheritedObjectType   : 00000000-0000-0000-0000-000000000000
@@ -307,6 +270,7 @@ IdentityReference     : AD2016\Enterprise Admins
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ExtendedRight
 InheritanceType       : None
@@ -319,6 +283,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty, WriteProperty, ExtendedRight
 InheritanceType       : All
 ObjectType            : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
@@ -329,6 +294,7 @@ IdentityReference     : NT AUTHORITY\SELF
 IsInherited           : False
 InheritanceFlags      : ContainerInherit
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ExtendedRight
 InheritanceType       : None
@@ -341,16 +307,6 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : ReadProperty
-InheritanceType       : None
-ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
-InheritedObjectType   : 00000000-0000-0000-0000-000000000000
-ObjectFlags           : ObjectAceTypePresent
-AccessControlType     : Allow
-IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
-IsInherited           : False
-InheritanceFlags      : None
-PropagationFlags      : None
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -362,6 +318,19 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -374,6 +343,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
 ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
@@ -384,6 +354,7 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -396,6 +367,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
 ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
@@ -407,16 +379,6 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : GenericRead
-InheritanceType       : None
-ObjectType            : 00000000-0000-0000-0000-000000000000
-InheritedObjectType   : 00000000-0000-0000-0000-000000000000
-ObjectFlags           : None
-AccessControlType     : Allow
-IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
-IsInherited           : False
-InheritanceFlags      : None
-PropagationFlags      : None
 
 ActiveDirectoryRights : GenericRead
 InheritanceType       : None
@@ -428,6 +390,19 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -439,6 +414,7 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -451,6 +427,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
 ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
@@ -461,6 +438,7 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -473,6 +451,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty, WriteProperty
 InheritanceType       : None
 ObjectType            : 6db69a1c-9422-11d1-aebd-0000f80367c1
@@ -483,6 +462,7 @@ IdentityReference     : BUILTIN\Terminal Server License Servers
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty, WriteProperty
 InheritanceType       : None
@@ -495,6 +475,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty, WriteProperty
 InheritanceType       : None
 ObjectType            : bf967a7f-0de6-11d0-a285-00aa003049e2
@@ -506,11 +487,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-
-
-PS C:\scripts> Write-Host "DE SDDL:"
 DE SDDL:
-PS C:\scripts> $AdminSDHolderDESD.SDDL -split "(?=O:)|(?=G:)|(?=D:)|(?=S:)|(?=\()"
 
 O:DA
 G:DA
@@ -538,24 +515,13 @@ D:PAI
 (OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)
 (OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)
 (OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
-PS C:\scripts> Write-Host "DE Binary:"
 DE Binary:
-PS C:\scripts> ([System.BitConverter]::ToString($AdminSDHolderDESD.GetSecurityDescriptorBinaryForm())).Replace('-', '')
 0100049C1400000030000000000000004C0000000105000000000005150000009A70581B9E8FFA4AFA178582000200000105000000000005150000009A70581B9E8FFA4AFA178582000200000400380417000000000014009400020001010000000000050B00000000001400FF010F0001010000000000051200000000001800BF010F000102000000000005200000002002000000002400BF010E000105000000000005150000009A70581B9E8FFA4AFA1785820002000000002400BF010E000105000000000005150000009A70581B9E8FFA4AFA17858207020000050028000001000001000000531A72AB2F1ED011981900AA0040529B010100000000000100000000050228003001000001000000DE47E6916FD9704B9557D63FF4F3CCD801010000000000050A000000050028000001000001000000531A72AB2F1ED011981900AA0040529B01010000000000050A00000005003C001000000003000000F8887003E10AD211B42200A0C968F93914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C001000000003000000F8887003E10AD211B42200A0C968F939BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E0529BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C00940002000200000014CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C009400020002000000BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000001020205FA579D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E052914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C0010000000010000001DB1A946AE605A40B7E8FF8A58D456D20102000000000005200000003002000005002C0030000000010000001C9AB66D2294D111AEBD0000F80367C10102000000000005200000003102000005002C00300000000100000062BC0558C9BD2844A5E2856A0F4C185E010200000000000520000000310200000500380030000000010000007F7A96BFE60DD011A28500AA003049E20105000000000005150000009A70581B9E8FFA4AFA17858205020000
-PS C:\scripts> Write-Host "Modern Module Methods"
 Modern Module Methods
-PS C:\scripts> $AdminSDHolderObject = Get-ADObject $AdminSDHolderDN -Properties *
-PS C:\scripts> $AdminSDHolderSD = $AdminSDHolderObject.nTSecurityDescriptor
-PS C:\scripts> Write-Host "ADO SD Type: $($AdminSDHolderSD.GetType())"
 ADO SD Type: System.DirectoryServices.ActiveDirectorySecurity
-PS C:\scripts> Write-Host "ADO Owner: $($AdminSDHolderSD.Owner)"
 ADO Owner: AD2016\Domain Admins
-PS C:\scripts> Write-Host "ADO Group: $($AdminSDHolderSD.Group)"
 ADO Group: AD2016\Domain Admins
-PS C:\scripts> Write-Host "ADO Access:"
 ADO Access:
-PS C:\scripts> $AdminSDHolderSD.Access
-
 
 ActiveDirectoryRights : GenericRead
 InheritanceType       : None
@@ -568,6 +534,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : GenericAll
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
@@ -579,8 +546,8 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl,
-                        WriteOwner
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl, WriteOwner
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
 InheritedObjectType   : 00000000-0000-0000-0000-000000000000
@@ -591,8 +558,8 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
-                        WriteOwner
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl, WriteOwner
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
 InheritedObjectType   : 00000000-0000-0000-0000-000000000000
@@ -603,8 +570,8 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
-                        WriteOwner
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl, WriteOwner
 InheritanceType       : None
 ObjectType            : 00000000-0000-0000-0000-000000000000
 InheritedObjectType   : 00000000-0000-0000-0000-000000000000
@@ -614,6 +581,7 @@ IdentityReference     : AD2016\Enterprise Admins
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ExtendedRight
 InheritanceType       : None
@@ -626,6 +594,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty, WriteProperty, ExtendedRight
 InheritanceType       : All
 ObjectType            : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
@@ -636,6 +605,7 @@ IdentityReference     : NT AUTHORITY\SELF
 IsInherited           : False
 InheritanceFlags      : ContainerInherit
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ExtendedRight
 InheritanceType       : None
@@ -648,16 +618,6 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : ReadProperty
-InheritanceType       : None
-ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
-InheritedObjectType   : 00000000-0000-0000-0000-000000000000
-ObjectFlags           : ObjectAceTypePresent
-AccessControlType     : Allow
-IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
-IsInherited           : False
-InheritanceFlags      : None
-PropagationFlags      : None
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -669,6 +629,19 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -681,6 +654,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
 ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
@@ -691,6 +665,7 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -703,6 +678,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
 ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
@@ -714,16 +690,6 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
-ActiveDirectoryRights : GenericRead
-InheritanceType       : None
-ObjectType            : 00000000-0000-0000-0000-000000000000
-InheritedObjectType   : 00000000-0000-0000-0000-000000000000
-ObjectFlags           : None
-AccessControlType     : Allow
-IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
-IsInherited           : False
-InheritanceFlags      : None
-PropagationFlags      : None
 
 ActiveDirectoryRights : GenericRead
 InheritanceType       : None
@@ -735,6 +701,19 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -746,6 +725,7 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -758,6 +738,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
 ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
@@ -768,6 +749,7 @@ IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty
 InheritanceType       : None
@@ -780,6 +762,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty, WriteProperty
 InheritanceType       : None
 ObjectType            : 6db69a1c-9422-11d1-aebd-0000f80367c1
@@ -790,6 +773,7 @@ IdentityReference     : BUILTIN\Terminal Server License Servers
 IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
+
 
 ActiveDirectoryRights : ReadProperty, WriteProperty
 InheritanceType       : None
@@ -802,6 +786,7 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+
 ActiveDirectoryRights : ReadProperty, WriteProperty
 InheritanceType       : None
 ObjectType            : bf967a7f-0de6-11d0-a285-00aa003049e2
@@ -813,102 +798,778 @@ IsInherited           : False
 InheritanceFlags      : None
 PropagationFlags      : None
 
+ADO SDDL:
 
-
-PS C:\scripts> Write-Host "ADO SDDL:" -split "(?=O:)|(?=G:)|(?=D:)|(?=S:)|(?=\()"
-ADO SDDL: -split (?=O:)|(?=G:)|(?=D:)|(?=S:)|(?=\()
-PS C:\scripts> $AdminSDHolderSD.SDDL
-O:DAG:DAD:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-458780826-1257934750-2189760506-519)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
-PS C:\scripts> Write-Host "ADO Binary:"
+O:DA
+G:DA
+D:PAI
+(A;;LCRPLORC;;;AU)
+(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)
+(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-458780826-1257934750-2189760506-519)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)
+(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)
+(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)
+(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)
+(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
 ADO Binary:
-PS C:\scripts> ([System.BitConverter]::ToString($AdminSDHolderSD.GetSecurityDescriptorBinaryForm())).Replace('-', '')
 0100049C1400000030000000000000004C0000000105000000000005150000009A70581B9E8FFA4AFA178582000200000105000000000005150000009A70581B9E8FFA4AFA178582000200000400380417000000000014009400020001010000000000050B00000000001400FF010F0001010000000000051200000000001800BF010F000102000000000005200000002002000000002400BF010E000105000000000005150000009A70581B9E8FFA4AFA1785820002000000002400BF010E000105000000000005150000009A70581B9E8FFA4AFA17858207020000050028000001000001000000531A72AB2F1ED011981900AA0040529B010100000000000100000000050228003001000001000000DE47E6916FD9704B9557D63FF4F3CCD801010000000000050A000000050028000001000001000000531A72AB2F1ED011981900AA0040529B01010000000000050A00000005003C001000000003000000F8887003E10AD211B42200A0C968F93914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C001000000003000000F8887003E10AD211B42200A0C968F939BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E0529BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C00940002000200000014CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C009400020002000000BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000001020205FA579D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E052914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C0010000000010000001DB1A946AE605A40B7E8FF8A58D456D20102000000000005200000003002000005002C0030000000010000001C9AB66D2294D111AEBD0000F80367C10102000000000005200000003102000005002C00300000000100000062BC0558C9BD2844A5E2856A0F4C185E010200000000000520000000310200000500380030000000010000007F7A96BFE60DD011A28500AA003049E20105000000000005150000009A70581B9E8FFA4AFA17858205020000
-PS C:\scripts> # NTObjectManager
-PS C:\scripts> $AdminSDHolderNTSD = $AdminSDHolderSD | ConvertTo-NtSecurityDescriptor
-PS C:\scripts> Write-Host "NTSD Type: $($AdminSDHolderNTSD.GetType())"
 NTSD Type: NtCoreLib.Security.Authorization.SecurityDescriptor
-PS C:\scripts> Write-Host "NTSD Self Relative:"
 NTSD Self Relative:
-PS C:\scripts> $AdminSDHolderNTSD.SelfRelative
 True
-PS C:\scripts> Write-Host "NTSD Owner:"
 NTSD Owner:
-PS C:\scripts> $AdminSDHolderNTSD.Owner
 
-Sid                                          Defaulted
----                                          ---------
-S-1-5-21-458780826-1257934750-2189760506-512     False
+Sid       : S-1-5-21-458780826-1257934750-2189760506-512
+Defaulted : False
 
-
-PS C:\scripts> Write-Host "NTSD Group:"
 NTSD Group:
-PS C:\scripts> $AdminSDHolderNTSD.Group
 
-Sid                                          Defaulted
----                                          ---------
-S-1-5-21-458780826-1257934750-2189760506-512     False
+Sid       : S-1-5-21-458780826-1257934750-2189760506-512
+Defaulted : False
 
-
-PS C:\scripts> Write-Host "NTSD Control:"
 NTSD Control:
-PS C:\scripts> $AdminSDHolderNTSD.Control
 DaclPresent, DaclAutoInherited, DaclProtected
-PS C:\scripts> Write-Host "NTSD Container:"
 NTSD Container:
-PS C:\scripts> $AdminSDHolderNTSD.Container
 True
-PS C:\scripts> Write-Host "NTSD AccessRightsType:"
 NTSD AccessRightsType:
-PS C:\scripts> $AdminSDHolderNTSD.AccessRightsType
 
-IsPublic IsSerial Name                                     BaseType
--------- -------- ----                                     --------
-True     True     DirectoryServiceAccessRights             System.Enum
+Module                     : NtObjectManager.dll
+Assembly                   : NtObjectManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+TypeHandle                 : System.RuntimeTypeHandle
+DeclaringMethod            :
+BaseType                   : System.Enum
+UnderlyingSystemType       : NtCoreLib.Win32.DirectoryService.DirectoryServiceAccessRights
+FullName                   : NtCoreLib.Win32.DirectoryService.DirectoryServiceAccessRights
+AssemblyQualifiedName      : NtCoreLib.Win32.DirectoryService.DirectoryServiceAccessRights, NtObjectManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null
+Namespace                  : NtCoreLib.Win32.DirectoryService
+GUID                       : e0fdcb53-e270-3482-aea8-0b528761b2f3
+IsEnum                     : True
+GenericParameterAttributes :
+IsSecurityCritical         : True
+IsSecuritySafeCritical     : False
+IsSecurityTransparent      : False
+IsGenericTypeDefinition    : False
+IsGenericParameter         : False
+GenericParameterPosition   :
+IsGenericType              : False
+IsConstructedGenericType   : False
+ContainsGenericParameters  : False
+StructLayoutAttribute      : System.Runtime.InteropServices.StructLayoutAttribute
+Name                       : DirectoryServiceAccessRights
+MemberType                 : TypeInfo
+DeclaringType              :
+ReflectedType              :
+MetadataToken              : 33556183
+GenericTypeParameters      : {}
+DeclaredConstructors       : {}
+DeclaredEvents             : {}
+DeclaredFields             : {value__, None, CreateChild, DeleteChild...}
+DeclaredMembers            : {value__, None, CreateChild, DeleteChild...}
+DeclaredMethods            : {}
+DeclaredNestedTypes        : {}
+DeclaredProperties         : {}
+ImplementedInterfaces      : {System.IComparable, System.IFormattable, System.IConvertible}
+TypeInitializer            :
+IsNested                   : False
+Attributes                 : AutoLayout, AnsiClass, Class, Public, Sealed
+IsVisible                  : True
+IsNotPublic                : False
+IsPublic                   : True
+IsNestedPublic             : False
+IsNestedPrivate            : False
+IsNestedFamily             : False
+IsNestedAssembly           : False
+IsNestedFamANDAssem        : False
+IsNestedFamORAssem         : False
+IsAutoLayout               : True
+IsLayoutSequential         : False
+IsExplicitLayout           : False
+IsClass                    : False
+IsInterface                : False
+IsValueType                : True
+IsAbstract                 : False
+IsSealed                   : True
+IsSpecialName              : False
+IsImport                   : False
+IsSerializable             : True
+IsAnsiClass                : True
+IsUnicodeClass             : False
+IsAutoClass                : False
+IsArray                    : False
+IsByRef                    : False
+IsPointer                  : False
+IsPrimitive                : False
+IsCOMObject                : False
+HasElementType             : False
+IsContextful               : False
+IsMarshalByRef             : False
+GenericTypeArguments       : {}
+CustomAttributes           : {[System.FlagsAttribute()]}
 
-
-PS C:\scripts> Write-Host "NTSD DACL Canonical:"
 NTSD DACL Canonical:
-PS C:\scripts> $AdminSDHolderNTSD.DaclCanonical
 True
-PS C:\scripts> Write-Host "NTSD DACL Defaulted:"
 NTSD DACL Defaulted:
-PS C:\scripts> $AdminSDHolderNTSD.DaclDefaulted
 False
-PS C:\scripts> Write-Host "NTSD DACL:"
 NTSD DACL:
-PS C:\scripts> $AdminSDHolderNTSD.Dacl
 
-Type          User                                       Flags            Mask
-----          ----                                       -----            ----
-Allowed       NT AUTHORITY\Authenticated Users           None             00020094
-Allowed       NT AUTHORITY\SYSTEM                        None             000F01FF
-Allowed       BUILTIN\Administrators                     None             000F01BF
-Allowed       AD2016\Domain Admins                       None             000E01BF
-Allowed       AD2016\Enterprise Admins                   None             000E01BF
-AllowedObject Everyone                                   None             00000100
-AllowedObject NT AUTHORITY\SELF                          ContainerInherit 00000130
-AllowedObject NT AUTHORITY\SELF                          None             00000100
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00020094
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00020094
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Pre-Windows 2000 Compatible Access None             00000010
-AllowedObject BUILTIN\Windows Authorization Access Group None             00000010
-AllowedObject BUILTIN\Terminal Server License Servers    None             00000030
-AllowedObject BUILTIN\Terminal Server License Servers    None             00000030
-AllowedObject AD2016\Cert Publishers                     None             00000030
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : False
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : Allowed
+Flags                  : None
+Mask                   : 131220
+Sid                    : S-1-5-11
+CompoundAceType        : None
+ServerSid              :
+ObjectType             :
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
 
 
-PS C:\scripts> Write-Host "NTSD Self-Relative Hex:"
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : False
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : Allowed
+Flags                  : None
+Mask                   : 983551
+Sid                    : S-1-5-18
+CompoundAceType        : None
+ServerSid              :
+ObjectType             :
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : False
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : Allowed
+Flags                  : None
+Mask                   : 983487
+Sid                    : S-1-5-32-544
+CompoundAceType        : None
+ServerSid              :
+ObjectType             :
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : False
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : Allowed
+Flags                  : None
+Mask                   : 917951
+Sid                    : S-1-5-21-458780826-1257934750-2189760506-512
+CompoundAceType        : None
+ServerSid              :
+ObjectType             :
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : False
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : Allowed
+Flags                  : None
+Mask                   : 917951
+Sid                    : S-1-5-21-458780826-1257934750-2189760506-519
+CompoundAceType        : None
+ServerSid              :
+ObjectType             :
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 256
+Sid                    : S-1-1-0
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : True
+Type                   : AllowedObject
+Flags                  : ContainerInherit
+Mask                   : 304
+Sid                    : S-1-5-10
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 256
+Sid                    : S-1-5-10
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType    : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType    : bf967aba-0de6-11d0-a285-00aa003049e2
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType    : bf967aba-0de6-11d0-a285-00aa003049e2
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType    : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType    : bf967aba-0de6-11d0-a285-00aa003049e2
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType    : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 131220
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             :
+InheritedObjectType    : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 131220
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             :
+InheritedObjectType    : bf967aba-0de6-11d0-a285-00aa003049e2
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType    : bf967aba-0de6-11d0-a285-00aa003049e2
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType    : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-554
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType    : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 16
+Sid                    : S-1-5-32-560
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 48
+Sid                    : S-1-5-32-561
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 6db69a1c-9422-11d1-aebd-0000f80367c1
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 48
+Sid                    : S-1-5-32-561
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
+
+IsAllowedAce           : True
+IsDeniedAce            : False
+IsObjectAce            : True
+IsCallbackAce          : False
+IsConditionalAce       : False
+IsResourceAttributeAce : False
+IsMandatoryLabel       : False
+IsCompoundAce          : False
+IsAuditAce             : False
+IsAccessFilterAce      : False
+IsProcessTrustLabelAce : False
+IsCriticalAce          : False
+IsInheritOnly          : False
+IsObjectInherit        : False
+IsContainerInherit     : False
+Type                   : AllowedObject
+Flags                  : None
+Mask                   : 48
+Sid                    : S-1-5-21-458780826-1257934750-2189760506-517
+CompoundAceType        : None
+ServerSid              :
+ObjectType             : bf967a7f-0de6-11d0-a285-00aa003049e2
+InheritedObjectType    :
+ApplicationData        : {}
+Condition              :
+ResourceAttribute      :
+
 NTSD Self-Relative Hex:
-PS C:\scripts> $ba = ConvertFrom-NtSecurityDescriptor $AdminSDHolderNTSD
-PS C:\scripts> $ba | Out-HexDump -ShowAll
           00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F  - 0123456789ABCDEF
 -----------------------------------------------------------------------------
 00000000: 01 00 04 94 4C 04 00 00 68 04 00 00 00 00 00 00  - ....L...h.......
@@ -984,9 +1645,7 @@ PS C:\scripts> $ba | Out-HexDump -ShowAll
 00000460: FA 17 85 82 00 02 00 00 01 05 00 00 00 00 00 05  - ................
 00000470: 15 00 00 00 9A 70 58 1B 9E 8F FA 4A FA 17 85 82  - .....pX....J....
 00000480: 00 02 00 00                                      - ....
-PS C:\scripts> Write-Host "Base64:"
 Base64:
-PS C:\scripts> $AdminSDHolderNTSD.ToBase64(1)
 AQAElEwEAABoBAAAAAAAABQAAAAEADgEFwAAAAAAFACUAAIAAQEAAAAAAAULAAAAAAAUAP8BDwAB
 AQAAAAAABRIAAAAAABgAvwEPAAECAAAAAAAFIAAAACACAAAAACQAvwEOAAEFAAAAAAAFFQAAAJpw
 WBuej/pK+heFggACAAAAACQAvwEOAAEFAAAAAAAFFQAAAJpwWBuej/pK+heFggcCAAAFACgAAAEA
@@ -1008,13 +1667,9 @@ mrZtIpTREa69AAD4A2fBAQIAAAAAAAUgAAAAMQIAAAUALAAwAAAAAQAAAGK8BVjJvShEpeKFag9M
 GF4BAgAAAAAABSAAAAAxAgAABQA4ADAAAAABAAAAf3qWv+YN0BGihQCqADBJ4gEFAAAAAAAFFQAA
 AJpwWBuej/pK+heFggUCAAABBQAAAAAABRUAAACacFgbno/6SvoXhYIAAgAAAQUAAAAAAAUVAAAA
 mnBYG56P+kr6F4WCAAIAAA==
-PS C:\scripts> Write-Host "HashCode:"
 HashCode:
-PS C:\scripts> $AdminSDHolderNTSD.GetHashCode()
-12395348
-PS C:\scripts> Write-Host "NTSD SDDL:"
+27817374
 NTSD SDDL:
-PS C:\scripts> $AdminSDHolderNTSD.ToSDDL() -split "(?=O:)|(?=G:)|(?=D:)|(?=S:)|(?=\()"
 
 O:DA
 G:DA
@@ -1042,9 +1697,7 @@ D:PAI
 (OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)
 (OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)
 (OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
-PS C:\scripts> Write-Host "Win32SD:"
 Win32SD:
-PS C:\scripts> Format-Win32SecurityDescriptor -Name $AdminSDHolderDN -Type DsAll -ShowAll -ResolveObjectType
 Path: CN=AdminSDHolder,CN=System,DC=AD2016,DC=lan
 Type: DirectoryService
 Control: DaclPresent, DaclAutoInherited, DaclProtected
@@ -1255,41 +1908,296 @@ Control: DaclPresent, DaclAutoInherited, DaclProtected
  - Access: Full Access
  - Flags : None
 
-PS C:\scripts> Write-Host "Win32SD Inherited ACEs:"
 Win32SD Inherited ACEs:
-PS C:\scripts> $cls = Get-DsObjectSchemaClass -DistinguishedName $AdminSDHolderDN
-PS C:\scripts> Search-Win32SecurityDescriptor -Name $AdminSDHolderDN -Type Ds -ObjectType $cls.SchemaID
 
-Name Depth User                                       Access
----- ----- ----                                       ------
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
-     0     AD2016\Cert Publishers                     ReadProp|WriteProp
-     0     BUILTIN\Windows Authorization Access Group ReadProp
-     0     BUILTIN\Terminal Server License Servers    ReadProp|WriteProp
-     0     BUILTIN\Terminal Server License Servers    ReadProp|WriteProp
-     0     BUILTIN\Pre-Windows 2000 Compatible Access GenericRead
-     0     BUILTIN\Pre-Windows 2000 Compatible Access GenericRead
-     0     Everyone                                   ControlAccess
-     0     NT AUTHORITY\SELF                          ControlAccess
-     0     NT AUTHORITY\SELF                          ReadProp|WriteProp|ControlAccess
-     0     AD2016\Domain Admins                       CreateChild|DeleteChild|ControlAccess|WriteDac|WriteOwner|Gene...
-     0     AD2016\Enterprise Admins                   CreateChild|DeleteChild|ControlAccess|WriteDac|WriteOwner|Gene...
-     0     BUILTIN\Administrators                     CreateChild|DeleteChild|ControlAccess|Delete|WriteDac|WriteOwn...
-     0     NT AUTHORITY\Authenticated Users           GenericRead
-     0     NT AUTHORITY\SYSTEM                        GenericAll
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType : 4828cc14-1437-45bc-9b07-ad6f015e5f28
 
 
-PS C:\scripts> Stop-Transcript
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType : bf967aba-0de6-11d0-a285-00aa003049e2
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType : bf967aba-0de6-11d0-a285-00aa003049e2
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType : bf967aba-0de6-11d0-a285-00aa003049e2
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType : bf967aba-0de6-11d0-a285-00aa003049e2
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType : bf967aba-0de6-11d0-a285-00aa003049e2
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000030 - Sid S-1-5-21-458780826-1257934750-2189760506-517
+Sid                 : S-1-5-21-458780826-1257934750-2189760506-517
+Access              : ReadProp|WriteProp
+GenericAccess       : ReadProp|WriteProp
+Type                : AllowedObject
+ObjectType          : bf967a7f-0de6-11d0-a285-00aa003049e2
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000010 - Sid S-1-5-32-560
+Sid                 : S-1-5-32-560
+Access              : ReadProp
+GenericAccess       : ReadProp
+Type                : AllowedObject
+ObjectType          : 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000030 - Sid S-1-5-32-561
+Sid                 : S-1-5-32-561
+Access              : ReadProp|WriteProp
+GenericAccess       : ReadProp|WriteProp
+Type                : AllowedObject
+ObjectType          : 6db69a1c-9422-11d1-aebd-0000f80367c1
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000030 - Sid S-1-5-32-561
+Sid                 : S-1-5-32-561
+Access              : ReadProp|WriteProp
+GenericAccess       : ReadProp|WriteProp
+Type                : AllowedObject
+ObjectType          : 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00020094 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : List|ReadProp|ListObject|ReadControl
+GenericAccess       : GenericRead
+Type                : AllowedObject
+ObjectType          :
+InheritedObjectType : 4828cc14-1437-45bc-9b07-ad6f015e5f28
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00020094 - Sid S-1-5-32-554
+Sid                 : S-1-5-32-554
+Access              : List|ReadProp|ListObject|ReadControl
+GenericAccess       : GenericRead
+Type                : AllowedObject
+ObjectType          :
+InheritedObjectType : bf967aba-0de6-11d0-a285-00aa003049e2
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000100 - Sid S-1-1-0
+Sid                 : S-1-1-0
+Access              : ControlAccess
+GenericAccess       : ControlAccess
+Type                : AllowedObject
+ObjectType          : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags None - Mask 00000100 - Sid S-1-5-10
+Sid                 : S-1-5-10
+Access              : ControlAccess
+GenericAccess       : ControlAccess
+Type                : AllowedObject
+ObjectType          : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type AllowedObject - Flags ContainerInherit - Mask 00000130 - Sid S-1-5-10
+Sid                 : S-1-5-10
+Access              : ReadProp|WriteProp|ControlAccess
+GenericAccess       : ReadProp|WriteProp|ControlAccess
+Type                : AllowedObject
+ObjectType          : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type Allowed - Flags None - Mask 000E01BF - Sid S-1-5-21-458780826-1257934750-2189760506-512
+Sid                 : S-1-5-21-458780826-1257934750-2189760506-512
+Access              : CreateChild|DeleteChild|List|Self|ReadProp|WriteProp|ListObject|ControlAccess|ReadControl|WriteDac|WriteOwner
+GenericAccess       : CreateChild|DeleteChild|ControlAccess|WriteDac|WriteOwner|GenericExecute|GenericWrite|GenericRead
+Type                : Allowed
+ObjectType          :
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type Allowed - Flags None - Mask 000E01BF - Sid S-1-5-21-458780826-1257934750-2189760506-519
+Sid                 : S-1-5-21-458780826-1257934750-2189760506-519
+Access              : CreateChild|DeleteChild|List|Self|ReadProp|WriteProp|ListObject|ControlAccess|ReadControl|WriteDac|WriteOwner
+GenericAccess       : CreateChild|DeleteChild|ControlAccess|WriteDac|WriteOwner|GenericExecute|GenericWrite|GenericRead
+Type                : Allowed
+ObjectType          :
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type Allowed - Flags None - Mask 000F01BF - Sid S-1-5-32-544
+Sid                 : S-1-5-32-544
+Access              : CreateChild|DeleteChild|List|Self|ReadProp|WriteProp|ListObject|ControlAccess|Delete|ReadControl|WriteDac|WriteOwner
+GenericAccess       : CreateChild|DeleteChild|ControlAccess|Delete|WriteDac|WriteOwner|GenericExecute|GenericWrite|GenericRead
+Type                : Allowed
+ObjectType          :
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type Allowed - Flags None - Mask 00020094 - Sid S-1-5-11
+Sid                 : S-1-5-11
+Access              : List|ReadProp|ListObject|ReadControl
+GenericAccess       : GenericRead
+Type                : Allowed
+ObjectType          :
+InheritedObjectType :
+
+
+Depth               : 0
+Name                :
+SecurityDescriptor  :
+InheritedAce        : Type Allowed - Flags None - Mask 000F01FF - Sid S-1-5-18
+Sid                 : S-1-5-18
+Access              : Full Access
+GenericAccess       : GenericAll
+Type                : Allowed
+ObjectType          :
+InheritedObjectType :
+
 **********************
 Windows PowerShell transcript end
-End time: 20250416122218
+End time: 20250418103217
 **********************

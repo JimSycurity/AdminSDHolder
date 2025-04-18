@@ -1,0 +1,1021 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20250418171248
+Username: AD2012NOR\Administrator
+RunAs User: AD2012NOR\Administrator
+Machine: SD-DC2012 (Microsoft Windows NT 6.2.9200.0)
+Host Application: C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -noexit -command import-module ActiveDirectory
+Process ID: 1700
+PSVersion: 5.1.14409.1005
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14409.1005
+BuildVersion: 10.0.14409.1005
+CLRVersion: 4.0.30319.17929
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Scripts\AdminSDHolderData-SD-DC2012-20250418171248.txt
+Hostname: SD-DC2012
+PSVersion: 5.1.14409.1005
+Gathering OS and Platform data
+Microsoft Windows Server 2012 Standard|C:\Windows|\Device\Harddisk0\Partition2
+64-bit
+SD-DC2012
+Win32NT
+
+Major  Minor  Build  Revision
+-----  -----  -----  --------
+6      2      9200   0
+
+Microsoft Windows NT 6.2.9200.0
+Gathering base AD data
+
+currentTime                   : {20250418221248.0Z}
+subschemaSubentry             : {CN=Aggregate,CN=Schema,CN=Configuration,DC=AD2
+                                012NoR,DC=lan}
+dsServiceName                 : {CN=NTDS Settings,CN=SD-DC2012,CN=Servers,CN=De
+                                fault-First-Site-Name,CN=Sites,CN=Configuration
+                                ,DC=AD2012NoR,DC=lan}
+namingContexts                : {DC=AD2012NoR,DC=lan,
+                                CN=Configuration,DC=AD2012NoR,DC=lan, CN=Schema
+                                ,CN=Configuration,DC=AD2012NoR,DC=lan,
+                                DC=DomainDnsZones,DC=AD2012NoR,DC=lan...}
+defaultNamingContext          : {DC=AD2012NoR,DC=lan}
+schemaNamingContext           : {CN=Schema,CN=Configuration,DC=AD2012NoR,DC=lan
+                                }
+configurationNamingContext    : {CN=Configuration,DC=AD2012NoR,DC=lan}
+rootDomainNamingContext       : {DC=AD2012NoR,DC=lan}
+supportedControl              : {1.2.840.113556.1.4.319,
+                                1.2.840.113556.1.4.801,
+                                1.2.840.113556.1.4.473,
+                                1.2.840.113556.1.4.528...}
+supportedLDAPVersion          : {3, 2}
+supportedLDAPPolicies         : {MaxPoolThreads, MaxDatagramRecv,
+                                MaxReceiveBuffer, InitRecvTimeout...}
+highestCommittedUSN           : {16409}
+supportedSASLMechanisms       : {GSSAPI, GSS-SPNEGO, EXTERNAL, DIGEST-MD5}
+dnsHostName                   : {SD-DC2012.AD2012NoR.lan}
+ldapServiceName               : {AD2012NoR.lan:sd-dc2012$@AD2012NOR.LAN}
+serverName                    : {CN=SD-DC2012,CN=Servers,CN=Default-First-Site-
+                                Name,CN=Sites,CN=Configuration,DC=AD2012NoR,DC=
+                                lan}
+supportedCapabilities         : {1.2.840.113556.1.4.800,
+                                1.2.840.113556.1.4.1670,
+                                1.2.840.113556.1.4.1791,
+                                1.2.840.113556.1.4.1935...}
+isSynchronized                : {TRUE}
+isGlobalCatalogReady          : {TRUE}
+domainFunctionality           : {5}
+forestFunctionality           : {5}
+domainControllerFunctionality : {5}
+AuthenticationType            : Secure
+Children                      : {}
+Guid                          : {228D9A83-C302-11CF-9AA4-00AA004A5691}
+ObjectSecurity                :
+Name                          : rootdse
+NativeGuid                    : {228D9A83-C302-11CF-9AA4-00AA004A5691}
+NativeObject                  : System.__ComObject
+Parent                        : LDAP:
+Password                      :
+Path                          : LDAP://rootdse
+Properties                    : {currentTime, subschemaSubentry,
+                                dsServiceName, namingContexts...}
+SchemaClassName               :
+SchemaEntry                   :
+UsePropertyCache              : True
+Username                      :
+Options                       : {}
+Site                          :
+Container                     :
+
+Legacy Methods
+DSACLS:
+Owner: AD2012NOR\Domain Admins
+Group: AD2012NOR\Domain Admins
+
+Audit list:
+Success Everyone  SPECIAL ACCESS
+                  WRITE PERMISSIONS
+                  CHANGE OWNERSHIP
+                  WRITE PROPERTY
+
+Permissions inherited to subobjects are:
+Inherited to organizationalUnit
+Success Everyone  SPECIAL ACCESS for gPOptions   <Inherited from parent>
+                  WRITE PROPERTY
+Success Everyone  SPECIAL ACCESS for gPLink   <Inherited from parent>
+                  WRITE PROPERTY
+
+Access list:
+{This object is protected from inheriting permissions from the parent}
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS
+                                      READ PERMISSONS
+                                      LIST CONTENTS
+                                      READ PROPERTY
+                                      LIST OBJECT
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS
+                                      READ PERMISSONS
+                                      LIST CONTENTS
+                                      READ PROPERTY
+                                      LIST OBJECT
+Allow AD2012NOR\Domain Admins         SPECIAL ACCESS
+                                      READ PERMISSONS
+                                      WRITE PERMISSIONS
+                                      CHANGE OWNERSHIP
+                                      CREATE CHILD
+                                      DELETE CHILD
+                                      LIST CONTENTS
+                                      WRITE SELF
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+                                      LIST OBJECT
+                                      CONTROL ACCESS
+Allow AD2012NOR\Enterprise Admins     SPECIAL ACCESS
+                                      READ PERMISSONS
+                                      WRITE PERMISSIONS
+                                      CHANGE OWNERSHIP
+                                      CREATE CHILD
+                                      DELETE CHILD
+                                      LIST CONTENTS
+                                      WRITE SELF
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+                                      LIST OBJECT
+                                      CONTROL ACCESS
+Allow BUILTIN\Administrators          SPECIAL ACCESS
+                                      DELETE
+                                      READ PERMISSONS
+                                      WRITE PERMISSIONS
+                                      CHANGE OWNERSHIP
+                                      CREATE CHILD
+                                      DELETE CHILD
+                                      LIST CONTENTS
+                                      WRITE SELF
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+                                      LIST OBJECT
+                                      CONTROL ACCESS
+Allow NT AUTHORITY\Authenticated Users
+                                      SPECIAL ACCESS
+                                      READ PERMISSONS
+                                      LIST CONTENTS
+                                      READ PROPERTY
+                                      LIST OBJECT
+Allow NT AUTHORITY\SYSTEM             FULL CONTROL
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Account Restrictions
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Account Restrictions
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Logon Information
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Logon Information
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Group Membership
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Group Membership
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for General Information
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for General Information
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Remote Access Informati
+on
+                                      READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access
+                                      SPECIAL ACCESS for Remote Access Informati
+on
+                                      READ PROPERTY
+Allow AD2012NOR\Cert Publishers       SPECIAL ACCESS for userCertificate
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+Allow BUILTIN\Windows Authorization Access Group
+                                      SPECIAL ACCESS for tokenGroupsGlobalAndUni
+versal
+                                      READ PROPERTY
+Allow BUILTIN\Terminal Server License Servers
+                                      SPECIAL ACCESS for terminalServer
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+Allow BUILTIN\Terminal Server License Servers
+                                      SPECIAL ACCESS for Terminal Server License
+ Server
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+Allow NT AUTHORITY\SELF               SPECIAL ACCESS for Private Information
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+                                      CONTROL ACCESS
+Allow Everyone                        Change Password
+Allow NT AUTHORITY\SELF               Change Password
+
+Permissions inherited to subobjects are:
+Inherited to all subobjects
+Allow NT AUTHORITY\SELF               SPECIAL ACCESS for Private Information
+                                      WRITE PROPERTY
+                                      READ PROPERTY
+                                      CONTROL ACCESS
+
+The command completed successfully
+DE SD Type: System.DirectoryServices.ActiveDirectorySecurity
+DE Owner: AD2012NOR\Domain Admins
+DE Group: AD2012NOR\Domain Admins
+DE Access:
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\Authenticated Users
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericAll
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SYSTEM
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty,
+                        ExtendedRight, Delete, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Administrators
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty,
+                        ExtendedRight, GenericRead, WriteDacl, WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2012NOR\Domain Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty,
+                        ExtendedRight, GenericRead, WriteDacl, WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2012NOR\Enterprise Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : Everyone
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty, ExtendedRight
+InheritanceType       : All
+ObjectType            : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : ContainerInherit
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Windows Authorization Access Group
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 6db69a1c-9422-11d1-aebd-0000f80367c1
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : bf967a7f-0de6-11d0-a285-00aa003049e2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : AD2012NOR\Cert Publishers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+DE SDDL:
+
+O:DA
+G:DA
+D:PAI
+(A;;LCRPLORC;;;AU)
+(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)
+(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-2472645976-731508294-3645539909-519)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)
+(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)
+(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)
+(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)
+(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
+DE Binary:
+0100049C1400000030000000000000004C0000000105000000000005150000005895619346EE992B45864AD9000200000105000000000005150000005895619346EE992B45864AD9000200000400380417000000000014009400020001010000000000050B00000000001400FF010F0001010000000000051200000000001800BF010F000102000000000005200000002002000000002400BF010E000105000000000005150000005895619346EE992B45864AD90002000000002400BF010E000105000000000005150000005895619346EE992B45864AD907020000050028000001000001000000531A72AB2F1ED011981900AA0040529B010100000000000100000000050228003001000001000000DE47E6916FD9704B9557D63FF4F3CCD801010000000000050A000000050028000001000001000000531A72AB2F1ED011981900AA0040529B01010000000000050A00000005003C001000000003000000F8887003E10AD211B42200A0C968F93914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C001000000003000000F8887003E10AD211B42200A0C968F939BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E0529BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C00940002000200000014CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C009400020002000000BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000001020205FA579D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E052914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C0010000000010000001DB1A946AE605A40B7E8FF8A58D456D20102000000000005200000003002000005002C0030000000010000001C9AB66D2294D111AEBD0000F80367C10102000000000005200000003102000005002C00300000000100000062BC0558C9BD2844A5E2856A0F4C185E010200000000000520000000310200000500380030000000010000007F7A96BFE60DD011A28500AA003049E20105000000000005150000005895619346EE992B45864AD905020000
+Modern Module Methods
+ADO SD Type: System.DirectoryServices.ActiveDirectorySecurity
+ADO Owner: AD2012NOR\Domain Admins
+ADO Group: AD2012NOR\Domain Admins
+ADO Access:
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\Authenticated Users
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericAll
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SYSTEM
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty,
+                        ExtendedRight, Delete, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Administrators
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty,
+                        ExtendedRight, GenericRead, WriteDacl, WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2012NOR\Domain Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty,
+                        ExtendedRight, GenericRead, WriteDacl, WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2012NOR\Enterprise Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : Everyone
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty, ExtendedRight
+InheritanceType       : All
+ObjectType            : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : ContainerInherit
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Windows Authorization Access Group
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 6db69a1c-9422-11d1-aebd-0000f80367c1
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : bf967a7f-0de6-11d0-a285-00aa003049e2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : AD2012NOR\Cert Publishers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ADO SDDL:
+
+O:DA
+G:DA
+D:PAI
+(A;;LCRPLORC;;;AU)
+(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)
+(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-2472645976-731508294-3645539909-519)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)
+(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)
+(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)
+(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)
+(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
+ADO Binary:
+0100049C1400000030000000000000004C0000000105000000000005150000005895619346EE992B45864AD9000200000105000000000005150000005895619346EE992B45864AD9000200000400380417000000000014009400020001010000000000050B00000000001400FF010F0001010000000000051200000000001800BF010F000102000000000005200000002002000000002400BF010E000105000000000005150000005895619346EE992B45864AD90002000000002400BF010E000105000000000005150000005895619346EE992B45864AD907020000050028000001000001000000531A72AB2F1ED011981900AA0040529B010100000000000100000000050228003001000001000000DE47E6916FD9704B9557D63FF4F3CCD801010000000000050A000000050028000001000001000000531A72AB2F1ED011981900AA0040529B01010000000000050A00000005003C001000000003000000F8887003E10AD211B42200A0C968F93914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C001000000003000000F8887003E10AD211B42200A0C968F939BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E0529BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C00100000000300000040C20ABCA979D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C00940002000200000014CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C009400020002000000BA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C001000000003000000422FBA59A279D011902000C04FC2D3CFBA7A96BFE60DD011A28500AA003049E20102000000000005200000002A02000005003C0010000000030000001020205FA579D011902000C04FC2D4CF14CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005003C0010000000030000000042164CC020D011A76800AA006E052914CC28483714BC459B07AD6F015E5F280102000000000005200000002A02000005002C0010000000010000001DB1A946AE605A40B7E8FF8A58D456D20102000000000005200000003002000005002C0030000000010000001C9AB66D2294D111AEBD0000F80367C10102000000000005200000003102000005002C00300000000100000062BC0558C9BD2844A5E2856A0F4C185E010200000000000520000000310200000500380030000000010000007F7A96BFE60DD011A28500AA003049E20105000000000005150000005895619346EE992B45864AD905020000
+>> TerminatingError(ConvertTo-NtSecurityDescriptor): "Method not found: 'System.__Canon System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr)'."
+ConvertTo-NtSecurityDescriptor : Method not found: 'System.__Canon
+System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr)'.
+At C:\scripts\get-powershellsd.ps1:56 char:41
++ ... AdminSDHolderNTSD = $AdminSDHolderSD | ConvertTo-NtSecurityDescriptor
++                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertTo-NtSecurityDescriptor], MissingMethodException
+    + FullyQualifiedErrorId :
+System.MissingMethodException,NtObjectManager.Cmdlets.Object.ConvertToNtSecurityDescriptorCmdlet
+ConvertTo-NtSecurityDescriptor : Method not found: 'System.__Canon
+System.Runtime.InteropServices.Marshal.PtrToStructure(IntPtr)'.
+At C:\scripts\get-powershellsd.ps1:56 char:41
++ ... AdminSDHolderNTSD = $AdminSDHolderSD | ConvertTo-NtSecurityDescriptor
++                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertTo-NtSecurityDescripto
+   r], MissingMethodException
+    + FullyQualifiedErrorId : System.MissingMethodException,NtObjectManager.Cm
+   dlets.Object.ConvertToNtSecurityDescriptorCmdlet
+
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:57 char:26
++ Write-Host "NTSD Type: $($AdminSDHolderNTSD.GetType())"
++                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:57 char:26
++ Write-Host "NTSD Type: $($AdminSDHolderNTSD.GetType())"
++                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+NTSD Type:
+NTSD Self Relative:
+NTSD Owner:
+NTSD Group:
+NTSD Control:
+NTSD Container:
+NTSD AccessRightsType:
+NTSD DACL Canonical:
+NTSD DACL Defaulted:
+NTSD DACL:
+NTSD Self-Relative Hex:
+PS>TerminatingError(ConvertFrom-NtSecurityDescriptor): "Cannot bind argument to parameter 'SecurityDescriptor' because it is null."
+ConvertFrom-NtSecurityDescriptor : Cannot bind argument to parameter 'SecurityDescriptor' because it is null.
+At C:\scripts\get-powershellsd.ps1:77 char:40
++ $ba = ConvertFrom-NtSecurityDescriptor $AdminSDHolderNTSD
++                                        ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [ConvertFrom-NtSecurityDescriptor], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,ConvertFrom-NtSecurityDescriptor
+ConvertFrom-NtSecurityDescriptor : Cannot bind argument to parameter
+'SecurityDescriptor' because it is null.
+At C:\scripts\get-powershellsd.ps1:77 char:40
++ $ba = ConvertFrom-NtSecurityDescriptor $AdminSDHolderNTSD
++                                        ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [ConvertFrom-NtSecurityDescript
+   or], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,C
+   onvertFrom-NtSecurityDescriptor
+
+Format-HexDump : Cannot bind argument to parameter 'Byte' because it is null.
+At C:\scripts\get-powershellsd.ps1:78 char:7
++ $ba | Out-HexDump -ShowAll
++       ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Format-HexDump], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Format-HexDump
+Format-HexDump : Cannot bind argument to parameter 'Byte' because it is null.
+At C:\scripts\get-powershellsd.ps1:78 char:7
++ $ba | Out-HexDump -ShowAll
++       ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Format-HexDump], ParameterBind
+   ingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,F
+   ormat-HexDump
+
+          00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F  - 0123456789ABCDEF
+-----------------------------------------------------------------------------
+Base64:
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:80 char:1
++ $AdminSDHolderNTSD.ToBase64(1)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:80 char:1
++ $AdminSDHolderNTSD.ToBase64(1)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+HashCode:
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:82 char:1
++ $AdminSDHolderNTSD.GetHashCode()
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:82 char:1
++ $AdminSDHolderNTSD.GetHashCode()
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+NTSD SDDL:
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:84 char:1
++ $AdminSDHolderNTSD.ToSDDL() -split "(?=O:)|(?=G:)|(?=D:)|(?=S:)|(?=\( ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At C:\scripts\get-powershellsd.ps1:84 char:1
++ $AdminSDHolderNTSD.ToSDDL() -split "(?=O:)|(?=G:)|(?=D:)|(?=S:)|(?=\( ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+Win32SD:
+PS>TerminatingError(Get-Win32SecurityDescriptor): "The type initializer for 'NtCoreLib.NtType' threw an exception."
+Get-Win32SecurityDescriptor : The type initializer for 'NtCoreLib.NtType' threw an exception.
+At C:\Program Files\WindowsPowerShell\Modules\ntobjectmanager\2.0.1\NtObjectManager.psm1:18630 char:5
++     Get-Win32SecurityDescriptor -Name $Name -SecurityInformation $Sec ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-Win32SecurityDescriptor], TypeInitializationException
+    + FullyQualifiedErrorId :
+System.TypeInitializationException,NtObjectManager.Cmdlets.Win32.GetWin32SecurityDescriptorCmdlet
+Get-Win32SecurityDescriptor : The type initializer for 'NtCoreLib.NtType'
+threw an exception.
+At C:\Program Files\WindowsPowerShell\Modules\ntobjectmanager\2.0.1\NtObjectMan
+ager.psm1:18630 char:5
++     Get-Win32SecurityDescriptor -Name $Name -SecurityInformation $Sec ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-Win32SecurityDescriptor],
+    TypeInitializationException
+    + FullyQualifiedErrorId : System.TypeInitializationException,NtObjectManag
+   er.Cmdlets.Win32.GetWin32SecurityDescriptorCmdlet
+
+Win32SD Inherited ACEs:
+PS>TerminatingError(Search-Win32SecurityDescriptor): "The type initializer for 'NtCoreLib.NtType' threw an exception."
+Search-Win32SecurityDescriptor : The type initializer for 'NtCoreLib.NtType' threw an exception.
+At C:\scripts\get-powershellsd.ps1:89 char:1
++ Search-Win32SecurityDescriptor -Name $AdminSDHolderDN -Type Ds -Objec ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Search-Win32SecurityDescriptor], TypeInitializationException
+    + FullyQualifiedErrorId :
+System.TypeInitializationException,NtObjectManager.Cmdlets.Win32.SearchWin32SecurityDescriptorCmdlet
+Search-Win32SecurityDescriptor : The type initializer for 'NtCoreLib.NtType'
+threw an exception.
+At C:\scripts\get-powershellsd.ps1:89 char:1
++ Search-Win32SecurityDescriptor -Name $AdminSDHolderDN -Type Ds -Objec ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Search-Win32SecurityDescripto
+   r], TypeInitializationException
+    + FullyQualifiedErrorId : System.TypeInitializationException,NtObjectManag
+   er.Cmdlets.Win32.SearchWin32SecurityDescriptorCmdlet
+
+**********************
+Windows PowerShell transcript end
+End time: 20250418171250
+**********************

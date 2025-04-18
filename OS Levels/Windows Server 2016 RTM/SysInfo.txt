@@ -1,0 +1,80 @@
+
+Host Name:                 SD-DC2016
+OS Name:                   Microsoft Windows Server 2016 Datacenter
+OS Version:                10.0.14393 N/A Build 14393
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Primary Domain Controller
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:
+Product ID:                00377-90011-09119-AA628
+Original Install Date:     6/27/2023, 4:41:03 AM
+System Boot Time:          8/20/2023, 5:19:56 PM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware7,1
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 63 Stepping 2 GenuineIntel ~2494 Mhz
+BIOS Version:              VMware, Inc. VMW71.00V.18227214.B64.2106252220, 6/25/2021
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-06:00) Central Time (US & Canada)
+Total Physical Memory:     4,095 MB
+Available Physical Memory: 1,646 MB
+Virtual Memory: Max Size:  13,621 MB
+Virtual Memory: Available: 10,714 MB
+Virtual Memory: In Use:    2,907 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    AD2016.lan
+Logon Server:              \\SD-DC2016
+Hotfix(s):                 39 Hotfix(s) Installed.
+                           [01]: KB4049065
+                           [02]: KB4589210
+                           [03]: KB5012170
+                           [04]: KB5023788
+                           [05]: KB5030504
+                           [06]: KB5032391
+                           [07]: KB5034862
+                           [08]: KB5035962
+                           [09]: KB5037016
+                           [10]: KB5039334
+                           [11]: KB5040562
+                           [12]: KB5041576
+                           [13]: KB5043124
+                           [14]: KB5050109
+                           [15]: KB5054006
+                           [16]: KB5055661
+                           [17]: KB4048953
+                           [18]: KB4103723
+                           [19]: KB5029242
+                           [20]: KB5030213
+                           [21]: KB5031362
+                           [22]: KB5032197
+                           [23]: KB5033373
+                           [24]: KB5034119
+                           [25]: KB5034767
+                           [26]: KB5035855
+                           [27]: KB5036899
+                           [28]: KB5037763
+                           [29]: KB5039214
+                           [30]: KB5040434
+                           [31]: KB5041773
+                           [32]: KB5043051
+                           [33]: KB5044293
+                           [34]: KB5046612
+                           [35]: KB5048671
+                           [36]: KB5049993
+                           [37]: KB5052006
+                           [38]: KB5053594
+                           [39]: KB5055521
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) 82574L Gigabit Network Connection
+                                 Connection Name: Ethernet0
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.15.116
+                                 [02]: fe80::b52e:af52:afa:6d3a
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
