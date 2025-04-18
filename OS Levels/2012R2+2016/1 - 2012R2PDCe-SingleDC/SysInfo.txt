@@ -1,0 +1,78 @@
+
+Host Name:                 SD-DC2012R2PDCE
+OS Name:                   Microsoft Windows Server 2012 R2 Standard
+OS Version:                6.3.9600 N/A Build 9600
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Primary Domain Controller
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:
+Product ID:                00252-70000-00000-AA535
+Original Install Date:     4/17/2025, 12:32:31 PM
+System Boot Time:          4/17/2025, 3:08:12 PM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware Virtual Platform
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 63 Stepping 2 GenuineIntel ~2494 Mhz
+BIOS Version:              Phoenix Technologies LTD 6.00, 11/12/2020
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-06:00) Central Time (US & Canada)
+Total Physical Memory:     4,095 MB
+Available Physical Memory: 2,779 MB
+Virtual Memory: Max Size:  5,503 MB
+Virtual Memory: Available: 4,154 MB
+Virtual Memory: In Use:    1,349 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    ADPDCeTests.lan
+Logon Server:              \\SD-DC2012R2PDCE
+Hotfix(s):                 37 Hotfix(s) Installed.
+                           [01]: KB2843630
+                           [02]: KB2862152
+                           [03]: KB2868626
+                           [04]: KB2883200
+                           [05]: KB2884846
+                           [06]: KB2887595
+                           [07]: KB2892074
+                           [08]: KB2893294
+                           [09]: KB2894029
+                           [10]: KB2894179
+                           [11]: KB2898514
+                           [12]: KB2898742
+                           [13]: KB2898871
+                           [14]: KB2901101
+                           [15]: KB2901128
+                           [16]: KB2903939
+                           [17]: KB2906956
+                           [18]: KB2908174
+                           [19]: KB2911106
+                           [20]: KB2912390
+                           [21]: KB2913152
+                           [22]: KB2913270
+                           [23]: KB2914218
+                           [24]: KB2919355
+                           [25]: KB2919394
+                           [26]: KB2922229
+                           [27]: KB2923528
+                           [28]: KB2928680
+                           [29]: KB2931366
+                           [30]: KB2939087
+                           [31]: KB2961899
+                           [32]: KB2961908
+                           [33]: KB2975061
+                           [34]: KB2999226
+                           [35]: KB3004545
+                           [36]: KB3054203
+                           [37]: KB5030329
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) 82574L Gigabit Network Connection
+                                 Connection Name: Ethernet0
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.15.128
+                                 [02]: fe80::1466:d4e3:e823:bc8e
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
