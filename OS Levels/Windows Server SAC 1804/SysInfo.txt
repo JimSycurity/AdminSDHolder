@@ -1,15 +1,15 @@
 
-Host Name:                 SD-DC2019
-OS Name:                   Microsoft Windows Server 2019 Standard
-OS Version:                10.0.17763 N/A Build 17763
+Host Name:                 SD-DCSAC1804
+OS Name:                   Microsoft Windows Server Standard
+OS Version:                10.0.17134 N/A Build 17134
 OS Manufacturer:           Microsoft Corporation
 OS Configuration:          Primary Domain Controller
 OS Build Type:             Multiprocessor Free
 Registered Owner:          Windows User
 Registered Organization:
-Product ID:                00429-70000-00000-AA170
-Original Install Date:     6/25/2023, 11:28:05 PM
-System Boot Time:          8/20/2023, 4:17:25 PM
+Product ID:                00395-50000-00001-AA826
+Original Install Date:     4/17/2025, 6:43:47 PM
+System Boot Time:          4/17/2025, 12:06:34 PM
 System Manufacturer:       VMware, Inc.
 System Model:              VMware7,1
 System Type:               x64-based PC
@@ -23,24 +23,19 @@ System Locale:             en-us;English (United States)
 Input Locale:              en-us;English (United States)
 Time Zone:                 (UTC-06:00) Central Time (US & Canada)
 Total Physical Memory:     4,095 MB
-Available Physical Memory: 560 MB
-Virtual Memory: Max Size:  5,915 MB
-Virtual Memory: Available: 1,291 MB
-Virtual Memory: In Use:    4,624 MB
+Available Physical Memory: 3,136 MB
+Virtual Memory: Max Size:  5,503 MB
+Virtual Memory: Available: 4,342 MB
+Virtual Memory: In Use:    1,161 MB
 Page File Location(s):     C:\pagefile.sys
-Domain:                    AD2019.lan
-Logon Server:              \\SD-DC2019
-Hotfix(s):                 5 Hotfix(s) Installed.
-                           [01]: KB5028960
-                           [02]: KB4512577
-                           [03]: KB4589208
-                           [04]: KB5027222
-                           [05]: KB5023789
+Domain:                    ADSAC1804.lan
+Logon Server:              \\SD-DCSAC1804
+Hotfix(s):                 N/A
 Network Card(s):           1 NIC(s) Installed.
                            [01]: Intel(R) 82574L Gigabit Network Connection
                                  Connection Name: Ethernet0
                                  DHCP Enabled:    No
                                  IP address(es)
-                                 [01]: 10.10.15.119
-                                 [02]: fe80::48d1:dae9:5b78:ef09
+                                 [01]: 10.10.15.120
+                                 [02]: fe80::c115:cdce:9157:90a1
 Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.

@@ -1,0 +1,48 @@
+
+Host Name:                     SD-DC2025
+OS Name:                       Microsoft Windows Server 2025 Standard
+OS Version:                    10.0.26100 N/A Build 26100
+OS Manufacturer:               Microsoft Corporation
+OS Configuration:              Primary Domain Controller
+OS Build Type:                 Multiprocessor Free
+Registered Owner:              N/A
+Registered Organization:       N/A
+Product ID:                    00492-90000-00001-AA746
+Original Install Date:         4/14/2025, 7:36:41 PM
+System Boot Time:              4/14/2025, 1:40:30 PM
+System Manufacturer:           VMware, Inc.
+System Model:                  VMware7,1
+System Type:                   x64-based PC
+Processor(s):                  1 Processor(s) Installed.
+                               [01]: Intel64 Family 6 Model 63 Stepping 2 GenuineIntel ~2494 Mhz
+BIOS Version:                  VMware, Inc. VMW71.00V.18227214.B64.2106252220, 6/25/2021
+Windows Directory:             C:\WINDOWS
+System Directory:              C:\WINDOWS\system32
+Boot Device:                   \Device\HarddiskVolume1
+System Locale:                 en-us;English (United States)
+Input Locale:                  en-us;English (United States)
+Time Zone:                     (UTC-06:00) Central Time (US & Canada)
+Total Physical Memory:         4,095 MB
+Available Physical Memory:     1,896 MB
+Virtual Memory: Max Size:      9,971 MB
+Virtual Memory: Available:     7,574 MB
+Virtual Memory: In Use:        2,397 MB
+Page File Location(s):         C:\pagefile.sys
+Domain:                        AD2025.lan
+Logon Server:                  \\SD-DC2025
+Hotfix(s):                     3 Hotfix(s) Installed.
+                               [01]: KB5049622
+                               [02]: KB5050009
+                               [03]: KB5050387
+Network Card(s):               1 NIC(s) Installed.
+                               [01]: Intel(R) 82574L Gigabit Network Connection
+                                     Connection Name: Ethernet0
+                                     DHCP Enabled:    No
+                                     IP address(es)
+                                     [01]: 10.10.15.125
+                                     [02]: fe80::6a40:a115:cc64:885b
+Virtualization-based security: Status: Not enabled
+                               App Control for Business policy: Enforced
+                               App Control for Business user mode policy: Off
+                               Security Features Enabled:
+Hyper-V Requirements:          A hypervisor has been detected. Features required for Hyper-V will not be displayed.

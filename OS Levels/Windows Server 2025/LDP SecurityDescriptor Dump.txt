@@ -1,22 +1,22 @@
 -----------
-Expanding base 'CN=AdminSDHolder,CN=System,DC=AD2019,DC=lan'...
+Expanding base 'CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan'...
 Getting 1 entries:
-Dn: CN=AdminSDHolder,CN=System,DC=AD2019,DC=lan
+Dn: CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan
 cn: AdminSDHolder;
-distinguishedName: CN=AdminSDHolder,CN=System,DC=AD2019,DC=lan;
-dSCorePropagationData (5): 4/18/2025 12:20:36 PM Central Daylight Time; 4/18/2025 11:20:36 AM Central Daylight Time; 4/18/2025 10:20:36 AM Central Daylight Time; 4/18/2025 9:20:36 AM Central Daylight Time; 0x0 = (  ), 0x0 = (  ), 0x0 = (  ), 0x0 = (  );
+distinguishedName: CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan;
+dSCorePropagationData (5): 4/18/2025 12:55:48 PM Central Daylight Time; 4/18/2025 11:55:48 AM Central Daylight Time; 4/18/2025 10:55:48 AM Central Daylight Time; 4/18/2025 9:55:48 AM Central Daylight Time; 0x0 = (  ), 0x0 = (  ), 0x0 = (  ), 0x0 = (  );
 instanceType: 0x4 = ( WRITE );
 isCriticalSystemObject: TRUE;
 name: AdminSDHolder;
-objectCategory: CN=Container,CN=Schema,CN=Configuration,DC=AD2019,DC=lan;
+objectCategory: CN=Container,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
 objectClass (2): top; container;
-objectGUID: d77a7b04-5511-45b0-8bad-ca88e5af0182;
+objectGUID: d8086d6b-c8ea-4433-825a-3e0556fce106;
 showInAdvancedViewOnly: TRUE;
 systemFlags: 0x8C000000 = ( DISALLOW_DELETE | DOMAIN_DISALLOW_RENAME | DOMAIN_DISALLOW_MOVE );
-uSNChanged: 12771;
-uSNCreated: 5704;
-whenChanged: 8/20/2023 5:32:42 PM Central Daylight Time;
-whenCreated: 8/20/2023 5:16:51 PM Central Daylight Time;
+uSNChanged: 12781;
+uSNCreated: 5716;
+whenChanged: 4/14/2025 1:55:46 PM Central Daylight Time;
+whenCreated: 4/14/2025 1:39:55 PM Central Daylight Time;
 
 -----------
 Security Descriptor:
@@ -28,8 +28,8 @@ SD Control:  0x9c14
 		SE_SACL_AUTO_INHERITED
 		SE_DACL_PROTECTED
 		SE_SELF_RELATIVE
-Owner: AD2019\Domain Admins [S-1-5-21-3401745498-3739713105-3201351354-512]
-Group: AD2019\Domain Admins [S-1-5-21-3401745498-3739713105-3201351354-512]
+Owner: AD2025\Domain Admins [S-1-5-21-1753113456-3794003277-551465778-512]
+Group: AD2025\Domain Admins [S-1-5-21-1753113456-3794003277-551465778-512]
 DACL:
 	Revision      4
 	Size:         1140 bytes
@@ -164,7 +164,7 @@ DACL:
 		Object Ace Flags: 0x1
 			ACE_OBJECT_TYPE_PRESENT
 		Object Ace Type:  userCertificate - bf967a7f-0de6-11d0-a285-00aa003049e2
-		Object Ace Sid:   AD2019\Cert Publishers [S-1-5-21-3401745498-3739713105-3201351354-517]
+		Object Ace Sid:   AD2025\Cert Publishers [S-1-5-21-1753113456-3794003277-551465778-517]
 	Ace[11]
 		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
 		Ace Size:  44 bytes
@@ -272,7 +272,7 @@ DACL:
 			ACTRL_DS_WRITE_PROP
 			ACTRL_DS_LIST_OBJECT
 			ACTRL_DS_CONTROL_ACCESS
-		Ace Sid:   AD2019\Domain Admins [S-1-5-21-3401745498-3739713105-3201351354-512]
+		Ace Sid:   AD2025\Domain Admins [S-1-5-21-1753113456-3794003277-551465778-512]
 	Ace[20]
 		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
 		Ace Size:  36 bytes
@@ -289,7 +289,7 @@ DACL:
 			ACTRL_DS_WRITE_PROP
 			ACTRL_DS_LIST_OBJECT
 			ACTRL_DS_CONTROL_ACCESS
-		Ace Sid:   AD2019\Enterprise Admins [S-1-5-21-3401745498-3739713105-3201351354-519]
+		Ace Sid:   AD2025\Enterprise Admins [S-1-5-21-1753113456-3794003277-551465778-519]
 	Ace[21]
 		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
 		Ace Size:  24 bytes
@@ -383,5 +383,23 @@ SACL:
 		Object Ace Type:  gPOptions - f30e3bbf-9ff0-11d1-b603-0000f80367c1
 		Inherited object type: organizationalUnit - bf967aa5-0de6-11d0-a285-00aa003049e2
 		Object Ace Sid:   Everyone [S-1-1-0]
-Security for "CN=AdminSDHolder,CN=System,DC=AD2019,DC=lan"
+
+Security for "CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan"
+-----------
+-----------
+SDDL security descriptor:
+
+O:DAG:DAD:PAI(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)S:AI(AU;SA;WPWDWO;;;WD)(OU;CIIOIDSA;WP;f30e3bbe-9ff0-11d1-b603-0000f80367c1;bf967aa5-0de6-11d0-a285-00aa003049e2;WD)(OU;CIIOIDSA;WP;f30e3bbf-9ff0-11d1-b603-0000f80367c1;bf967aa5-0de6-11d0-a285-00aa003049e2;WD)
+
+Security for "CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan"
+-----------
+-----------
+Security descriptor summary:
+  Owner: AD2025\Domain Admins (S-1-5-21-1753113456-3794003277-551465778-512)
+  Group: AD2025\Domain Admins (S-1-5-21-1753113456-3794003277-551465778-512)
+  # of DACL aces:0x18(24)
+  # of SACL aces:0x3(3)
+  Total size in bytes: 0x54c(1356)
+
+Security for "CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan"
 -----------

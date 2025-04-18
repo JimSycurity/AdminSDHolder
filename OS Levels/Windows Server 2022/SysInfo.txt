@@ -1,15 +1,15 @@
 
-Host Name:                 SD-DC2019
-OS Name:                   Microsoft Windows Server 2019 Standard
-OS Version:                10.0.17763 N/A Build 17763
+Host Name:                 SD-DC2022
+OS Name:                   Microsoft Windows Server 2022 Standard
+OS Version:                10.0.20348 N/A Build 20348
 OS Manufacturer:           Microsoft Corporation
 OS Configuration:          Primary Domain Controller
 OS Build Type:             Multiprocessor Free
 Registered Owner:          Windows User
 Registered Organization:
-Product ID:                00429-70000-00000-AA170
-Original Install Date:     6/25/2023, 11:28:05 PM
-System Boot Time:          8/20/2023, 4:17:25 PM
+Product ID:                00453-60000-00000-AA970
+Original Install Date:     4/17/2025, 12:47:39 AM
+System Boot Time:          4/17/2025, 8:41:32 AM
 System Manufacturer:       VMware, Inc.
 System Model:              VMware7,1
 System Type:               x64-based PC
@@ -18,29 +18,27 @@ Processor(s):              1 Processor(s) Installed.
 BIOS Version:              VMware, Inc. VMW71.00V.18227214.B64.2106252220, 6/25/2021
 Windows Directory:         C:\Windows
 System Directory:          C:\Windows\system32
-Boot Device:               \Device\HarddiskVolume2
+Boot Device:               \Device\HarddiskVolume1
 System Locale:             en-us;English (United States)
 Input Locale:              en-us;English (United States)
 Time Zone:                 (UTC-06:00) Central Time (US & Canada)
 Total Physical Memory:     4,095 MB
-Available Physical Memory: 560 MB
-Virtual Memory: Max Size:  5,915 MB
-Virtual Memory: Available: 1,291 MB
-Virtual Memory: In Use:    4,624 MB
+Available Physical Memory: 1,880 MB
+Virtual Memory: Max Size:  5,503 MB
+Virtual Memory: Available: 3,321 MB
+Virtual Memory: In Use:    2,182 MB
 Page File Location(s):     C:\pagefile.sys
-Domain:                    AD2019.lan
-Logon Server:              \\SD-DC2019
-Hotfix(s):                 5 Hotfix(s) Installed.
-                           [01]: KB5028960
-                           [02]: KB4512577
-                           [03]: KB4589208
-                           [04]: KB5027222
-                           [05]: KB5023789
+Domain:                    AD2022.lan
+Logon Server:              \\SD-DC2022
+Hotfix(s):                 3 Hotfix(s) Installed.
+                           [01]: KB5055169
+                           [02]: KB5055526
+                           [03]: KB5055668
 Network Card(s):           1 NIC(s) Installed.
                            [01]: Intel(R) 82574L Gigabit Network Connection
                                  Connection Name: Ethernet0
                                  DHCP Enabled:    No
                                  IP address(es)
-                                 [01]: 10.10.15.119
-                                 [02]: fe80::48d1:dae9:5b78:ef09
+                                 [01]: 10.10.15.122
+                                 [02]: fe80::565a:2f86:df91:1bec
 Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
