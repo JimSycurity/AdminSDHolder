@@ -3,7 +3,9 @@ $datetime = Get-Date -F 'yyyyMMddHHmmss'
 $hostname = hostname
 $path = 'C:\Scripts'
 $filename = "AdminSDHolderTests-${hostname}-${datetime}.txt"
+$csvname = "AdminSDHolderTests-${hostname}-${datetime}.csv"
 $transcript = (Join-Path -Path $path -ChildPath $filename).ToString()
+$csv = (Join-Path -Path $path -ChildPath $csvname).ToString()
 Start-Transcript -Path $transcript -NoClobber
 
 # Define Classes
@@ -37,7 +39,6 @@ class SecurityPrincipal {
 }
 
 # Enumeration
-$rootDSE = Get-ADRootDSE
 $forest = Get-ADForest
 
 # Arrayto store [SecurityPrincipal]Objects with final results
@@ -101,7 +102,7 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
             ObjectSid         = $dSecurityPrincipal.ObjectSid
             AdminCount        = $dSecurityPrincipal.AdminCount
             PrimaryGroupID    = $dSecurityPrincipal.PrimaryGroupID
-            MemberOf          = $dSecurityPrincipal.MemberOf
+            MemberOf          = $dSecurityPrincipal.MemberOf  # TODO  Showing up as System.String[]
             objectClass       = $dSecurityPrincipal.objectClass
             SamAccountName    = $dSecurityPrincipal.SamAccountName
             Owner             = $dSecurityPrincipal.nTSecurityDescriptor.Owner
@@ -113,33 +114,22 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
             Modified          = $dSecurityPrincipal.Modified
         }
         $oSecurityPrincipal = [SecurityPrincipal]::New($hSecurityPrincipal)
-
-        # Write-Host '----------------------------------------------------'
-        # Write-Host "$($dsecurityPrincipal.DistinguishedName) comparison:"
         if ($dSecurityPrincipalSDHash -eq $dAdminSDHolderSDHash) {
-            # Match
-            # Write-Host "Match on binary security descriptor comparison"
-            # Write-Verbose "Security Principal hash: $dSecurityPrincipalSDHash"
             $oSecurityPrincipal.ExactSDMatch = $true
         }
-        else {
-            if (($dAdminSDHolderImplicit.Owner -eq $dSecurityPrincipalImplicit.Owner) -and ($dAdminSDHolderImplicit.DaclProtected -eq $dSecurityPrincipalImplicit.DaclProtected) -and ($dAdminSDHolderImplicit.SaclProtected -eq $dSecurityPrincipalImplicit.SaclProtected)) {
-                $comparison = Compare-Object -ReferenceObject $dAdminSDHolderImplicit.ImplicitACEs -DifferenceObject $dSecurityPrincipalImplicit.ImplicitACEs
-                if ($comparison) {
-                    #  Write-Host 'Nope'
-                }
-                else {
-                    #Write-Host 'Match on Owner, Flags, and Implicit ACEs'
-                    $oSecurityPrincipal.ImplicitSDMatch = $true
-                }
+        if (($dAdminSDHolderImplicit.Owner -eq $dSecurityPrincipalImplicit.Owner) -and ($dAdminSDHolderImplicit.DaclProtected -eq $dSecurityPrincipalImplicit.DaclProtected) -and ($dAdminSDHolderImplicit.SaclProtected -eq $dSecurityPrincipalImplicit.SaclProtected)) {
+            $comparison = Compare-Object -ReferenceObject $dAdminSDHolderImplicit.ImplicitACEs -DifferenceObject $dSecurityPrincipalImplicit.ImplicitACEs
+            if ($comparison) {
+                #  Nope
             }
             else {
-                #Write-Host 'Nope'
+                $oSecurityPrincipal.ImplicitSDMatch = $true
             }
         }
         $oSecurityPrincipal
     }
 }
 
+$allSecurityPrincipals | Export-Csv -Path $csv -NoClobber -NoTypeInformation
 
 Stop-Transcript
