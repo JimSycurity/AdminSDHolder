@@ -6,6 +6,36 @@ $filename = "AdminSDHolderTests-${hostname}-${datetime}.txt"
 $transcript = (Join-Path -Path $path -ChildPath $filename).ToString()
 Start-Transcript -Path $transcript -NoClobber
 
+# Define Classes
+class SecurityPrincipal {
+    [string]    DistinguishedName
+    [guid]      ObjectGuid
+    [string]    ObjectSid
+    [int]       AdminCount
+    [int]       PrimaryGroupID
+    [string[]]  MemberOf
+    [string]    objectClass
+    [string]    SamAccountName
+    [string]    Owner
+    [bool]      DaclProtected = $false
+    [bool]      SaclProtected = $false
+    [bool]      ExactSDMatch = $false
+    [bool]      ImplicitSDMatch = $false
+    [int]       ACECount
+    [int]       ImplicitACECount
+    [datetime]  Created
+    [datetime]  Modified
+
+    SecurityPrincipal() {}
+    SecurityPrincipal([hashtable]$Properties) { $this.Init($Properties) }
+
+    [void] Init([hashtable]$Properties) {
+        foreach ($Property in $Properties.Keys) {
+            $this.Property = $Properties.$Property
+        }
+    }
+}
+
 # Enumeration
 $rootDSE = Get-ADRootDSE
 $forest = Get-ADForest
@@ -62,7 +92,7 @@ foreach ($domain in $forest.Domains) {
             Owner        = $dSecurityPrincipal.nTSecurityDescriptor.Owner
             DaclProtect  = $dSecurityPrincipal.nTSecurityDescriptor.AreAccessRulesProtected
             SaclProtect  = $dSecurityPrincipal.nTSecurityDescriptor.AreAuditRulesProtected
-            ImplicitACEs = $dSecurityPrincipalACEMatch      
+            ImplicitACEs = $dSecurityPrincipalACEMatch
         }
         Write-Host '----------------------------------------------------'
         Write-Host "$($dsecurityPrincipal.DistinguishedName) comparison:"
@@ -88,3 +118,6 @@ foreach ($domain in $forest.Domains) {
         #$dSecurityPrincipals.Add()
     }
 }
+
+
+Stop-Transcript
