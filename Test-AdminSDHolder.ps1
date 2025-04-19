@@ -8,30 +8,30 @@ Start-Transcript -Path $transcript -NoClobber
 
 # Define Classes
 class SecurityPrincipal {
-    [string]    DistinguishedName
-    [guid]      ObjectGuid
-    [string]    ObjectSid
-    [int]       AdminCount
-    [int]       PrimaryGroupID
-    [string[]]  MemberOf
-    [string]    objectClass
-    [string]    SamAccountName
-    [string]    Owner
-    [bool]      DaclProtected = $false
-    [bool]      SaclProtected = $false
-    [bool]      ExactSDMatch = $false
-    [bool]      ImplicitSDMatch = $false
-    [int]       ACECount
-    [int]       ImplicitACECount
-    [datetime]  Created
-    [datetime]  Modified
+    [string]    $DistinguishedName
+    [guid]      $ObjectGuid
+    [string]    $ObjectSid
+    [int]       $AdminCount
+    [int]       $PrimaryGroupID
+    [string[]]  $MemberOf
+    [string]    $objectClass
+    [string]    $SamAccountName
+    [string]    $Owner
+    [bool]      $DaclProtected = $false
+    [bool]      $SaclProtected = $false
+    [bool]      $ExactSDMatch = $false
+    [bool]      $ImplicitSDMatch = $false
+    [int]       $ACECount
+    [int]       $ImplicitACECount
+    [datetime]  $Created
+    [datetime]  $Modified
 
     SecurityPrincipal() {}
     SecurityPrincipal([hashtable]$Properties) { $this.Init($Properties) }
 
-    [void] Init([hashtable]$Properties) {
+    [void]Init([hashtable]$Properties) {
         foreach ($Property in $Properties.Keys) {
-            $this.Property = $Properties.$Property
+            $this.$Property = $Properties.$Property
         }
     }
 }
@@ -40,13 +40,13 @@ class SecurityPrincipal {
 $rootDSE = Get-ADRootDSE
 $forest = Get-ADForest
 
-# ArrayList (backwards compat) to store arrays of PSCustomObjects with final results
-$allSecurityPrincipals = [System.Collections.ArrayList]::New()
+# Arrayto store [SecurityPrincipal]Objects with final results
+$allSecurityPrincipals = @()
 $hashAlgorithm = [System.Security.Cryptography.SHA256]::Create()
 
 
 # Loop through each domain in the forest
-foreach ($domain in $forest.Domains) {
+$allSecurityPrincipals = foreach ($domain in $forest.Domains) {
     $tempPath = "LDAP://" + $($domain)
     $dDistinguishedName = ([ADSI]$tempPath).distinguishedName[0]
     Write-Verbose "Domain DN: $dDistinguishedName $($dDistinguishedName.GetType())"
@@ -94,28 +94,50 @@ foreach ($domain in $forest.Domains) {
             SaclProtect  = $dSecurityPrincipal.nTSecurityDescriptor.AreAuditRulesProtected
             ImplicitACEs = $dSecurityPrincipalACEMatch
         }
-        Write-Host '----------------------------------------------------'
-        Write-Host "$($dsecurityPrincipal.DistinguishedName) comparison:"
+        # Hashtable to create our object
+        $hSecurityPrincipal = @{
+            DistinguishedName = $dSecurityPrincipal.DistinguishedName
+            ObjectGuid        = $dSecurityPrincipal.ObjectGuid
+            ObjectSid         = $dSecurityPrincipal.ObjectSid
+            AdminCount        = $dSecurityPrincipal.AdminCount
+            PrimaryGroupID    = $dSecurityPrincipal.PrimaryGroupID
+            MemberOf          = $dSecurityPrincipal.MemberOf
+            objectClass       = $dSecurityPrincipal.objectClass
+            SamAccountName    = $dSecurityPrincipal.SamAccountName
+            Owner             = $dSecurityPrincipal.nTSecurityDescriptor.Owner
+            DaclProtected     = $dSecurityPrincipal.nTSecurityDescriptor.AreAccessRulesProtected
+            SaclProtected     = $dSecurityPrincipal.nTSecurityDescriptor.AreAuditRulesProtected
+            ACECount          = $dSecurityPrincipal.nTSecurityDescriptor.Access.Count
+            ImplicitACECount  = ($dSecurityPrincipal.nTSecurityDescriptor.Access | Where-Object { $_.IsInherited -eq $false }).Count
+            Created           = $dSecurityPrincipal.Created
+            Modified          = $dSecurityPrincipal.Modified
+        }
+        $oSecurityPrincipal = [SecurityPrincipal]::New($hSecurityPrincipal)
+
+        # Write-Host '----------------------------------------------------'
+        # Write-Host "$($dsecurityPrincipal.DistinguishedName) comparison:"
         if ($dSecurityPrincipalSDHash -eq $dAdminSDHolderSDHash) {
             # Match
-            Write-Host "Match on binary security descriptor comparison"
-            Write-Verbose "Security Principal hash: $dSecurityPrincipalSDHash"
+            # Write-Host "Match on binary security descriptor comparison"
+            # Write-Verbose "Security Principal hash: $dSecurityPrincipalSDHash"
+            $oSecurityPrincipal.ExactSDMatch = $true
         }
         else {
             if (($dAdminSDHolderImplicit.Owner -eq $dSecurityPrincipalImplicit.Owner) -and ($dAdminSDHolderImplicit.DaclProtected -eq $dSecurityPrincipalImplicit.DaclProtected) -and ($dAdminSDHolderImplicit.SaclProtected -eq $dSecurityPrincipalImplicit.SaclProtected)) {
                 $comparison = Compare-Object -ReferenceObject $dAdminSDHolderImplicit.ImplicitACEs -DifferenceObject $dSecurityPrincipalImplicit.ImplicitACEs
                 if ($comparison) {
-                    Write-Host 'Nope'
+                    #  Write-Host 'Nope'
                 }
                 else {
-                    Write-Host 'Match on Owner, Flags, and Implicit ACEs'
+                    #Write-Host 'Match on Owner, Flags, and Implicit ACEs'
+                    $oSecurityPrincipal.ImplicitSDMatch = $true
                 }
             }
             else {
-                Write-Host 'Nope'
+                #Write-Host 'Nope'
             }
         }
-        #$dSecurityPrincipals.Add()
+        $oSecurityPrincipal
     }
 }
 
