@@ -15,9 +15,10 @@ class SecurityPrincipal {
     [string]    $ObjectSid
     [int]       $AdminCount
     [int]       $PrimaryGroupID
-    [string[]]  $MemberOf
+    [string]  $MemberOf
     [string]    $objectClass
     [string]    $SamAccountName
+    [string]    $SDHash
     [string]    $Owner
     [bool]      $DaclProtected = $false
     [bool]      $SaclProtected = $false
@@ -51,9 +52,13 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
     $tempPath = "LDAP://" + $($domain)
     $dDistinguishedName = ([ADSI]$tempPath).distinguishedName[0]
     Write-Verbose "Domain DN: $dDistinguishedName $($dDistinguishedName.GetType())"
-
+    $customParametersA = @{
+        Identity   = "CN=AdminSDHolder,CN=System,$($dDistinguishedName)"
+        Server     = $domain
+        Properties = @('DistinguishedName', 'ObjectGUID', 'ObjectClass', 'nTSecurityDescriptor', 'Created', 'Modified', 'ProtectedFromAccidentalDeletion', 'SDRightsEffective')
+    }
     # Collect information about the AdminSDHolder object for the domain
-    $dAdminSDHolder = Get-ADObject "CN=AdminSDHolder,CN=System,$($dDistinguishedName)" -Properties * -Server $domain
+    $dAdminSDHolder = Get-ADObject @customParametersA
     # Hash the entire nTSecurityDescriptor
     $dAdminSDHolderSDBin = $dAdminSDHolder.nTSecurityDescriptor.GetSecurityDescriptorBinaryForm()
     $dAdminSDHolderSDHash = [System.BitConverter]::ToString($hashAlgorithm.ComputeHash($dAdminSDHolderSDBin))
@@ -71,14 +76,15 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
     }
 
     # Collect all security principals in the domain
-    $customParameters = @{
+    $customParametersB = @{
         LDAPFilter  = "(|(objectClass=group)(objectCategory=user))"
         SearchScope = 'Subtree'
         SearchBase  = $dDistinguishedName
-        Properties  = '*'
         Server      = $domain
+        Properties  = @('DistinguishedName', 'ObjectGUID', 'ObjectSid', 'AdminCount', 'PrimaryGroupID', 'MemberOf', 'ObjectClass',
+            'SamAccountName', 'nTSecurityDescriptor', 'Created', 'Modified', 'ProtectedFromAccidentalDeletion', 'SDRightsEffective')
     }
-    $dSecurityPrincipals = Get-ADObject @customParameters
+    $dSecurityPrincipals = Get-ADObject @customParametersB
     # Loop through all security principals to add required info to PSCustomObject and then arraylist
     foreach ($dSecurityPrincipal in $dSecurityPrincipals) {
         # Hash the entire nTSecurityDescriptor
@@ -102,9 +108,10 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
             ObjectSid         = $dSecurityPrincipal.ObjectSid
             AdminCount        = $dSecurityPrincipal.AdminCount
             PrimaryGroupID    = $dSecurityPrincipal.PrimaryGroupID
-            MemberOf          = $dSecurityPrincipal.MemberOf  # TODO  Showing up as System.String[]
+            MemberOf          = ($dSecurityPrincipal | Select-Object -ExpandProperty MemberOf) -join ";"
             objectClass       = $dSecurityPrincipal.objectClass
             SamAccountName    = $dSecurityPrincipal.SamAccountName
+            SDHash            = $dSecurityPrincipalSDHash
             Owner             = $dSecurityPrincipal.nTSecurityDescriptor.Owner
             DaclProtected     = $dSecurityPrincipal.nTSecurityDescriptor.AreAccessRulesProtected
             SaclProtected     = $dSecurityPrincipal.nTSecurityDescriptor.AreAuditRulesProtected
