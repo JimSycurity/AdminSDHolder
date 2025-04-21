@@ -1,3 +1,13 @@
+<###
+    The purpose of this script is to collect data about the AdminSDHolder for each domain in the forest and '
+    then compare all security principals in each domain in the forest to that AdminSDHolder, looking for either
+    an exact SD match or a match based on implicit ACEs and other characteristics to account for instances
+    where inheritence is unfortunately enabled on the AdminSDHolder object.
+
+    The output is a CSV file with rows expressing each security principal that was compared and columns providing
+    data on each principal, including enough information to determine whether that object is a protected object.
+###>
+
 # Start a transcript
 $datetime = Get-Date -F 'yyyyMMddHHmmss'
 $hostname = hostname
@@ -15,7 +25,7 @@ class SecurityPrincipal {
     [string]    $ObjectSid
     [int]       $AdminCount
     [int]       $PrimaryGroupID
-    [string]  $MemberOf
+    [string]    $MemberOf
     [string]    $objectClass
     [string]    $SamAccountName
     [string]    $SDHash
