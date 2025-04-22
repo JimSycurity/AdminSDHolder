@@ -1,0 +1,38 @@
+-----------
+Expanding base 'CN=Group,CN=Schema,CN=Configuration,DC=AD2025,DC=lan'...
+Getting 1 entries:
+Dn: CN=Group,CN=Schema,CN=Configuration,DC=AD2025,DC=lan
+adminDescription: Group; 
+adminDisplayName: Group; 
+auxiliaryClass: posixGroup; 
+cn: Group; 
+defaultHidingValue: FALSE; 
+defaultObjectCategory: CN=Group,CN=Schema,CN=Configuration,DC=AD2025,DC=lan; 
+defaultSecurityDescriptor: D:(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)(A;;RPLCLORC;;;AU)(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;AO)(A;;RPLCLORC;;;PS)(OA;;CR;ab721a55-1e2f-11d0-9819-00aa0040529b;;AU)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560); 
+distinguishedName: CN=Group,CN=Schema,CN=Configuration,DC=AD2025,DC=lan; 
+dSCorePropagationData: 0x0 = (  ); 
+governsID: 1.2.840.113556.1.5.8; 
+instanceType: 0x4 = ( WRITE ); 
+lDAPDisplayName: group; 
+mayContain (3): msSFU30PosixMember; msSFU30NisDomain; msSFU30Name; 
+name: Group; 
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,DC=AD2025,DC=lan; 
+objectClass (2): top; classSchema; 
+objectClassCategory: 1 = ( STRUCTURAL ); 
+objectGUID: efbd29ba-0af3-4d96-a623-1090a2a8e077; 
+rDNAttID: cn; 
+schemaIDGUID: bf967a9c-0de6-11d0-a285-00aa003049e2; 
+showInAdvancedViewOnly: TRUE; 
+subClassOf: top; 
+systemAuxiliaryClass (2): mailRecipient; securityPrincipal; 
+systemFlags: 0x10 = ( SCHEMA_BASE_OBJECT ); 
+systemMayContain (22): msDS-PrimaryComputer; msDS-preferredDataLocation; msDS-AzApplicationData; msDS-AzLastImportedBizRulePath; msDS-AzBizRuleLanguage; msDS-AzBizRule; msDS-AzObjectGuid; msDS-AzGenericData; primaryGroupToken; operatorCount; nTGroupMembers; nonSecurityMember; msDS-NonMembers; msDS-AzLDAPQuery; member; managedBy; groupMembershipSAM; groupAttributes; mail; desktopProfile; controlAccessRights; adminCount; 
+systemMustContain: groupType; 
+systemOnly: FALSE; 
+systemPossSuperiors (7): msDS-AzScope; msDS-AzApplication; msDS-AzAdminManager; container; builtinDomain; organizationalUnit; domainDNS; 
+uSNChanged: 1607; 
+uSNCreated: 1607; 
+whenChanged: 7/21/2023 11:03:06 AM Central Daylight Time; 
+whenCreated: 7/21/2023 11:03:06 AM Central Daylight Time; 
+
+-----------
