@@ -36,8 +36,8 @@ class SecurityPrincipal {
     [bool]      $ImplicitSDMatch = $false
     [int]       $ACECount
     [int]       $ImplicitACECount
-    [datetime]  $Created
-    [datetime]  $Modified
+    [string]  $Created
+    [string]  $Modified
 
     SecurityPrincipal() {}
     SecurityPrincipal([hashtable]$Properties) { $this.Init($Properties) }
@@ -127,8 +127,16 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
             SaclProtected     = $dSecurityPrincipal.nTSecurityDescriptor.AreAuditRulesProtected
             ACECount          = $dSecurityPrincipal.nTSecurityDescriptor.Access.Count
             ImplicitACECount  = ($dSecurityPrincipal.nTSecurityDescriptor.Access | Where-Object { $_.IsInherited -eq $false }).Count
-            Created           = $dSecurityPrincipal.Created
-            Modified          = $dSecurityPrincipal.Modified
+            Created           = if ($null -ne $dSecurityPrincipal.Created) {
+                                    $dSecurityPrincipal.Created.ToString()
+                                } else {
+                                    'Never'
+                                }
+            Modified          = if ($null -ne $dSecurityPrincipal.Modified) {
+                                    $dSecurityPrincipal.Modified.ToString()
+                                } else {
+                                    'Never'
+                                }
         }
         $oSecurityPrincipal = [SecurityPrincipal]::New($hSecurityPrincipal)
         if ($dSecurityPrincipalSDHash -eq $dAdminSDHolderSDHash) {
