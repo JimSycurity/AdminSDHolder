@@ -1,0 +1,397 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20250423111801
+Username: AD2025\Administrator
+RunAs User: AD2025\Administrator
+Configuration Name:
+Machine: SD-DC2025 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\WINDOWS\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe
+Process ID: 8040
+PSVersion: 5.1.26100.2161
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.2161
+BuildVersion: 10.0.26100.2161
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Scripts\CreateAdminSDHolderTest-SD-DC2025-20250423111801.txt
+Hostname: SD-DC2025
+PSVersion: 5.1.26100.2161
+Gathering OS and Platform data
+Microsoft Windows Server 2025 Standard|C:\WINDOWS|\Device\Harddisk0\Partition3
+64-bit
+SD-DC2025
+Win32NT
+
+Major  Minor  Build  Revision
+-----  -----  -----  --------
+10     0      26100  0
+
+Microsoft Windows NT 10.0.26100.0
+Adding Member: RO_User to Group: Read-Only Domain Controllers
+Adding Member: RO_inetOrg to Group: Read-Only Domain Controllers
+Adding Member: RO_computer to Group: Read-Only Domain Controllers
+Adding Member: RO_gmsa to Group: Read-Only Domain Controllers
+Adding Member: RO_GSGroup to Group: Read-Only Domain Controllers
+Adding Member: RO_GDGroup to Group: Read-Only Domain Controllers
+PS C:\Users\Administrator> TerminatingError(Get-ADGroup): "Cannot find an object with identity: 'Exchange Windows Permissions' under: 'DC=AD2025,DC=lan'."
+Message: [Cannot find an object with identity: 'Exchange Windows Permissions' under: 'DC=AD2025,DC=lan'.] Group: Exchange Windows Permissions
+Adding Member: EA_User to Group: Enterprise Admins
+Adding Member: EA_inetOrg to Group: Enterprise Admins
+Adding Member: EA_computer to Group: Enterprise Admins
+Adding Member: EA_gmsa to Group: Enterprise Admins
+Adding Member: EA_USGroup to Group: Enterprise Admins
+Adding Member: EA_UDGroup to Group: Enterprise Admins
+Adding Member: EA_GSGroup to Group: Enterprise Admins
+Adding Member: EA_GDGroup to Group: Enterprise Admins
+PS C:\Users\Administrator> TerminatingError(Get-ADGroup): "Cannot find an object with identity: 'System Managed Accounts Group' under: 'DC=AD2025,DC=lan'."
+Message: [Cannot find an object with identity: 'System Managed Accounts Group' under: 'DC=AD2025,DC=lan'.] Group: System Managed Accounts Group
+Adding Member: ERO_User to Group: Enterprise Read-only Domain Controllers
+Adding Member: ERO_inetOrg to Group: Enterprise Read-only Domain Controllers
+Adding Member: ERO_computer to Group: Enterprise Read-only Domain Controllers
+Adding Member: ERO_gmsa to Group: Enterprise Read-only Domain Controllers
+Adding Member: ERO_USGroup to Group: Enterprise Read-only Domain Controllers
+Adding Member: ERO_UDGroup to Group: Enterprise Read-only Domain Controllers
+Adding Member: ERO_GSGroup to Group: Enterprise Read-only Domain Controllers
+Adding Member: ERO_GDGroup to Group: Enterprise Read-only Domain Controllers
+Adding Member: CDC_User to Group: Cloneable Domain Controllers
+Adding Member: CDC_inetOrg to Group: Cloneable Domain Controllers
+Adding Member: CDC_computer to Group: Cloneable Domain Controllers
+Adding Member: CDC_gmsa to Group: Cloneable Domain Controllers
+Adding Member: CDC_GSGroup to Group: Cloneable Domain Controllers
+Adding Member: CDC_GDGroup to Group: Cloneable Domain Controllers
+Adding Member: RAS_User to Group: RAS and IAS Servers
+Adding Member: RAS_inetOrg to Group: RAS and IAS Servers
+Adding Member: RAS_computer to Group: RAS and IAS Servers
+Adding Member: RAS_gmsa to Group: RAS and IAS Servers
+Adding Member: RAS_USGroup to Group: RAS and IAS Servers
+Adding Member: RAS_UDGroup to Group: RAS and IAS Servers
+Adding Member: RAS_GSGroup to Group: RAS and IAS Servers
+Adding Member: RAS_GDGroup to Group: RAS and IAS Servers
+Adding Member: RAS_LSGroup to Group: RAS and IAS Servers
+Adding Member: RAS_LDGroup to Group: RAS and IAS Servers
+Adding Member: DNS_User to Group: DnsAdmins
+Adding Member: DNS_inetOrg to Group: DnsAdmins
+Adding Member: DNS_computer to Group: DnsAdmins
+Adding Member: DNS_gmsa to Group: DnsAdmins
+Adding Member: DNS_USGroup to Group: DnsAdmins
+Adding Member: DNS_UDGroup to Group: DnsAdmins
+Adding Member: DNS_GSGroup to Group: DnsAdmins
+Adding Member: DNS_GDGroup to Group: DnsAdmins
+Adding Member: DNS_LSGroup to Group: DnsAdmins
+Adding Member: DNS_LDGroup to Group: DnsAdmins
+PS C:\Users\Administrator> TerminatingError(Get-ADGroup): "Cannot find an object with identity: 'Exchange Trusted Subsystem' under: 'DC=AD2025,DC=lan'."
+Message: [Cannot find an object with identity: 'Exchange Trusted Subsystem' under: 'DC=AD2025,DC=lan'.] Group: Exchange Trusted Subsystem
+Adding Member: ET_User to Group: External Trust Accounts
+Adding Member: ET_inetOrg to Group: External Trust Accounts
+Adding Member: ET_computer to Group: External Trust Accounts
+Adding Member: ET_gmsa to Group: External Trust Accounts
+Adding Member: ET_GSGroup to Group: External Trust Accounts
+Adding Member: ET_GDGroup to Group: External Trust Accounts
+Adding Member: BO_User to Group: Backup Operators
+Adding Member: BO_inetOrg to Group: Backup Operators
+Adding Member: BO_computer to Group: Backup Operators
+Adding Member: BO_gmsa to Group: Backup Operators
+Adding Member: BO_USGroup to Group: Backup Operators
+Adding Member: BO_UDGroup to Group: Backup Operators
+Adding Member: BO_GSGroup to Group: Backup Operators
+Adding Member: BO_GDGroup to Group: Backup Operators
+Adding Member: RMS_User to Group: RDS Management Servers
+Adding Member: RMS_inetOrg to Group: RDS Management Servers
+Adding Member: RMS_computer to Group: RDS Management Servers
+Adding Member: RMS_gmsa to Group: RDS Management Servers
+Adding Member: RMS_USGroup to Group: RDS Management Servers
+Adding Member: RMS_UDGroup to Group: RDS Management Servers
+Adding Member: RMS_GSGroup to Group: RDS Management Servers
+Adding Member: RMS_GDGroup to Group: RDS Management Servers
+Adding Member: P2K_User to Group: Pre-Windows 2000 Compatible Access
+Adding Member: P2K_inetOrg to Group: Pre-Windows 2000 Compatible Access
+Adding Member: P2K_computer to Group: Pre-Windows 2000 Compatible Access
+Adding Member: P2K_gmsa to Group: Pre-Windows 2000 Compatible Access
+Adding Member: P2K_USGroup to Group: Pre-Windows 2000 Compatible Access
+Adding Member: P2K_UDGroup to Group: Pre-Windows 2000 Compatible Access
+Adding Member: P2K_GSGroup to Group: Pre-Windows 2000 Compatible Access
+Adding Member: P2K_GDGroup to Group: Pre-Windows 2000 Compatible Access
+Adding Member: RE_User to Group: Replicator
+Adding Member: RE_inetOrg to Group: Replicator
+Adding Member: RE_computer to Group: Replicator
+Adding Member: RE_gmsa to Group: Replicator
+Adding Member: RE_USGroup to Group: Replicator
+Adding Member: RE_UDGroup to Group: Replicator
+Adding Member: RE_GSGroup to Group: Replicator
+Adding Member: RE_GDGroup to Group: Replicator
+Adding Member: DRO_User to Group: Denied RODC Password Replication Group
+Adding Member: DRO_inetOrg to Group: Denied RODC Password Replication Group
+Adding Member: DRO_computer to Group: Denied RODC Password Replication Group
+Adding Member: DRO_gmsa to Group: Denied RODC Password Replication Group
+Adding Member: DRO_USGroup to Group: Denied RODC Password Replication Group
+Adding Member: DRO_UDGroup to Group: Denied RODC Password Replication Group
+Adding Member: DRO_GSGroup to Group: Denied RODC Password Replication Group
+Adding Member: DRO_GDGroup to Group: Denied RODC Password Replication Group
+Adding Member: DRO_LSGroup to Group: Denied RODC Password Replication Group
+Adding Member: DRO_LDGroup to Group: Denied RODC Password Replication Group
+Adding Member: CDCOM_User to Group: Certificate Service DCOM Access
+Adding Member: CDCOM_inetOrg to Group: Certificate Service DCOM Access
+Adding Member: CDCOM_computer to Group: Certificate Service DCOM Access
+Adding Member: CDCOM_gmsa to Group: Certificate Service DCOM Access
+Adding Member: CDCOM_USGroup to Group: Certificate Service DCOM Access
+Adding Member: CDCOM_UDGroup to Group: Certificate Service DCOM Access
+Adding Member: CDCOM_GSGroup to Group: Certificate Service DCOM Access
+Adding Member: CDCOM_GDGroup to Group: Certificate Service DCOM Access
+Adding Member: IF_User to Group: Incoming Forest Trust Builders
+Adding Member: IF_inetOrg to Group: Incoming Forest Trust Builders
+Adding Member: IF_computer to Group: Incoming Forest Trust Builders
+Adding Member: IF_gmsa to Group: Incoming Forest Trust Builders
+Adding Member: IF_USGroup to Group: Incoming Forest Trust Builders
+Adding Member: IF_UDGroup to Group: Incoming Forest Trust Builders
+Adding Member: IF_GSGroup to Group: Incoming Forest Trust Builders
+Adding Member: IF_GDGroup to Group: Incoming Forest Trust Builders
+Adding Member: DC_User to Group: Domain Controllers
+Adding Member: DC_inetOrg to Group: Domain Controllers
+Adding Member: DC_computer to Group: Domain Controllers
+Adding Member: DC_gmsa to Group: Domain Controllers
+Adding Member: DC_GSGroup to Group: Domain Controllers
+Adding Member: DC_GDGroup to Group: Domain Controllers
+Adding Member: DUP_User to Group: DnsUpdateProxy
+Adding Member: DUP_inetOrg to Group: DnsUpdateProxy
+Adding Member: DUP_computer to Group: DnsUpdateProxy
+Adding Member: DUP_gmsa to Group: DnsUpdateProxy
+Adding Member: DUP_GSGroup to Group: DnsUpdateProxy
+Adding Member: DUP_GDGroup to Group: DnsUpdateProxy
+Adding Member: RES_User to Group: RDS Endpoint Servers
+Adding Member: RES_inetOrg to Group: RDS Endpoint Servers
+Adding Member: RES_computer to Group: RDS Endpoint Servers
+Adding Member: RES_gmsa to Group: RDS Endpoint Servers
+Adding Member: RES_USGroup to Group: RDS Endpoint Servers
+Adding Member: RES_UDGroup to Group: RDS Endpoint Servers
+Adding Member: RES_GSGroup to Group: RDS Endpoint Servers
+Adding Member: RES_GDGroup to Group: RDS Endpoint Servers
+PS C:\Users\Administrator> TerminatingError(Get-ADGroup): "Cannot find an object with identity: 'Organization Management' under: 'DC=AD2025,DC=lan'."
+Message: [Cannot find an object with identity: 'Organization Management' under: 'DC=AD2025,DC=lan'.] Group: Organization Management
+Adding Member: ACO_User to Group: Access Control Assistance Operators
+Adding Member: ACO_inetOrg to Group: Access Control Assistance Operators
+Adding Member: ACO_computer to Group: Access Control Assistance Operators
+Adding Member: ACO_gmsa to Group: Access Control Assistance Operators
+Adding Member: ACO_USGroup to Group: Access Control Assistance Operators
+Adding Member: ACO_UDGroup to Group: Access Control Assistance Operators
+Adding Member: ACO_GSGroup to Group: Access Control Assistance Operators
+Adding Member: ACO_GDGroup to Group: Access Control Assistance Operators
+Adding Member: FT_User to Group: Forest Trust Accounts
+Adding Member: FT_inetOrg to Group: Forest Trust Accounts
+Adding Member: FT_computer to Group: Forest Trust Accounts
+Adding Member: FT_gmsa to Group: Forest Trust Accounts
+Adding Member: FT_GSGroup to Group: Forest Trust Accounts
+Adding Member: FT_GDGroup to Group: Forest Trust Accounts
+Adding Member: NCO_User to Group: Network Configuration Operators
+Adding Member: NCO_inetOrg to Group: Network Configuration Operators
+Adding Member: NCO_computer to Group: Network Configuration Operators
+Adding Member: NCO_gmsa to Group: Network Configuration Operators
+Adding Member: NCO_USGroup to Group: Network Configuration Operators
+Adding Member: NCO_UDGroup to Group: Network Configuration Operators
+Adding Member: NCO_GSGroup to Group: Network Configuration Operators
+Adding Member: NCO_GDGroup to Group: Network Configuration Operators
+Adding Member: KA_User to Group: Key Admins
+Adding Member: KA_inetOrg to Group: Key Admins
+Adding Member: KA_computer to Group: Key Admins
+Adding Member: KA_gmsa to Group: Key Admins
+Adding Member: KA_GSGroup to Group: Key Admins
+Adding Member: KA_GDGroup to Group: Key Admins
+Adding Member: EK_User to Group: Enterprise Key Admins
+Adding Member: EK_inetOrg to Group: Enterprise Key Admins
+Adding Member: EK_computer to Group: Enterprise Key Admins
+Adding Member: EK_gmsa to Group: Enterprise Key Admins
+Adding Member: EK_USGroup to Group: Enterprise Key Admins
+Adding Member: EK_UDGroup to Group: Enterprise Key Admins
+Adding Member: EK_GSGroup to Group: Enterprise Key Admins
+Adding Member: EK_GDGroup to Group: Enterprise Key Admins
+Adding Member: BA_User to Group: Administrators
+Adding Member: BA_inetOrg to Group: Administrators
+Adding Member: BA_computer to Group: Administrators
+Adding Member: BA_gmsa to Group: Administrators
+Adding Member: BA_USGroup to Group: Administrators
+Adding Member: BA_UDGroup to Group: Administrators
+Adding Member: BA_GSGroup to Group: Administrators
+Adding Member: BA_GDGroup to Group: Administrators
+PS C:\Users\Administrator> TerminatingError(Get-ADGroup): "Cannot find an object with identity: 'Storage Replicate Administrators' under: 'DC=AD2025,DC=lan'."
+Message: [Cannot find an object with identity: 'Storage Replicate Administrators' under: 'DC=AD2025,DC=lan'.] Group: Storage Replicate Administrators
+Adding Member: RM_User to Group: Remote Management Users
+Adding Member: RM_inetOrg to Group: Remote Management Users
+Adding Member: RM_computer to Group: Remote Management Users
+Adding Member: RM_gmsa to Group: Remote Management Users
+Adding Member: RM_USGroup to Group: Remote Management Users
+Adding Member: RM_UDGroup to Group: Remote Management Users
+Adding Member: RM_GSGroup to Group: Remote Management Users
+Adding Member: RM_GDGroup to Group: Remote Management Users
+Adding Member: WAA_User to Group: Windows Authorization Access Group
+Adding Member: WAA_inetOrg to Group: Windows Authorization Access Group
+Adding Member: WAA_computer to Group: Windows Authorization Access Group
+Adding Member: WAA_gmsa to Group: Windows Authorization Access Group
+Adding Member: WAA_USGroup to Group: Windows Authorization Access Group
+Adding Member: WAA_UDGroup to Group: Windows Authorization Access Group
+Adding Member: WAA_GSGroup to Group: Windows Authorization Access Group
+Adding Member: WAA_GDGroup to Group: Windows Authorization Access Group
+Adding Member: SO_User to Group: Server Operators
+Adding Member: SO_inetOrg to Group: Server Operators
+Adding Member: SO_computer to Group: Server Operators
+Adding Member: SO_gmsa to Group: Server Operators
+Adding Member: SO_USGroup to Group: Server Operators
+Adding Member: SO_UDGroup to Group: Server Operators
+Adding Member: SO_GSGroup to Group: Server Operators
+Adding Member: SO_GDGroup to Group: Server Operators
+Adding Member: RRS_User to Group: RDS Remote Access Servers
+Adding Member: RRS_inetOrg to Group: RDS Remote Access Servers
+Adding Member: RRS_computer to Group: RDS Remote Access Servers
+Adding Member: RRS_gmsa to Group: RDS Remote Access Servers
+Adding Member: RRS_USGroup to Group: RDS Remote Access Servers
+Adding Member: RRS_UDGroup to Group: RDS Remote Access Servers
+Adding Member: RRS_GSGroup to Group: RDS Remote Access Servers
+Adding Member: RRS_GDGroup to Group: RDS Remote Access Servers
+Adding Member: PU_User to Group: Protected Users
+Adding Member: PU_inetOrg to Group: Protected Users
+Adding Member: PU_computer to Group: Protected Users
+Adding Member: PU_gmsa to Group: Protected Users
+Adding Member: PU_GSGroup to Group: Protected Users
+Adding Member: PU_GDGroup to Group: Protected Users
+Adding Member: PLU_User to Group: Performance Log Users
+Adding Member: PLU_inetOrg to Group: Performance Log Users
+Adding Member: PLU_computer to Group: Performance Log Users
+Adding Member: PLU_gmsa to Group: Performance Log Users
+Adding Member: PLU_USGroup to Group: Performance Log Users
+Adding Member: PLU_UDGroup to Group: Performance Log Users
+Adding Member: PLU_GSGroup to Group: Performance Log Users
+Adding Member: PLU_GDGroup to Group: Performance Log Users
+Adding Member: TLS_User to Group: Terminal Server License Servers
+Adding Member: TLS_inetOrg to Group: Terminal Server License Servers
+Adding Member: TLS_computer to Group: Terminal Server License Servers
+Adding Member: TLS_gmsa to Group: Terminal Server License Servers
+Adding Member: TLS_USGroup to Group: Terminal Server License Servers
+Adding Member: TLS_UDGroup to Group: Terminal Server License Servers
+Adding Member: TLS_GSGroup to Group: Terminal Server License Servers
+Adding Member: TLS_GDGroup to Group: Terminal Server License Servers
+Adding Member: PO_User to Group: Print Operators
+Adding Member: PO_inetOrg to Group: Print Operators
+Adding Member: PO_computer to Group: Print Operators
+Adding Member: PO_gmsa to Group: Print Operators
+Adding Member: PO_USGroup to Group: Print Operators
+Adding Member: PO_UDGroup to Group: Print Operators
+Adding Member: PO_GSGroup to Group: Print Operators
+Adding Member: PO_GDGroup to Group: Print Operators
+Adding Member: GP_User to Group: Group Policy Creator Owners
+Adding Member: GP_inetOrg to Group: Group Policy Creator Owners
+Adding Member: GP_computer to Group: Group Policy Creator Owners
+Adding Member: GP_gmsa to Group: Group Policy Creator Owners
+Adding Member: GP_GSGroup to Group: Group Policy Creator Owners
+Adding Member: GP_GDGroup to Group: Group Policy Creator Owners
+Adding Member: CP_User to Group: Cert Publishers
+Adding Member: CP_inetOrg to Group: Cert Publishers
+Adding Member: CP_computer to Group: Cert Publishers
+Adding Member: CP_gmsa to Group: Cert Publishers
+Adding Member: CP_USGroup to Group: Cert Publishers
+Adding Member: CP_UDGroup to Group: Cert Publishers
+Adding Member: CP_GSGroup to Group: Cert Publishers
+Adding Member: CP_GDGroup to Group: Cert Publishers
+Adding Member: CP_LSGroup to Group: Cert Publishers
+Adding Member: CP_LDGroup to Group: Cert Publishers
+Adding Member: DA_User to Group: Domain Admins
+Adding Member: DA_inetOrg to Group: Domain Admins
+Adding Member: DA_computer to Group: Domain Admins
+Adding Member: DA_gmsa to Group: Domain Admins
+Adding Member: DA_GSGroup to Group: Domain Admins
+Adding Member: DA_GDGroup to Group: Domain Admins
+Adding Member: PMU_User to Group: Performance Monitor Users
+Adding Member: PMU_inetOrg to Group: Performance Monitor Users
+Adding Member: PMU_computer to Group: Performance Monitor Users
+Adding Member: PMU_gmsa to Group: Performance Monitor Users
+Adding Member: PMU_USGroup to Group: Performance Monitor Users
+Adding Member: PMU_UDGroup to Group: Performance Monitor Users
+Adding Member: PMU_GSGroup to Group: Performance Monitor Users
+Adding Member: PMU_GDGroup to Group: Performance Monitor Users
+Adding Member: HV_User to Group: Hyper-V Administrators
+Adding Member: HV_inetOrg to Group: Hyper-V Administrators
+Adding Member: HV_computer to Group: Hyper-V Administrators
+Adding Member: HV_gmsa to Group: Hyper-V Administrators
+Adding Member: HV_USGroup to Group: Hyper-V Administrators
+Adding Member: HV_UDGroup to Group: Hyper-V Administrators
+Adding Member: HV_GSGroup to Group: Hyper-V Administrators
+Adding Member: HV_GDGroup to Group: Hyper-V Administrators
+PS C:\Users\Administrator> TerminatingError(Get-ADGroup): "Cannot find an object with identity: 'Exchange Servers' under: 'DC=AD2025,DC=lan'."
+Message: [Cannot find an object with identity: 'Exchange Servers' under: 'DC=AD2025,DC=lan'.] Group: Exchange Servers
+Adding Member: RMU_User to Group: Remote Management Users
+Adding Member: RMU_inetOrg to Group: Remote Management Users
+Adding Member: RMU_computer to Group: Remote Management Users
+Adding Member: RMU_gmsa to Group: Remote Management Users
+Adding Member: RMU_USGroup to Group: Remote Management Users
+Adding Member: RMU_UDGroup to Group: Remote Management Users
+Adding Member: RMU_GSGroup to Group: Remote Management Users
+Adding Member: RMU_GDGroup to Group: Remote Management Users
+Adding Member: RD_User to Group: Remote Desktop Users
+Adding Member: RD_inetOrg to Group: Remote Desktop Users
+Adding Member: RD_computer to Group: Remote Desktop Users
+Adding Member: RD_gmsa to Group: Remote Desktop Users
+Adding Member: RD_USGroup to Group: Remote Desktop Users
+Adding Member: RD_UDGroup to Group: Remote Desktop Users
+Adding Member: RD_GSGroup to Group: Remote Desktop Users
+Adding Member: RD_GDGroup to Group: Remote Desktop Users
+Adding Member: AO_User to Group: Account Operators
+Adding Member: AO_inetOrg to Group: Account Operators
+Adding Member: AO_computer to Group: Account Operators
+Adding Member: AO_gmsa to Group: Account Operators
+Adding Member: AO_USGroup to Group: Account Operators
+Adding Member: AO_UDGroup to Group: Account Operators
+Adding Member: AO_GSGroup to Group: Account Operators
+Adding Member: AO_GDGroup to Group: Account Operators
+Adding Member: DCOM_User to Group: Distributed COM Users
+Adding Member: DCOM_inetOrg to Group: Distributed COM Users
+Adding Member: DCOM_computer to Group: Distributed COM Users
+Adding Member: DCOM_gmsa to Group: Distributed COM Users
+Adding Member: DCOM_USGroup to Group: Distributed COM Users
+Adding Member: DCOM_UDGroup to Group: Distributed COM Users
+Adding Member: DCOM_GSGroup to Group: Distributed COM Users
+Adding Member: DCOM_GDGroup to Group: Distributed COM Users
+Adding Member: SA_User to Group: Schema Admins
+Adding Member: SA_inetOrg to Group: Schema Admins
+Adding Member: SA_computer to Group: Schema Admins
+Adding Member: SA_gmsa to Group: Schema Admins
+Adding Member: SA_USGroup to Group: Schema Admins
+Adding Member: SA_UDGroup to Group: Schema Admins
+Adding Member: SA_GSGroup to Group: Schema Admins
+Adding Member: SA_GDGroup to Group: Schema Admins
+Adding Member: CO_User to Group: Cryptographic Operators
+Adding Member: CO_inetOrg to Group: Cryptographic Operators
+Adding Member: CO_computer to Group: Cryptographic Operators
+Adding Member: CO_gmsa to Group: Cryptographic Operators
+Adding Member: CO_USGroup to Group: Cryptographic Operators
+Adding Member: CO_UDGroup to Group: Cryptographic Operators
+Adding Member: CO_GSGroup to Group: Cryptographic Operators
+Adding Member: CO_GDGroup to Group: Cryptographic Operators
+Adding Member: ELR_User to Group: Event Log Readers
+Adding Member: ELR_inetOrg to Group: Event Log Readers
+Adding Member: ELR_computer to Group: Event Log Readers
+Adding Member: ELR_gmsa to Group: Event Log Readers
+Adding Member: ELR_USGroup to Group: Event Log Readers
+Adding Member: ELR_UDGroup to Group: Event Log Readers
+Adding Member: ELR_GSGroup to Group: Event Log Readers
+Adding Member: ELR_GDGroup to Group: Event Log Readers
+Adding Member: ARO_User to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_inetOrg to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_computer to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_gmsa to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_USGroup to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_UDGroup to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_GSGroup to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_GDGroup to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_LSGroup to Group: Allowed RODC Password Replication Group
+Adding Member: ARO_LDGroup to Group: Allowed RODC Password Replication Group
+Connecting to "SD-DC2025.AD2025.lan"
+Logging in as current user using SSPI
+Importing directory from file "C:\Users\Administrator\AppData\Local\Temp\tmp4407.tmp"
+Loading entries1 entry modified successfully.
+
+The command has completed successfully
+..
+**********************
+Windows PowerShell transcript end
+End time: 20250423111834
+**********************
