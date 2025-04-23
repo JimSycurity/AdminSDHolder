@@ -40,6 +40,8 @@ Write-Host 'Gathering OS and Platform data'
 # Enumeration
 $domain = Get-ADDomain
 
+Write-Output "PDCe: $($domain.PDCEmulator)"
+
 # Create OUs
 New-ADOrganizationalUnit -Name 'AdminSDHolderTests' -Path $domain.DistinguishedName -Server $domain.DNSRoot
 # TODO Eventually create more OUs for Inheritence testing?
