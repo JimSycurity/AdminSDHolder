@@ -125,20 +125,22 @@ foreach ($key in $ProtectedObjects.Keys) {
     $requiredScopes = @()
     try {
         $targetGroup = Get-ADGroup $ProtectedObjects.$key -Properties GroupType
-    } catch {
+    }
+    catch {
         Write-Host "Message: [$($_.Exception.Message)] Group: $($ProtectedObjects.$key)"  -ForegroundColor Yellow
-        Return
+        Continue
     }
 
     switch ($targetGroup.GroupScope) {
-        {$_ -eq 'Global'}       {$requiredScopes += 'Global'; BREAK}
-        {$_ -eq 'Universal'}    {$requiredScopes += @('Global', 'Universal'); BREAK }
-        {$_ -eq 'DomainLocal'}  {
+        { $_ -eq 'Global' } { $requiredScopes += 'Global'; BREAK }
+        { $_ -eq 'Universal' } { $requiredScopes += @('Global', 'Universal'); BREAK }
+        { $_ -eq 'DomainLocal' } {
             if (($targetGroup.GroupType -band 1) -eq 1) {
                 # Builtin Local groups cannot contain DomainLocal groups
                 $requiredScopes += @('Global', 'Universal')
                 BREAK
-            } else {
+            }
+            else {
                 $requiredScopes += @('Global', 'Universal', 'DomainLocal')
                 BREAK
             }
@@ -194,7 +196,7 @@ foreach ($key in $ProtectedObjects.Keys) {
 
 
     switch ($requiredScopes) {
-        {$_ -contains 'Universal'} {
+        { $_ -contains 'Universal' } {
             $groupSplat = @{
                 Name           = "${key}_USGroup"
                 SamAccountName = "${key}USGroup"
@@ -216,7 +218,7 @@ foreach ($key in $ProtectedObjects.Keys) {
                 PassThru       = $true
             }
             $UDgroup = New-ADGroup @groupSplat
-        } {$_ -contains 'DomainLocal'} {
+        } { $_ -contains 'DomainLocal' } {
             $groupSplat = @{
                 Name           = "${key}_LSGroup"
                 SamAccountName = "${key}LSGroup"
@@ -238,7 +240,7 @@ foreach ($key in $ProtectedObjects.Keys) {
                 PassThru       = $true
             }
             $LDgroup = New-ADGroup @groupSplat
-        } {$_ -contains 'Global'} {
+        } { $_ -contains 'Global' } {
             $groupSplat = @{
                 Name           = "${key}_GSGroup"
                 SamAccountName = "${key}GSGroup"
@@ -266,21 +268,37 @@ foreach ($key in $ProtectedObjects.Keys) {
     # Add group members accordingly
     $members = @($user, $iNet, $computer, $gMSA)
     switch ($targetGroup.GroupScope) {
-        {$_ -eq 'Global'}       {$members += @($GSGroup, $GDGroup); BREAK}
-        {$_ -eq 'Universal'}    {$members += @($USGroup, $UDGroup, $GSGroup, $GDGroup); BREAK }
-        {($_ -eq 'DomainLocal') -and ($targetGroup.GroupType -band 1) -eq 1}  {$members += @($USGroup, $UDGroup, $GSGroup, $GDGroup); BREAK }
-        Default {$members += @($USGroup, $UDGroup, $GSGroup, $GDGroup, $LSGroup, $LDGroup)}
+        { $_ -eq 'Global' } { $members += @($GSGroup, $GDGroup); BREAK }
+        { $_ -eq 'Universal' } { $members += @($USGroup, $UDGroup, $GSGroup, $GDGroup); BREAK }
+        { ($_ -eq 'DomainLocal') -and ($targetGroup.GroupType -band 1) -eq 1 } { $members += @($USGroup, $UDGroup, $GSGroup, $GDGroup); BREAK }
+        Default { $members += @($USGroup, $UDGroup, $GSGroup, $GDGroup, $LSGroup, $LDGroup) }
     }
     foreach ($member in $members) {
         try {
             Write-Host "Adding Member: $($member.Name) to Group: $($ProtectedObjects.$key)" -ForegroundColor Cyan
             Add-ADGroupMember -Identity $ProtectedObjects.$key -Members $member
-        } catch {
+        }
+        catch {
             Write-Host "Message: [$($_.Exception.Message)] Group: $($ProtectedObjects.$key) Member: $($member.Name)"  -ForegroundColor Red
         }
     }
 
 
 }
+
+# Force AdminSDHolder to run manually
+Invoke-Command {
+    $Temp = [io.path]::GetTempFileName()
+    Set-Content -Path $Temp -Value @'
+dn:
+changetype: modify
+add: runProtectAdminGroupsTask
+runProtectAdminGroupsTask: 1
+-
+
+'@
+    ldifde -i -f $Temp
+    Remove-Item -Force $Temp
+} -ComputerName $($domain.PDCEmulator)
 
 Stop-Transcript
