@@ -1,0 +1,33 @@
+Getting 1 entries:
+Dn: CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=AD2025,DC=lan
+adminDescription: Organizational-Unit;
+adminDisplayName: Organizational-Unit;
+cn: Organizational-Unit;
+defaultHidingValue: FALSE;
+defaultObjectCategory: CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+defaultSecurityDescriptor: D:(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)(OA;;CCDC;bf967a86-0de6-11d0-a285-00aa003049e2;;AO)(OA;;CCDC;bf967aba-0de6-11d0-a285-00aa003049e2;;AO)(OA;;CCDC;bf967a9c-0de6-11d0-a285-00aa003049e2;;AO)(OA;;CCDC;bf967aa8-0de6-11d0-a285-00aa003049e2;;PO)(A;;RPLCLORC;;;AU)(A;;LCRPLORC;;;ED)(OA;;CCDC;4828CC14-1437-45bc-9B07-AD6F015E5F28;;AO);
+distinguishedName: CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+dSCorePropagationData: 0x0 = (  );
+governsID: 2.5.6.5;
+instanceType: 0x4 = ( WRITE );
+lDAPDisplayName: organizationalUnit;
+name: Organizational-Unit;
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+objectClass (2): top; classSchema;
+objectClassCategory: 1 = ( STRUCTURAL );
+objectGUID: a86f90a5-1a5d-4acc-ab37-656dbb213291;
+rDNAttID: ou;
+schemaIDGUID: bf967aa5-0de6-11d0-a285-00aa003049e2;
+showInAdvancedViewOnly: TRUE;
+subClassOf: top;
+systemFlags: 0x10 = ( SCHEMA_BASE_OBJECT );
+systemMayContain (31): x121Address; userPassword; uPNSuffixes; co; telexNumber; teletexTerminalIdentifier; telephoneNumber; street; st; seeAlso; searchGuide; registeredAddress; preferredDeliveryMethod; postalCode; postalAddress; postOfficeBox; physicalDeliveryOfficeName; msCOM-UserPartitionSetLink; managedBy; thumbnailLogo; l; internationalISDNNumber; gPOptions; gPLink; facsimileTelephoneNumber; destinationIndicator; desktopProfile; defaultGroup; countryCode; c; businessCategory;
+systemMustContain: ou;
+systemOnly: FALSE;
+systemPossSuperiors (4): country; organization; organizationalUnit; domainDNS;
+uSNChanged: 1817;
+uSNCreated: 1817;
+whenChanged: 7/21/2023 11:03:06 AM Central Daylight Time;
+whenCreated: 7/21/2023 11:03:06 AM Central Daylight Time;
+
+-----------

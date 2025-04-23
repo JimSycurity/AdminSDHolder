@@ -1,0 +1,38 @@
+-----------
+***Searching...
+ldap_search_s(ld, "CN=Schema,CN=Configuration,DC=AD2025,DC=lan", 1, "(name=user)", attrList,  0, &msg)
+Getting 1 entries:
+Dn: CN=User,CN=Schema,CN=Configuration,DC=AD2025,DC=lan
+adminDescription: User;
+adminDisplayName: User;
+auxiliaryClass (2): shadowAccount; posixAccount;
+cn: User;
+defaultHidingValue: FALSE;
+defaultObjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+defaultSecurityDescriptor: D:(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;AO)(A;;RPLCLORC;;;PS)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)(OA;;CR;ab721a54-1e2f-11d0-9819-00aa0040529b;;PS)(OA;;CR;ab721a56-1e2f-11d0-9819-00aa0040529b;;PS)(OA;;RPWP;77B5B886-944A-11d1-AEBD-0000F80367C1;;PS)(OA;;RPWP;E45795B2-9455-11d1-AEBD-0000F80367C1;;PS)(OA;;RPWP;E45795B3-9455-11d1-AEBD-0000F80367C1;;PS)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;;RS)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;;RS)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;;RS)(A;;RC;;;AU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;;AU)(OA;;RP;77B5B886-944A-11d1-AEBD-0000F80367C1;;AU)(OA;;RP;E45795B3-9455-11d1-AEBD-0000F80367C1;;AU)(OA;;RP;e48d0154-bcf8-11d1-8702-00c04fb96050;;AU)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;;RS)(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)(OA;;WPRP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)(OA;;WPRP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561);
+distinguishedName: CN=User,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+dSCorePropagationData: 0x0 = (  );
+governsID: 1.2.840.113556.1.5.9;
+instanceType: 0x4 = ( WRITE );
+lDAPDisplayName: user;
+mayContain (21): msDS-SourceObjectDN; msSFU30NisDomain; msSFU30Name; x500uniqueIdentifier; userSMIMECertificate; userPKCS12; uid; secretary; roomNumber; preferredLanguage; photo; labeledURI; jpegPhoto; homePostalAddress; givenName; employeeType; employeeNumber; displayName; departmentNumber; carLicense; audio;
+name: User;
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+objectClass (2): top; classSchema;
+objectClassCategory: 1 = ( STRUCTURAL );
+objectGUID: a6f257d3-6fca-4e8e-b037-b2b0c39bb0b9;
+rDNAttID: cn;
+schemaIDGUID: bf967aba-0de6-11d0-a285-00aa003049e2;
+showInAdvancedViewOnly: TRUE;
+subClassOf: organizationalPerson;
+systemAuxiliaryClass (3): msDS-CloudExtensions; securityPrincipal; mailRecipient;
+systemFlags: 0x10 = ( SCHEMA_BASE_OBJECT );
+systemMayContain (138): msDS-SupersededManagedAccountLink; msDS-SupersededServiceAccountState; msDS-KeyCredentialLink; msDS-KeyPrincipalBL; msDS-AuthNPolicySiloMembersBL; msDS-AssignedAuthNPolicySilo; msDS-AssignedAuthNPolicy; msDS-SyncServerUrl; msDS-PrimaryComputer; msTSSecondaryDesktops; msTSPrimaryDesktop; msPKI-CredentialRoamingTokens; msDS-ResultantPSO; msDS-AuthenticatedAtDC; msTSInitialProgram; msTSWorkDirectory; msTSDefaultToMainPrinter; msTSConnectPrinterDrives; msTSConnectClientDrives; msTSBrokenConnectionAction; msTSReconnectionAction; msTSMaxIdleTime; msTSMaxConnectionTime; msTSMaxDisconnectionTime; msTSRemoteControl; msTSAllowLogon; msTSHomeDrive; msTSHomeDirectory; msTSProfilePath; msTSLSProperty02; msTSLSProperty01; msTSProperty02; msTSProperty01; msTSManagingLS4; msTSManagingLS3; msTSManagingLS2; msTSManagingLS; msTSLicenseVersion4; msTSLicenseVersion3; msTSLicenseVersion2; msTSLicenseVersion; msTSExpireDate4; msTSExpireDate3; msTSExpireDate2; msTSExpireDate; msDS-FailedInteractiveLogonCountAtLastSuccessfulLogon; msDS-FailedInteractiveLogonCount; msDS-LastFailedInteractiveLogonTime; msDS-LastSuccessfulInteractiveLogonTime; msRADIUS-SavedFramedIpv6Route; msRADIUS-FramedIpv6Route; msRADIUS-SavedFramedIpv6Prefix; msRADIUS-FramedIpv6Prefix; msRADIUS-SavedFramedInterfaceId; msRADIUS-FramedInterfaceId; msPKIAccountCredentials; msPKIDPAPIMasterKeys; msPKIRoamingTimeStamp; msDS-SupportedEncryptionTypes; msDS-SecondaryKrbTgtNumber; pager; o; mobile; manager; mail; initials; homePhone; businessCategory; userCertificate; userWorkstations; userSharedFolderOther; userSharedFolder; userPrincipalName; userParameters; userAccountControl; unicodePwd; terminalServer; servicePrincipalName; scriptPath; pwdLastSet; profilePath; primaryGroupID; preferredOU; otherLoginWorkstations; operatorCount; ntPwdHistory; networkAddress; msRASSavedFramedRoute; msRASSavedFramedIPAddress; msRASSavedCallbackNumber; msRADIUSServiceType; msRADIUSFramedRoute; msRADIUSFramedIPAddress; msRADIUSCallbackNumber; msNPSavedCallingStationID; ms...
+systemOnly: FALSE;
+systemPossSuperiors (3): builtinDomain; organizationalUnit; domainDNS;
+uSNChanged: 1912;
+uSNCreated: 1912;
+whenChanged: 7/21/2023 11:03:06 AM Central Daylight Time;
+whenCreated: 7/21/2023 11:03:06 AM Central Daylight Time;
+
+-----------

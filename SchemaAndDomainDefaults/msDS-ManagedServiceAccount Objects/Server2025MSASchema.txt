@@ -1,0 +1,31 @@
+Getting 1 entries:
+Dn: CN=ms-DS-Managed-Service-Account,CN=Schema,CN=Configuration,DC=AD2025,DC=lan
+adminDescription: Service account class is used to create accounts that are used for running Windows services.;
+adminDisplayName: ms-DS-Managed-Service-Account;
+cn: ms-DS-Managed-Service-Account;
+defaultHidingValue: FALSE;
+defaultObjectCategory: CN=ms-DS-Managed-Service-Account,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+defaultSecurityDescriptor: D:(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;AO)(A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)(A;;RPCRLCLORCSDDT;;;CO)(OA;;WP;4c164200-20c0-11d0-a768-00aa006e0529;;CO)(OA;;SW;72e39547-7b18-11d1-adef-00c04fd8d5cd;;CO)(OA;;SW;f3a64788-5306-11d1-a9c5-0000f80367c1;;CO)(OA;;WP;3e0abfd0-126a-11d0-a060-00aa006c33ed;bf967a86-0de6-11d0-a285-00aa003049e2;CO)(OA;;WP;5f202010-79a5-11d0-9020-00c04fc2d4cf;bf967a86-0de6-11d0-a285-00aa003049e2;CO)(OA;;WP;bf967950-0de6-11d0-a285-00aa003049e2;bf967a86-0de6-11d0-a285-00aa003049e2;CO)(OA;;WP;bf967953-0de6-11d0-a285-00aa003049e2;bf967a86-0de6-11d0-a285-00aa003049e2;CO)(OA;;SW;f3a64788-5306-11d1-a9c5-0000f80367c1;;PS)(OA;;RPWP;77B5B886-944A-11d1-AEBD-0000F80367C1;;PS)(OA;;SW;72e39547-7b18-11d1-adef-00c04fd8d5cd;;PS)(A;;RPLCLORC;;;AU)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)(OA;;RP;b7c69e6d-2cc7-11d2-854e-00a0c983f608;;ED);
+distinguishedName: CN=ms-DS-Managed-Service-Account,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+dSCorePropagationData: 0x0 = (  );
+governsID: 1.2.840.113556.1.5.264;
+instanceType: 0x4 = ( WRITE );
+lDAPDisplayName: msDS-ManagedServiceAccount;
+name: ms-DS-Managed-Service-Account;
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,DC=AD2025,DC=lan;
+objectClass (2): top; classSchema;
+objectClassCategory: 1 = ( STRUCTURAL );
+objectGUID: d0785e7c-7e02-4704-89fd-e07d4720e0f9;
+rDNAttID: cn;
+schemaIDGUID: ce206244-5827-4a86-ba1c-1c0c386c1b64;
+showInAdvancedViewOnly: TRUE;
+subClassOf: computer;
+systemFlags: 0x10 = ( SCHEMA_BASE_OBJECT );
+systemOnly: FALSE;
+systemPossSuperiors (3): domainDNS; organizationalUnit; container;
+uSNChanged: 1690;
+uSNCreated: 1690;
+whenChanged: 7/21/2023 11:03:06 AM Central Daylight Time;
+whenCreated: 7/21/2023 11:03:06 AM Central Daylight Time;
+
+-----------

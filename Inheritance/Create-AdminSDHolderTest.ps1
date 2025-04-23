@@ -289,18 +289,9 @@ foreach ($key in $ProtectedObjects.Keys) {
 }
 
 # Force AdminSDHolder to run manually
-Invoke-Command {
-    $Temp = [io.path]::GetTempFileName()
-    Set-Content -Path $Temp -Value @'
-dn:
-changetype: modify
-add: runProtectAdminGroupsTask
-runProtectAdminGroupsTask: 1
--
-
-'@
-    ldifde -i -f $Temp
-    Remove-Item -Force $Temp
-} -ComputerName $($domain.PDCEmulator)
+$PDCDNSName = ([System.DirectoryServices.ActiveDirectory.Domain]::GetComputerDomain()).PdcRoleOwner.Name
+$PDCERootDSE = [adsi]”LDAP://$PDCDNSName/RootDSE”
+$PDCERootDSE.Put('runProtectAdminGroupsTask', '1')
+$PDCERootDSE.SetInfo()
 
 Stop-Transcript
