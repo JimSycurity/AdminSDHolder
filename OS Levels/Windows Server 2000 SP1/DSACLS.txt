@@ -1,0 +1,94 @@
+Owner: AD2000SP1\Domain Admins
+Group: AD2000SP1\Domain Admins
+
+Audit list:
+Effective Permissions on this object are:
+All     Everyone  SPECIAL ACCESS   <Inherited from parent>
+                  DELETE
+                  WRITE PERMISSIONS
+                  CHANGE OWNERSHIP
+                  CREATE CHILD
+                  DELETE CHILD
+                  WRITE SELF
+                  WRITE PROPERTY
+                  DELETE TREE
+                  CONTROL ACCESS
+
+Permissions inherited to subobjects are:
+Inherited to all subobjects
+All     Everyone  SPECIAL ACCESS   <Inherited from parent>
+                  DELETE
+                  WRITE PERMISSIONS
+                  CHANGE OWNERSHIP
+                  CREATE CHILD
+                  DELETE CHILD
+                  WRITE SELF
+                  WRITE PROPERTY
+                  DELETE TREE
+                  CONTROL ACCESS
+
+
+Access list:
+{This object is protected from inheriting permissions from the parent}
+Effective Permissions on this object are:
+Allow NT AUTHORITY\Authenticated Users            SPECIAL ACCESS
+                                                  READ PERMISSONS
+                                                  LIST CONTENTS
+                                                  READ PROPERTY
+                                                  LIST OBJECT
+Allow BUILTIN\Administrators                      SPECIAL ACCESS
+                                                  DELETE
+                                                  READ PERMISSONS
+                                                  WRITE PERMISSIONS
+                                                  CHANGE OWNERSHIP
+                                                  CREATE CHILD
+                                                  DELETE CHILD
+                                                  LIST CONTENTS
+                                                  WRITE SELF
+                                                  WRITE PROPERTY
+                                                  READ PROPERTY
+                                                  LIST OBJECT
+                                                  CONTROL ACCESS
+Allow AD2000SP1\Enterprise Admins                 SPECIAL ACCESS
+                                                  READ PERMISSONS
+                                                  WRITE PERMISSIONS
+                                                  CHANGE OWNERSHIP
+                                                  CREATE CHILD
+                                                  DELETE CHILD
+                                                  LIST CONTENTS
+                                                  WRITE SELF
+                                                  WRITE PROPERTY
+                                                  READ PROPERTY
+                                                  LIST OBJECT
+                                                  CONTROL ACCESS
+Allow AD2000SP1\Domain Admins                     SPECIAL ACCESS
+                                                  READ PERMISSONS
+                                                  WRITE PERMISSIONS
+                                                  CHANGE OWNERSHIP
+                                                  CREATE CHILD
+                                                  DELETE CHILD
+                                                  LIST CONTENTS
+                                                  WRITE SELF
+                                                  WRITE PROPERTY
+                                                  READ PROPERTY
+                                                  LIST OBJECT
+                                                  CONTROL ACCESS
+Allow NT AUTHORITY\SYSTEM                         FULL CONTROL
+Allow BUILTIN\Pre-Windows 2000 Compatible Access  SPECIAL ACCESS
+                                                  READ PERMISSONS
+                                                  LIST CONTENTS
+                                                  READ PROPERTY
+                                                  LIST OBJECT
+Allow BUILTIN\Pre-Windows 2000 Compatible Access  SPECIAL ACCESS for Remote Access Information
+                                                  READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access  SPECIAL ACCESS for General Information
+                                                  READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access  SPECIAL ACCESS for Group Membership
+                                                  READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access  SPECIAL ACCESS for Account Restrictions
+                                                  READ PROPERTY
+Allow BUILTIN\Pre-Windows 2000 Compatible Access  SPECIAL ACCESS for Logon Information
+                                                  READ PROPERTY
+Allow Everyone                                    Change Password
+
+The command completed successfully
