@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "SharpHound",
+			"path": "../SharpHound"
+		}
+	],
+	"settings": {}
+}
