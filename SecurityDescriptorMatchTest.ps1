@@ -62,26 +62,7 @@ $dSDMatchSDHash = [System.BitConverter]::ToString($hashAlgorithm.ComputeHash($SD
 Write-Host "SDMatch nTSecurityDescriptor hash: $dSDMatchSDHash" -ForegroundColor Yellow
 
 # For some unknown (stupid) reason, doing a direct SD binary replacement doesn't properly duplicate the SD...
-Write-Host 'Checking for nTSecurityDescriptor match...'
-if ($dSDMatchSDHash -ne $dAdminSDHolderSDHash) {
-    Write-Host 'Iterating through DACL ACEs...'
-    $SDMatchDACL = $SDMatch.ObjectSecurity.GetAccessRules($true, $true, [System.Security.Principal.SecurityIdentifier])
-    foreach ($ACE in $AdminSDHolderDACL) {
-        if ($ACE -notin $SDMatchDACL) {
-            Write-Host 'Adding ACE: $ACE'
-            $SDMatch.ObjectSecurity.AddAccessRule($ACE)
-        }
-    }
-    Write-Host 'Iterating through SACL ACEs...'
-    $SDMatchSACL = $SDMatch.ObjectSecurity.GetAuditRules($true, $true, [System.Security.Principal.SecurityIdentifier])
-    foreach ($ACE in $AdminSDHolderSACL) {
-        if ($ACE -notin $SDMatchSACL) {
-            Write-Host 'Adding ACE: $ACE'
-            $SDMatch.ObjectSecurity.AddAAuditRule($ACE)
-        }
-    }
-}
-# If we couldn't fix it automatically, do it manually..
+# I don't have enough time to work through automate fixing this, so I'm just manually fixing the DACL and SACL in LDP.exe
 do {
     Write-Host 'nTSecurityDescriptor hashes do not match!  Manually resolve the issue before re-testing' -ForegroundColor Red
     Read-Host -Prompt 'When resolved, press enter to continue'
@@ -98,7 +79,7 @@ Write-Host "Group Membership: $($SDMatch.MemberOf) - Should be null"
 Write-Host 'Adding SDMatchUser to Domain Admins'
 Add-ADGroupMember -Identity 'Domain Admins' -Members 'SDMatchUser'
 $SDMatch = [adsi]"LDAP://$UserDN"
-Write-Host "Displaying SDMatchUser MemberOf: $($SDMatchUser.MemberOf)"
+Write-Host "Displaying SDMatchUser MemberOf: $($SDMatch.MemberOf)"
 
 Write-Host 'Forcing ProtectAdminGroup background task'
 # Force AdminSDHolder to run manually
@@ -119,6 +100,8 @@ $SDMatch.ObjectSecurity.GetSecurityDescriptorSddlForm(15)
 # Remove Deletion Protect
 ####
 Get-ADObject -Filter * -SearchBase $TestOU | ForEach-Object -Process { Set-ADObject -ProtectedFromAccidentalDeletion $false -Identity $_ }
+
+Get-ADUser $UserDN -Properties adminCount, memberOf
 
 Stop-Transcript
 
