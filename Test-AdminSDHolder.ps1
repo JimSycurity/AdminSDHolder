@@ -87,7 +87,7 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
 
     # Collect all security principals in the domain
     $customParametersB = @{
-        LDAPFilter  = "(|(objectClass=group)(objectCategory=user))"
+        LDAPFilter  = "(|(objectClass=group)(objectClass=user))"
         SearchScope = 'Subtree'
         SearchBase  = $dDistinguishedName
         Server      = $domain
@@ -128,15 +128,17 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
             ACECount          = $dSecurityPrincipal.nTSecurityDescriptor.Access.Count
             ImplicitACECount  = ($dSecurityPrincipal.nTSecurityDescriptor.Access | Where-Object { $_.IsInherited -eq $false }).Count
             Created           = if ($null -ne $dSecurityPrincipal.Created) {
-                                    $dSecurityPrincipal.Created.ToString()
-                                } else {
-                                    'Never'
-                                }
+                $dSecurityPrincipal.Created.ToString()
+            }
+            else {
+                'Never'
+            }
             Modified          = if ($null -ne $dSecurityPrincipal.Modified) {
-                                    $dSecurityPrincipal.Modified.ToString()
-                                } else {
-                                    'Never'
-                                }
+                $dSecurityPrincipal.Modified.ToString()
+            }
+            else {
+                'Never'
+            }
         }
         $oSecurityPrincipal = [SecurityPrincipal]::New($hSecurityPrincipal)
         if ($dSecurityPrincipalSDHash -eq $dAdminSDHolderSDHash) {
