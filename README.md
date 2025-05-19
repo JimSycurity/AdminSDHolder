@@ -46,6 +46,10 @@ This folder contains data collected from various AD Schema versions. This demons
 
 A set of cobbled together scripts for performing the tests and collecting the data in this repository.
 
+## Misconfiguration Sources
+
+I'd like to build a library of technical documentation and blogs that encourage users of certain products to make unnecessary configurations to the AdminSDHolder object or the security processes around it.
+
 ## Diagrams
 
 ## Matrix
