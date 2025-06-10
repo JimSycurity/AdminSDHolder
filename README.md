@@ -1,6 +1,10 @@
 # AdminSDHolder
 
-Additional documentation for AdminSDHolder Misconceptions and Misconfigurations research paper
+Additional documentation for AdminSDHolder Misconceptions and Misconfigurations research paper.
+
+## Child Objects
+
+This folder contains data from tests performed to determine if AdminSDHolder would protect child objects of protected objects.
 
 ## Inheritance
 
