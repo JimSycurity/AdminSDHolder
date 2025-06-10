@@ -1,0 +1,1172 @@
+-----------
+Expanding base 'CN=ASDHTestNoSD,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan'...
+Getting 1 entries:
+Dn: CN=ASDHTestNoSD,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan
+cn: ASDHTestNoSD;
+distinguishedName: CN=ASDHTestNoSD,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan;
+dSCorePropagationData (5): 12/5/2024 1:41:23 PM Central Daylight Time; 12/5/2024 12:41:23 PM Central Daylight Time; 11/1/2024 12:41:02 PM Central Daylight Time; 9/17/2024 1:41:35 PM Central Daylight Time; 0x1 = ( NEW_SD ), 0x1 = ( NEW_SD ), 0x1 = ( NEW_SD ), 0x1 = ( NEW_SD );
+instanceType: 0x4 = ( WRITE );
+name: ASDHTestNoSD;
+objectCategory: CN=ms-Exch-Storage-Group,CN=Schema,CN=Configuration,DC=houdini,DC=lab,DC=lan;
+objectClass (3): top; container; msExchStorageGroup;
+objectGUID: 44ca94e2-29f2-4049-916d-1e421a7c4e2a;
+showInAdvancedViewOnly: TRUE;
+uSNChanged: 128644;
+uSNCreated: 128644;
+whenChanged: 1/3/2024 9:20:53 AM Central Daylight Time;
+whenCreated: 1/3/2024 9:20:53 AM Central Daylight Time;
+
+-----------
+Security Descriptor:
+Security Descriptor:SD Revision: 1
+SD Control:  0x8c04
+		SE_DACL_PRESENT
+		SE_DACL_AUTO_INHERITED
+		SE_SACL_AUTO_INHERITED
+		SE_SELF_RELATIVE
+Owner: HOUDINI\Domain Admins [S-1-5-21-396408026-398567588-3482341601-512]
+Group: HOUDINI\Domain Admins [S-1-5-21-396408026-398567588-3482341601-512]
+DACL:
+	Revision      4
+	Size:         4336 bytes
+	# Aces:       79
+	Ace[0]
+		Ace Type:  0x6 - ACCESS_DENIED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  altSecurityIdentities - 00fbf30c-91fe-11d1-aebc-0000f80367c1
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[1]
+		Ace Type:  0x6 - ACCESS_DENIED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  altSecurityIdentities - 00fbf30c-91fe-11d1-aebc-0000f80367c1
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[2]
+		Ace Type:  0x6 - ACCESS_DENIED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  userCertificate - bf967a7f-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[3]
+		Ace Type:  0x6 - ACCESS_DENIED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  userCertificate - bf967a7f-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[4]
+		Ace Type:  0x6 - ACCESS_DENIED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  servicePrincipalName - f3a64788-5306-11d1-a9c5-0000f80367c1
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[5]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  72 bytes
+		Ace Flags: 0x1a
+			CONTAINER_INHERIT_ACE
+			INHERIT_ONLY_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000007
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+		Object Ace Flags: 0x3
+			ACE_OBJECT_TYPE_PRESENT
+			ACE_INHERITED_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchActiveSyncDevices - c975c901-6cea-4b6f-8319-d67f45449506
+		Inherited object type: inetOrgPerson - 4828cc14-1437-45bc-9b07-ad6f015e5f28
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[6]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  72 bytes
+		Ace Flags: 0x1a
+			CONTAINER_INHERIT_ACE
+			INHERIT_ONLY_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000007
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+		Object Ace Flags: 0x3
+			ACE_OBJECT_TYPE_PRESENT
+			ACE_INHERITED_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchActiveSyncDevices - c975c901-6cea-4b6f-8319-d67f45449506
+		Inherited object type: user - bf967aba-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[7]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000100
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Reset Password - 00299570-246d-11d0-a768-00aa006e0529
+		Object Ace Sid:   HOUDINI\Exchange Windows Permissions [S-1-5-21-396408026-398567588-3482341601-1129]
+	Ace[8]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Account Restrictions - 4c164200-20c0-11d0-a768-00aa006e0529
+		Object Ace Sid:   HOUDINI\Delegated Setup [S-1-5-21-396408026-398567588-3482341601-1121]
+	Ace[9]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Personal Information - b1b3a417-ec55-4191-b327-b72e33e38af2
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[10]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  canonicalName - 9a7ad945-ca53-11d1-bbd0-0080c76670c0
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[11]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  userAccountControl - bf967a68-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[12]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Information - 1f298a89-de98-47b8-b5cd-572ad53d267e
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[13]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  memberOf - bf967991-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[14]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  garbageCollPeriod - 5fd424a1-1262-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[15]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  proxyAddresses - bf967a06-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[16]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  proxyAddresses - bf967a06-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[17]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  showInAddressBook - 3e74f60e-3e73-11d1-a9c0-0000f80367c1
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[18]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  showInAddressBook - 3e74f60e-3e73-11d1-a9c0-0000f80367c1
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[19]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Personal Information - b1b3a417-ec55-4191-b327-b72e33e38af2
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[20]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Personal Information - b1b3a417-ec55-4191-b327-b72e33e38af2
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[21]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  adminDisplayName - bf96791a-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[22]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  adminDisplayName - bf96791a-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[23]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  groupType - 9a9a021e-4a5b-11d1-a9c3-0000f80367c1
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[24]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchDataEncryptionPolicyLink - a673a21e-e65e-43a6-ac59-7e4bfdeb9fb8
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[25]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchDataEncryptionPolicyLink - a673a21e-e65e-43a6-ac59-7e4bfdeb9fb8
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[26]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchMailboxSecurityDescriptor - 934de926-b09e-11d2-aa06-00c04f8eedd8
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[27]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchUMServerWritableFlags - 5e353847-f36c-48be-a7f7-49685402503c
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[28]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  thumbnailPhoto - 8d3bca50-1d7e-11d0-a081-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[29]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  displayName - bf967953-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[30]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  displayName - bf967953-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[31]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Public Information - e48d0154-bcf8-11d1-8702-00c04fb96050
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[32]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchUserCulture - 275b2f54-982d-4dcd-b0ad-e53501445efb
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[33]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  displayNamePrintable - bf967954-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[34]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  displayNamePrintable - bf967954-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[35]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  mail - bf967961-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[36]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  mail - bf967961-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[37]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchMobileMailboxFlags - 5430e777-c3ea-4024-902e-dde192204669
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[38]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchSafeRecipientsHash - 6f606079-3a82-4c1b-8efb-dcc8c91d26fe
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[39]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchUMDtmfMap - 614aea82-abc6-4dd0-a148-d67a59c72816
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[40]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchBlockedSendersHash - 66437984-c3c5-498f-b269-987819ef484b
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[41]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Personal Information - 77b5b886-944a-11d1-aebd-0000f80367c1
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[42]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  textEncodedORAddress - a8df7489-c5ea-11d1-bbcb-0080c76670c0
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[43]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  textEncodedORAddress - a8df7489-c5ea-11d1-bbcb-0080c76670c0
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[44]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Information - 1f298a89-de98-47b8-b5cd-572ad53d267e
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[45]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Information - 1f298a89-de98-47b8-b5cd-572ad53d267e
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[46]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  publicDelegates - f0f8ff9a-1191-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[47]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  publicDelegates - f0f8ff9a-1191-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[48]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  publicDelegates - f0f8ff9a-1191-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[49]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchUMSpokenName - 2cc06e9d-6f7e-426a-8825-0215de176e11
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[50]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  garbageCollPeriod - 5fd424a1-1262-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[51]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  garbageCollPeriod - 5fd424a1-1262-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[52]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchUMPinChecksum - 3263e3b8-fd6b-4c60-87f2-34bdaa9d69eb
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[53]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  legacyExchangeDN - 28630ebc-41d5-11d1-a9c1-0000f80367c1
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[54]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  legacyExchangeDN - 28630ebc-41d5-11d1-a9c1-0000f80367c1
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[55]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000020
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchSafeSendersHash - 7cb4c7d3-8787-42b0-b438-3c5d479ad31e
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[56]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000000b7
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_LIST_OBJECT
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  publicFolder - f0f8ffac-1191-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[57]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000000b7
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_LIST_OBJECT
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchActiveSyncDevice - e8b2aff2-59a7-4eac-9a70-819adef701dd
+		Object Ace Sid:   HOUDINI\Exchange Servers [S-1-5-21-396408026-398567588-3482341601-1126]
+	Ace[58]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-11779]
+	Ace[59]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-11788]
+	Ace[60]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-17305]
+	Ace[61]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-17315]
+	Ace[62]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\DDGA-2 [S-1-5-21-396408026-398567588-3482341601-17324]
+	Ace[63]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-1214]
+	Ace[64]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-11738]
+	Ace[65]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-11747]
+	Ace[66]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-11756]
+	Ace[67]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  computer - bf967a86-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   Unknown SID [S-1-5-21-396408026-398567588-3482341601-11773]
+	Ace[68]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchDynamicDistributionList - 018849b0-a981-11d2-a9ff-00c04f8eedd8
+		Object Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[69]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  msExchDynamicDistributionList - 018849b0-a981-11d2-a9ff-00c04f8eedd8
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[70]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x1a
+			CONTAINER_INHERIT_ACE
+			INHERIT_ONLY_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x2
+			ACE_INHERITED_OBJECT_TYPE_PRESENT
+		Inherited object type: msExchActiveSyncDevices - c975c901-6cea-4b6f-8319-d67f45449506
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[71]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x1a
+			CONTAINER_INHERIT_ACE
+			INHERIT_ONLY_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x2
+			ACE_INHERITED_OBJECT_TYPE_PRESENT
+		Inherited object type: publicFolder - f0f8ffac-1191-11d0-a060-00aa006c33ed
+		Object Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+	Ace[72]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Personal Information - b1b3a417-ec55-4191-b327-b72e33e38af2
+		Object Ace Sid:   NT AUTHORITY\NETWORK SERVICE [S-1-5-20]
+	Ace[73]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Exchange Information - 1f298a89-de98-47b8-b5cd-572ad53d267e
+		Object Ace Sid:   NT AUTHORITY\Authenticated Users [S-1-5-11]
+	Ace[74]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Object Ace Mask:  0x00000130
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Private Information - 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+		Object Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[75]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  36 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Ace Mask:  0x00000014
+			ACTRL_DS_LIST
+			ACTRL_DS_READ_PROP
+		Ace Sid:   HOUDINI\Exchange Windows Permissions [S-1-5-21-396408026-398567588-3482341601-1129]
+	Ace[76]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  36 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Ace Mask:  0x000c0020
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_WRITE_PROP
+		Ace Sid:   HOUDINI\AdminSDHolderDelegations [S-1-5-21-396408026-398567588-3482341601-1167]
+	Ace[77]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  36 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Ace Mask:  0x00020094
+			READ_CONTROL
+			ACTRL_DS_LIST
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_LIST_OBJECT
+		Ace Sid:   HOUDINI\Organization Management [S-1-5-21-396408026-398567588-3482341601-1112]
+	Ace[78]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  36 bytes
+		Ace Flags: 0x12
+			CONTAINER_INHERIT_ACE
+			INHERITED_ACE
+		Ace Mask:  0x00020094
+			READ_CONTROL
+			ACTRL_DS_LIST
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_LIST_OBJECT
+		Ace Sid:   HOUDINI\Exchange Trusted Subsystem [S-1-5-21-396408026-398567588-3482341601-1127]
+SACL not present
+Security for "CN=ASDHTestNoSD,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan"
+-----------

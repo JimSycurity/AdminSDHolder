@@ -1,0 +1,63 @@
+Expanding base 'CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan'...
+Getting 1 entries:
+Dn: CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan
+cn: ASDHTest;
+distinguishedName: CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan;
+dSCorePropagationData (5): 12/5/2024 1:41:23 PM Central Daylight Time; 12/5/2024 12:41:23 PM Central Daylight Time; 11/1/2024 12:41:02 PM Central Daylight Time; 9/17/2024 1:41:35 PM Central Daylight Time; 0x0 = (  ), 0x0 = (  ), 0x0 = (  ), 0x0 = (  );
+instanceType: 0x4 = ( WRITE );
+name: ASDHTest;
+objectCategory: CN=ms-Exch-Storage-Group,CN=Schema,CN=Configuration,DC=houdini,DC=lab,DC=lan;
+objectClass (3): top; container; msExchStorageGroup;
+objectGUID: 0b183453-aab0-49fa-a735-b6fcc977a567;
+showInAdvancedViewOnly: TRUE;
+uSNChanged: 128125;
+uSNCreated: 128125;
+whenChanged: 1/2/2024 4:48:19 PM Central Daylight Time;
+whenCreated: 1/2/2024 4:48:19 PM Central Daylight Time;
+
+-----------
+Security Descriptor:
+Security Descriptor:SD Revision: 1
+SD Control:  0x9c04
+		SE_DACL_PRESENT
+		SE_DACL_AUTO_INHERITED
+		SE_SACL_AUTO_INHERITED
+		SE_DACL_PROTECTED
+		SE_SELF_RELATIVE
+Owner: HOUDINI\Domain Admins [S-1-5-21-396408026-398567588-3482341601-512]
+Group: HOUDINI\Domain Admins [S-1-5-21-396408026-398567588-3482341601-512]
+DACL:
+	Revision      2
+	Size:         48 bytes
+	# Aces:       2
+	Ace[0]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  20 bytes
+		Ace Flags: 0x0
+		Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Ace Sid:   Everyone [S-1-1-0]
+	Ace[1]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  20 bytes
+		Ace Flags: 0xa
+			CONTAINER_INHERIT_ACE
+			INHERIT_ONLY_ACE
+		Ace Mask:  0x10000000
+			GENERIC_ALL
+		Ace Sid:   Everyone [S-1-1-0]
+SACL not present
+Security for "CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan"
+-----------

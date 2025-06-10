@@ -1,0 +1,348 @@
+-----------
+Expanding base 'CN=ADSHTestUser,CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan'...
+Getting 1 entries:
+Dn: CN=ADSHTestUser,CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan
+accountExpires: 9223372036854775807 (never);
+badPasswordTime: 0 (never);
+badPwdCount: 0;
+cn: ADSHTestUser;
+codePage: 0;
+countryCode: 0;
+distinguishedName: CN=ADSHTestUser,CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan;
+dSCorePropagationData: 0x0 = (  );
+instanceType: 0x4 = ( WRITE );
+lastLogoff: 0 (never);
+lastLogon: 0 (never);
+logonCount: 0;
+name: ADSHTestUser;
+objectCategory: CN=Person,CN=Schema,CN=Configuration,DC=houdini,DC=lab,DC=lan;
+objectClass (4): top; person; organizationalPerson; user;
+objectGUID: 9dd62c3f-f294-4cc0-b620-53ab480a8580;
+objectSid: S-1-5-21-396408026-398567588-3482341601-1188;
+primaryGroupID: 513 = ( GROUP_RID_USERS );
+pwdLastSet: 1/2/2024 4:48:19 PM Central Daylight Time;
+sAMAccountName: ADSHTestUser;
+sAMAccountType: 805306368 = ( NORMAL_USER_ACCOUNT );
+userAccountControl: 0x200 = ( NORMAL_ACCOUNT );
+uSNChanged: 128131;
+uSNCreated: 128127;
+whenChanged: 1/2/2024 4:48:19 PM Central Daylight Time;
+whenCreated: 1/2/2024 4:48:19 PM Central Daylight Time;
+
+-----------
+Security Descriptor:
+Security Descriptor:SD Revision: 1
+SD Control:  0x8c04
+		SE_DACL_PRESENT
+		SE_DACL_AUTO_INHERITED
+		SE_SACL_AUTO_INHERITED
+		SE_SELF_RELATIVE
+Owner: HOUDINI\Domain Admins [S-1-5-21-396408026-398567588-3482341601-512]
+Group: HOUDINI\Domain Admins [S-1-5-21-396408026-398567588-3482341601-512]
+DACL:
+	Revision      4
+	Size:         1020 bytes
+	# Aces:       26
+	Ace[0]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Account Restrictions - 4c164200-20c0-11d0-a768-00aa006e0529
+		Object Ace Sid:   HOUDINI\RAS and IAS Servers [S-1-5-21-396408026-398567588-3482341601-553]
+	Ace[1]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Logon Information - 5f202010-79a5-11d0-9020-00c04fc2d4cf
+		Object Ace Sid:   HOUDINI\RAS and IAS Servers [S-1-5-21-396408026-398567588-3482341601-553]
+	Ace[2]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Group Membership - bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+		Object Ace Sid:   HOUDINI\RAS and IAS Servers [S-1-5-21-396408026-398567588-3482341601-553]
+	Ace[3]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Remote Access Information - 037088f8-0ae1-11d2-b422-00a0c968f939
+		Object Ace Sid:   HOUDINI\RAS and IAS Servers [S-1-5-21-396408026-398567588-3482341601-553]
+	Ace[4]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  56 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000030
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  userCertificate - bf967a7f-0de6-11d0-a285-00aa003049e2
+		Object Ace Sid:   HOUDINI\Cert Publishers [S-1-5-21-396408026-398567588-3482341601-517]
+	Ace[5]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  44 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  tokenGroupsGlobalAndUniversal - 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+		Object Ace Sid:   BUILTIN\Windows Authorization Access Group [S-1-5-32-560]
+	Ace[6]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  44 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000030
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  terminalServer - 6db69a1c-9422-11d1-aebd-0000f80367c1
+		Object Ace Sid:   BUILTIN\Terminal Server License Servers [S-1-5-32-561]
+	Ace[7]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  44 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000030
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Terminal Server License Server - 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+		Object Ace Sid:   BUILTIN\Terminal Server License Servers [S-1-5-32-561]
+	Ace[8]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000100
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Change Password - ab721a53-1e2f-11d0-9819-00aa0040529b
+		Object Ace Sid:   Everyone [S-1-1-0]
+	Ace[9]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000100
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Change Password - ab721a53-1e2f-11d0-9819-00aa0040529b
+		Object Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[10]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000100
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Send As - ab721a54-1e2f-11d0-9819-00aa0040529b
+		Object Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[11]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000100
+			ACTRL_DS_CONTROL_ACCESS
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Receive As - ab721a56-1e2f-11d0-9819-00aa0040529b
+		Object Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[12]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  General Information - 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+		Object Ace Sid:   NT AUTHORITY\Authenticated Users [S-1-5-11]
+	Ace[13]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Public Information - e48d0154-bcf8-11d1-8702-00c04fb96050
+		Object Ace Sid:   NT AUTHORITY\Authenticated Users [S-1-5-11]
+	Ace[14]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Personal Information - 77b5b886-944a-11d1-aebd-0000f80367c1
+		Object Ace Sid:   NT AUTHORITY\Authenticated Users [S-1-5-11]
+	Ace[15]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000010
+			ACTRL_DS_READ_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Web Information - e45795b3-9455-11d1-aebd-0000f80367c1
+		Object Ace Sid:   NT AUTHORITY\Authenticated Users [S-1-5-11]
+	Ace[16]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000030
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Personal Information - 77b5b886-944a-11d1-aebd-0000f80367c1
+		Object Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[17]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000030
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Phone and Mail Options - e45795b2-9455-11d1-aebd-0000f80367c1
+		Object Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[18]
+		Ace Type:  0x5 - ACCESS_ALLOWED_OBJECT_ACE_TYPE
+		Ace Size:  40 bytes
+		Ace Flags: 0x0
+		Object Ace Mask:  0x00000030
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+		Object Ace Flags: 0x1
+			ACE_OBJECT_TYPE_PRESENT
+		Object Ace Type:  Web Information - e45795b3-9455-11d1-aebd-0000f80367c1
+		Object Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[19]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  36 bytes
+		Ace Flags: 0x0
+		Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Ace Sid:   HOUDINI\Domain Admins [S-1-5-21-396408026-398567588-3482341601-512]
+	Ace[20]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  24 bytes
+		Ace Flags: 0x0
+		Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Ace Sid:   BUILTIN\Account Operators [S-1-5-32-548]
+	Ace[21]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  20 bytes
+		Ace Flags: 0x0
+		Ace Mask:  0x00020000
+			READ_CONTROL
+		Ace Sid:   NT AUTHORITY\Authenticated Users [S-1-5-11]
+	Ace[22]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  20 bytes
+		Ace Flags: 0x0
+		Ace Mask:  0x00020094
+			READ_CONTROL
+			ACTRL_DS_LIST
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_LIST_OBJECT
+		Ace Sid:   NT AUTHORITY\SELF [S-1-5-10]
+	Ace[23]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  20 bytes
+		Ace Flags: 0x0
+		Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Ace Sid:   NT AUTHORITY\SYSTEM [S-1-5-18]
+	Ace[24]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  20 bytes
+		Ace Flags: 0x10
+			INHERITED_ACE
+		Ace Mask:  0x000f01ff
+			DELETE
+			READ_CONTROL
+			WRITE_DAC
+			WRITE_OWNER
+			ACTRL_DS_CREATE_CHILD
+			ACTRL_DS_DELETE_CHILD
+			ACTRL_DS_LIST
+			ACTRL_DS_SELF
+			ACTRL_DS_READ_PROP
+			ACTRL_DS_WRITE_PROP
+			ACTRL_DS_DELETE_TREE
+			ACTRL_DS_LIST_OBJECT
+			ACTRL_DS_CONTROL_ACCESS
+		Ace Sid:   Everyone [S-1-1-0]
+	Ace[25]
+		Ace Type:  0x0 - ACCESS_ALLOWED_ACE_TYPE
+		Ace Size:  20 bytes
+		Ace Flags: 0x1a
+			CONTAINER_INHERIT_ACE
+			INHERIT_ONLY_ACE
+			INHERITED_ACE
+		Ace Mask:  0x10000000
+			GENERIC_ALL
+		Ace Sid:   Everyone [S-1-1-0]
+SACL not present
+Security for "CN=ADSHTestUser,CN=ASDHTest,CN=AdminPC,OU=ProtChildObj,OU=AdminSDHolder-ExchangeTests,OU=Misconfigs,DC=houdini,DC=lab,DC=lan"
+-----------
