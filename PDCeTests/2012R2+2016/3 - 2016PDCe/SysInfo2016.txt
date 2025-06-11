@@ -1,0 +1,48 @@
+PS C:\Users\Administrator.ADPDCETESTS> systeminfo
+
+Host Name:                 SD-DC2016CUPDCE
+OS Name:                   Microsoft Windows Server 2016 Datacenter
+OS Version:                10.0.14393 N/A Build 14393
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Primary Domain Controller
+OS Build Type:             Multiprocessor Free
+Registered Owner:          HomeLab
+Registered Organization:   HomeLab
+Product ID:                00377-90011-09119-AA532
+Original Install Date:     4/17/2025, 12:24:38 PM
+System Boot Time:          6/10/2025, 8:29:48 AM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware7,1
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 63 Stepping 2 GenuineIntel ~2494 Mhz
+BIOS Version:              VMware, Inc. VMW71.00V.18227214.B64.2106252220, 6/25/2021
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-06:00) Central Time (US & Canada)
+Total Physical Memory:     4,095 MB
+Available Physical Memory: 1,973 MB
+Virtual Memory: Max Size:  4,799 MB
+Virtual Memory: Available: 2,587 MB
+Virtual Memory: In Use:    2,212 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    ADPDCeTests.lan
+Logon Server:              \\SD-DC2016CUPDCE
+Hotfix(s):                 6 Hotfix(s) Installed.
+                           [01]: KB4049065
+                           [02]: KB4589210
+                           [03]: KB5012170
+                           [04]: KB5023788
+                           [05]: KB5055661
+                           [06]: KB5048671
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) 82574L Gigabit Network Connection
+                                 Connection Name: Ethernet0
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.15.129
+                                 [02]: fe80::4dd9:9e1b:2270:26a5
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.

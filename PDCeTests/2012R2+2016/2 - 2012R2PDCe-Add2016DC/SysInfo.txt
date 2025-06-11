@@ -1,0 +1,240 @@
+PS C:\Windows\system32> systeminfo
+
+Host Name:                 SD-DC2012R2PDCE
+OS Name:                   Microsoft Windows Server 2012 R2 Standard
+OS Version:                6.3.9600 N/A Build 9600
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Primary Domain Controller
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:
+Product ID:                00252-70000-00000-AA535
+Original Install Date:     4/17/2025, 12:32:31 PM
+System Boot Time:          4/22/2025, 10:24:35 AM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware Virtual Platform
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 63 Stepping 2 GenuineIntel ~2494 Mhz
+BIOS Version:              Phoenix Technologies LTD 6.00, 11/12/2020
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-06:00) Central Time (US & Canada)
+Total Physical Memory:     4,095 MB
+Available Physical Memory: 2,238 MB
+Virtual Memory: Max Size:  4,799 MB
+Virtual Memory: Available: 2,832 MB
+Virtual Memory: In Use:    1,967 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    ADPDCeTests.lan
+Logon Server:              \\SD-DC2012R2PDCE
+Hotfix(s):                 148 Hotfix(s) Installed.
+                           [01]: KB3191564
+                           [02]: KB2843630
+                           [03]: KB2862152
+                           [04]: KB2868626
+                           [05]: KB2883200
+                           [06]: KB2884846
+                           [07]: KB2887595
+                           [08]: KB2892074
+                           [09]: KB2893294
+                           [10]: KB2894029
+                           [11]: KB2894179
+                           [12]: KB2894856
+                           [13]: KB2898514
+                           [14]: KB2898742
+                           [15]: KB2898871
+                           [16]: KB2901101
+                           [17]: KB2901128
+                           [18]: KB2903939
+                           [19]: KB2906956
+                           [20]: KB2908174
+                           [21]: KB2911106
+                           [22]: KB2912390
+                           [23]: KB2913152
+                           [24]: KB2913270
+                           [25]: KB2914218
+                           [26]: KB2919355
+                           [27]: KB2919394
+                           [28]: KB2920189
+                           [29]: KB2922229
+                           [30]: KB2923528
+                           [31]: KB2928680
+                           [32]: KB2931366
+                           [33]: KB2938066
+                           [34]: KB2939087
+                           [35]: KB2954879
+                           [36]: KB2961899
+                           [37]: KB2961908
+                           [38]: KB2967917
+                           [39]: KB2973201
+                           [40]: KB2975061
+                           [41]: KB2976897
+                           [42]: KB2977765
+                           [43]: KB2989930
+                           [44]: KB2999226
+                           [45]: KB3000483
+                           [46]: KB3000850
+                           [47]: KB3003057
+                           [48]: KB3004545
+                           [49]: KB3008242
+                           [50]: KB3010788
+                           [51]: KB3012702
+                           [52]: KB3013172
+                           [53]: KB3013410
+                           [54]: KB3013538
+                           [55]: KB3013791
+                           [56]: KB3014442
+                           [57]: KB3016437
+                           [58]: KB3019978
+                           [59]: KB3023266
+                           [60]: KB3024751
+                           [61]: KB3024755
+                           [62]: KB3027209
+                           [63]: KB3030947
+                           [64]: KB3032663
+                           [65]: KB3033446
+                           [66]: KB3036612
+                           [67]: KB3037579
+                           [68]: KB3038002
+                           [69]: KB3042058
+                           [70]: KB3042085
+                           [71]: KB3043812
+                           [72]: KB3044374
+                           [73]: KB3044673
+                           [74]: KB3045634
+                           [75]: KB3045685
+                           [76]: KB3045717
+                           [77]: KB3045719
+                           [78]: KB3045999
+                           [79]: KB3046017
+                           [80]: KB3046737
+                           [81]: KB3048043
+                           [82]: KB3054169
+                           [83]: KB3054203
+                           [84]: KB3054256
+                           [85]: KB3054464
+                           [86]: KB3055323
+                           [87]: KB3059317
+                           [88]: KB3060793
+                           [89]: KB3061512
+                           [90]: KB3063843
+                           [91]: KB3071756
+                           [92]: KB3077715
+                           [93]: KB3078405
+                           [94]: KB3080149
+                           [95]: KB3081320
+                           [96]: KB3082089
+                           [97]: KB3084135
+                           [98]: KB3086255
+                           [99]: KB3087137
+                           [100]: KB3091297
+                           [101]: KB3092601
+                           [102]: KB3094486
+                           [103]: KB3097997
+                           [104]: KB3098779
+                           [105]: KB3100473
+                           [106]: KB3102939
+                           [107]: KB3103616
+                           [108]: KB3103696
+                           [109]: KB3103709
+                           [110]: KB3109103
+                           [111]: KB3109976
+                           [112]: KB3110329
+                           [113]: KB3121261
+                           [114]: KB3123245
+                           [115]: KB3126041
+                           [116]: KB3126434
+                           [117]: KB3126587
+                           [118]: KB3126593
+                           [119]: KB3132080
+                           [120]: KB3133043
+                           [121]: KB3133690
+                           [122]: KB3134179
+                           [123]: KB3137728
+                           [124]: KB3138602
+                           [125]: KB3139914
+                           [126]: KB3140219
+                           [127]: KB3145384
+                           [128]: KB3145432
+                           [129]: KB3146604
+                           [130]: KB3146723
+                           [131]: KB3146751
+                           [132]: KB3147071
+                           [133]: KB3149157
+                           [134]: KB3156059
+                           [135]: KB3159398
+                           [136]: KB3161949
+                           [137]: KB3172614
+                           [138]: KB3175024
+                           [139]: KB3178539
+                           [140]: KB3179574
+                           [141]: KB3185319
+                           [142]: KB4033428
+                           [143]: KB4486105
+                           [144]: KB5012170
+                           [145]: KB5029915
+                           [146]: KB5030329
+                           [147]: KB5031003
+                           [148]: KB5031419
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) 82574L Gigabit Network Connection
+                                 Connection Name: Ethernet0
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.15.128
+                                 [02]: fe80::1466:d4e3:e823:bc8e
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+
+C:\Windows\system32>systeminfo
+
+Host Name:                 SD-DC2016CUPDCE
+OS Name:                   Microsoft Windows Server 2016 Datacenter
+OS Version:                10.0.14393 N/A Build 14393
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Additional/Backup Domain Controller
+OS Build Type:             Multiprocessor Free
+Registered Owner:          HomeLab
+Registered Organization:   HomeLab
+Product ID:                00377-90011-09119-AA532
+Original Install Date:     4/17/2025, 12:24:38 PM
+System Boot Time:          6/10/2025, 8:29:48 AM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware7,1
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 63 Stepping 2 GenuineIntel ~2494 Mhz
+BIOS Version:              VMware, Inc. VMW71.00V.18227214.B64.2106252220, 6/25/2021
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-06:00) Central Time (US & Canada)
+Total Physical Memory:     4,095 MB
+Available Physical Memory: 2,383 MB
+Virtual Memory: Max Size:  4,799 MB
+Virtual Memory: Available: 2,969 MB
+Virtual Memory: In Use:    1,830 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    ADPDCeTests.lan
+Logon Server:              \\SD-DC2016CUPDCE
+Hotfix(s):                 6 Hotfix(s) Installed.
+                           [01]: KB4049065
+                           [02]: KB4589210
+                           [03]: KB5012170
+                           [04]: KB5023788
+                           [05]: KB5055661
+                           [06]: KB5048671
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) 82574L Gigabit Network Connection
+                                 Connection Name: Ethernet0
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 10.10.15.129
+                                 [02]: fe80::4dd9:9e1b:2270:26a5
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
