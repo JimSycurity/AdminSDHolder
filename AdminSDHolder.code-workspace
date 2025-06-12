@@ -2,6 +2,18 @@
     "folders": [
         {
             "path": "."
+        },
+        {
+            "name": "dMSAs",
+            "path": "../dMSAs"
+        },
+        {
+            "name": "LeastPrivilegeSharpHound",
+            "path": "../LeastPrivilegeSharpHound"
+        },
+        {
+            "name": "DogDoor",
+            "path": "../DogDoor"
         }
     ]
 }
