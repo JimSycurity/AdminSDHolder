@@ -6,7 +6,7 @@ During each step of the test I will capture a baseline without the Create-AdminS
 
 ## Step 1
 
-A domain with a single Windows Server 2012R2 domain controller. It is the PDCe FSMO role holder.
+A domain with a single Windows Server 2012R2 domain controller: SD-DC2012R2PDCeTests. It is the PDCe FSMO role holder.
 
 1. Data is captured from the environment as a baseline:
 
@@ -29,7 +29,7 @@ In hindsight, I should have captured the security descriptor of the domain root,
 
 ## Step 2
 
-An additional Windows Server 2016 domain controller is added to the domain. The Server 2012R2 DC remains the PDCe FSMO role holder.
+An additional Windows Server 2016 domain controller SD-DC2016CUPDCeTests is added to the domain and promoted. The Server 2012R2 DC SD-DC2012R2PDCeTests remains the PDCe FSMO role holder.
 
 The SIDs for Key Admins and Enterprise Key Admins will now exist in security descriptors, such as the domain root, but not resolve to names. This is because the principals do not exist in AD yet. At this point those SIDs in the DACLs are not much different than an orphaned SID. Except the principal hasn't been deleted leaving an orphaned SID. The SID is in an ACE in the DACL but the principal(s) don't exist yet.
 
@@ -53,9 +53,9 @@ The SIDs for Key Admins and Enterprise Key Admins will now exist in security des
 
 ## Step 3
 
-The PDCe FSMO role is transfered from the Server 2012 R2 DC to the Server 2016 DC.
+The PDCe FSMO role is transfered from the Server 2012 R2 DC SD-DC2012R2PDCeTests to the Server 2016 DC SD-DC2016CUPDCeTests.
 
-Key Admins and Enterprise Key Admins names now resolve, but the objects are not protected nor are their members.
+Key Admins and Enterprise Key Admins names now resolve. Key Admins is now protected (after a delay). Enterprise Key Admins is not protected.
 
 1. Delete Subtree OU=AdminSDHolderTests
 2. Transfer the PDCe FSMO Role to SD-DC2016PDCeTests
@@ -86,14 +86,17 @@ Key Admins and Enterprise Key Admins names now resolve, but the objects are not 
 
 **Hypothesis:** I speculate that in Windows Server 2016, Microsoft added both Key Admins and Enterprise Key Admins to the AccountDomainSecureAdminTable. This is appropriate for Key Admins as it is a global security group, but not appropriate for Enterprise Key Admins as it is a universal security group that exists at the AD Forest level, same as Enterprise Admins and Schema Admins. The way I read the code, the processing path would from AccountDomainSecureAdminTable would have resulted in Key Admins being protected (eventually, I'll get to that in a moment), but not Enterprise Key Admins due to the group scope and the way the different structs are handled in the process of sending objects to the global catalog query sets. I also speculate that the change that Microsoft made in Windows Server 2019 and SAC 1804 was the appropriately add Enterprise Key Admins to the step where the SIDs for Enterprise Admins and Schema Admins are gathered and pass the group through the process with that list, while also removing Enterprise Key Admins from the AccountDomainSecureAdminTable. However, I don't have access to Windows source code from this era to validate and I'm not sure how to go about debugging something like that.
 
-As for the delay in Key Admins being protected when a Server 2016 DC is made the PDCe FSMO role holder, I speculate that the updated AccountDomainSecureAdminTable list isn't part of the SAmpProtectAdministratorsList() function until either that PDCe DC is rebooted or the ProtectAdminGroups() task is forced to run manually, which reloads the task.
+As for the delay in Key Admins being protected when a Server 2016 DC is made the PDCe FSMO role holder, I speculate that the updated AccountDomainSecureAdminTable list isn't part of the SampProtectAdministratorsList() function until either that PDCe DC is rebooted or the ProtectAdminGroups() task is forced to run manually, which reloads the task.
 
 ## Step 4
 
-A 3rd Windows Server 2019 domain controller is added to the domain. The Server 2016 DC remains the PDCe FSMO role holder.
+A 3rd Windows Server 2019 domain controller SD-DC2019CUPDCeTests is added to the domain and promoted. The Server 2016 DC SD-DC2016CUPDCeTests remains the PDCe FSMO role holder.
+
+1. Delete Subtree OU=AdminSDHolderTests
+2. Promote SD-DC2019CUPDCeTests to a DC
 
 # Step 5
 
-The PDCe FSMO role is transferred from the Server 2016 DC to the Server 2019 DC.
+The PDCe FSMO role is transferred from the Server 2016 DC SD-DC2016CUPDCeTests to the Server 2019 DC SD-DC2019CUPDCeTests.
 
-Key Admins and Enterprise Key Admins, and their members, are now protected objects.
+Enterprise Key Admins and its members, are now protected objects.
