@@ -94,9 +94,42 @@ A 3rd Windows Server 2019 domain controller SD-DC2019CUPDCeTests is added to the
 
 1. Delete Subtree OU=AdminSDHolderTests
 2. Promote SD-DC2019CUPDCeTests to a DC
+3. Validate that SD-DC2012R2PDCE is still the PDCe FSMO role holder:
+   - FSMORoles.png
+4. Data is captured from the environment as a baseline
+   - AdminSDHolder-SD-2016.txt
+   - Test-AdminSDHolderBaseline.csv
+   - LDP Security Descriptor Dump.txt
+5. Review Domain Root security descriptor: Note that adding the Server 2019 DC removed the errant Enterprise Key Admins Full Control ACE on Domain Root.
+   - DomainRoot2016.png
+   - DomainRoot.txt
+   - DomainRoot2016LDP.png
+6. Create-AdminSDHolderTest.ps1
+   - Create-AdminSDHolderTest.txt
+7. Capture data post test:
+   - Test-AdminSDHolderPostTest.csv
+
+The primary change in introducing a 2019 DC, but not yet moving the PDCe FSMO role to it is that the errant Enterprise Key Admins Full Control ACE granted on Domain Root is removed by ADPrep. Enterprise Key Admins is still not a protected object.
 
 # Step 5
 
 The PDCe FSMO role is transferred from the Server 2016 DC SD-DC2016CUPDCeTests to the Server 2019 DC SD-DC2019CUPDCeTests.
 
 Enterprise Key Admins and its members, are now protected objects.
+
+1. Delete Subtree OU=AdminSDHolderTests
+2. Transfer the PDCe FSMO Role to SD-DC2016PDCeTests
+   - TransferPDCeRole.png
+3. Review Domain Root security descriptor:
+   - DomainRoot.txt
+   - DomainRoot2019.png
+   - DomainRoot2019LDP.png
+4. Data is captured from the environment as a baseline: Note that at the time of the baseline capture Enterprise Key Admins is still not protected.
+   - AdminSDHolder-SD-2019.txt
+   - Test-AdminSDHolderBaseline.csv
+   - LDP Security Descriptor Dump.txt
+5. Wait for X days to see if Enterprise Key Admins becomes protected.
+   x. Create-AdminSDHolderTest.ps1
+   - Create-AdminSDHolderTest.txt
+
+Observation: At the time of the baseline capture, Enterprise Key Admins was still not protected. Instead of forcing the ProtectAdminGroups task during Create-AdminSDHolderTest.ps1, I waited for several cycles of ProtectAdminGroups to occur to monitor results and see if it would be protected. If this doesn't work, I'll reboot SD-DC2016CUPDCeTests to see if this would cause the protection to occur.
