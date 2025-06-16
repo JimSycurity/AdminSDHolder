@@ -128,8 +128,10 @@ Enterprise Key Admins and its members, are now protected objects.
    - AdminSDHolder-SD-2019.txt
    - Test-AdminSDHolderBaseline.csv
    - LDP Security Descriptor Dump.txt
-5. Wait for X days to see if Enterprise Key Admins becomes protected.
-   x. Create-AdminSDHolderTest.ps1
+5. Wait for 4 days to see if Enterprise Key Admins becomes protected: Yes, it did.
+6. Create-AdminSDHolderTest.ps1
    - Create-AdminSDHolderTest.txt
+7. Capture data post test:
+   - Test-AdminSDHolderPostTest.csv
 
-Observation: At the time of the baseline capture, Enterprise Key Admins was still not protected. Instead of forcing the ProtectAdminGroups task during Create-AdminSDHolderTest.ps1, I waited for several cycles of ProtectAdminGroups to occur to monitor results and see if it would be protected. If this doesn't work, I'll reboot SD-DC2016CUPDCeTests to see if this would cause the protection to occur.
+Observation: At the time of the baseline capture, Enterprise Key Admins was still not protected. Instead of forcing the ProtectAdminGroups task during Create-AdminSDHolderTest.ps1, I waited for several cycles of ProtectAdminGroups to occur to monitor results and see if it would be protected. After a 4 day vacation, I came back to my lab and Enterprise Key Admins was now a protected object.
