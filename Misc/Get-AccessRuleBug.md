@@ -18,11 +18,7 @@ However, none of the BUILTIN\Pre-Windows 2000 Compatible Access ACEs in the GetA
 
 The errant ACEs have been highlighted in **bold** font.
 
-Path Owner Access
-
----
-
-     AD2025\Domain Admins NT AUTHORITY\Authenticated Users Allow  …
+```
 
 O:DA
 G:DA
@@ -329,3 +325,5 @@ IdentityReference : AD2025\Cert Publishers
 IsInherited : False
 InheritanceFlags : None
 PropagationFlags : None
+
+```
