@@ -87,7 +87,7 @@ $allSecurityPrincipals = foreach ($domain in $forest.Domains) {
 
     # Collect all security principals in the domain
     $customParametersB = @{
-        LDAPFilter  = "(|(objectClass=group)(objectClass=user))"
+        LDAPFilter  = "(|(objectClass=group)(objectClass=user)(objectClass=computer))"
         SearchScope = 'Subtree'
         SearchBase  = $dDistinguishedName
         Server      = $domain

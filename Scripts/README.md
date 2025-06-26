@@ -30,3 +30,11 @@ where inheritence is unfortunately enabled on the AdminSDHolder object.
 
 The output is a CSV file with rows expressing each security principal that was compared and columns providing
 data on each principal, including enough information to determine whether that object is a protected object.
+
+## Find-AdminCountObjects.ps1
+
+This is a function that does what it says it does. It was written by Claude.
+
+## Clear-AdminCount.ps1
+
+This function accepts pipeline input of DistinguishedNames to check if the object has an adminCount of 1, and if so, clear it. This is not intended for production use. One of the key takeaways from my research and whitepaper is that once an object is privileged, it must always be treated as privileged. Do not clear the adminCount in production environments! Also written by Claude.

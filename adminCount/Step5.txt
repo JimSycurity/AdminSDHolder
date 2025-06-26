@@ -1,0 +1,80 @@
+PS C:\Users\Administrator.SD-DC2016CU> Find-AdminCountObjects
+
+
+DistinguishedName : CN=adminCount Test,OU=AdminSDHolderTests,DC=AD2016CU,DC=lan
+Name              : adminCount Test
+SAMAccountName    : adminCount
+ObjectClass       :
+AdminCount        : 1
+
+
+
+PS C:\Users\Administrator.SD-DC2016CU> # Force AdminSDHolder to run manually
+Invoke-Command {
+    $Temp = [io.path]::GetTempFileName()
+    Set-Content -Path $Temp -Value @'
+dn:
+changetype: modify
+add: runProtectAdminGroupsTask
+runProtectAdminGroupsTask: 1
+-
+
+'@
+    ldifde -i -f $Temp
+    Remove-Item -Force $Temp
+} -ComputerName $($domain.PDCEmulator)
+Connecting to "SD-DC2016CU.AD2016CU.lan"
+Logging in as current user using SSPI
+Importing directory from file "C:\Users\Administrator.SD-DC2016CU\AppData\Local\Temp\tmpD3FB.tmp"
+Loading entries1 entry modified successfully.
+
+The command has completed successfully
+..
+
+PS C:\Users\Administrator.SD-DC2016CU> Find-AdminCountObjects
+
+
+DistinguishedName : CN=adminCount Test,OU=AdminSDHolderTests,DC=AD2016CU,DC=lan
+Name              : adminCount Test
+SAMAccountName    : adminCount
+ObjectClass       :
+AdminCount        : 1
+
+
+
+
+PS C:\Users\Administrator.SD-DC2016CU> # Force AdminSDHolder to run manually
+Invoke-Command {
+    $Temp = [io.path]::GetTempFileName()
+    Set-Content -Path $Temp -Value @'
+dn:
+changetype: modify
+add: runProtectAdminGroupsTask
+runProtectAdminGroupsTask: 1
+-
+
+'@
+    ldifde -i -f $Temp
+    Remove-Item -Force $Temp
+} -ComputerName $($domain.PDCEmulator)
+Connecting to "SD-DC2016CU.AD2016CU.lan"
+Logging in as current user using SSPI
+Importing directory from file "C:\Users\Administrator.SD-DC2016CU\AppData\Local\Temp\tmp963.tmp"
+Loading entries1 entry modified successfully.
+
+The command has completed successfully
+..
+
+PS C:\Users\Administrator.SD-DC2016CU> Find-AdminCountObjects
+
+
+DistinguishedName : CN=adminCount Test,OU=AdminSDHolderTests,DC=AD2016CU,DC=lan
+Name              : adminCount Test
+SAMAccountName    : adminCount
+ObjectClass       :
+AdminCount        : 1
+
+
+
+
+PS C:\Users\Administrator.SD-DC2016CU>
