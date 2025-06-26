@@ -18,99 +18,99 @@ However, none of the BUILTIN\Pre-Windows 2000 Compatible Access ACEs in the GetA
 
 The errant ACEs have been highlighted in **bold** font.
 
-O:DA<br/><br/>
-G:DA<br/><br/>
-D:PAI<br/><br/>
-(A;;LCRPLORC;;;AU)<br/><br/>
-(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)<br/><br/>
-(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)<br/><br/>
-(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)<br/><br/>
-(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)<br/><br/>
-(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)<br/><br/>
-(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)<br/><br/>
-(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)<br/><br/>
-(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/><br/>
-(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/><br/>
-(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/><br/>
-(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/><br/>
-(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/><br/>
-(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/><br/>
-(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/><br/>
-(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/><br/>
-(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/><br/>
-(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/><br/>
-(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/><br/>
-(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)<br/><br/>
-(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)<br/><br/>
-(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)<br/><br/>
-(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)<br/><br/>
+O:DA<br/>
+G:DA<br/>
+D:PAI<br/>
+(A;;LCRPLORC;;;AU)<br/>
+(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)<br/>
+(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)<br/>
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)<br/>
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)<br/>
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)<br/>
+(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)<br/>
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)<br/>
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/>
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/>
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/>
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/>
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/>
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/>
+(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/>
+(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/>
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)<br/>
+(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/>
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)<br/>
+(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)<br/>
+(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)<br/>
+(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)<br/>
+(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)<br/>
 
-(A;;LCRPLORC;;;AU)<br/><br/>
-ActiveDirectoryRights : GenericRead<br/><br/>
-InheritanceType : None<br/><br/>
-ObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-ObjectFlags : None<br/><br/>
-AccessControlType : Allow<br/><br/>
-IdentityReference : NT AUTHORITY\Authenticated Users<br/><br/>
-IsInherited : False<br/><br/>
-InheritanceFlags : None<br/><br/>
-PropagationFlags : None<br/><br/>
+(A;;LCRPLORC;;;AU)<br/>
+ActiveDirectoryRights : GenericRead<br/>
+InheritanceType : None<br/>
+ObjectType : 00000000-0000-0000-0000-000000000000<br/>
+InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/>
+ObjectFlags : None<br/>
+AccessControlType : Allow<br/>
+IdentityReference : NT AUTHORITY\Authenticated Users<br/>
+IsInherited : False<br/>
+InheritanceFlags : None<br/>
+PropagationFlags : None<br/>
 
-(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)<br/><br/>
-ActiveDirectoryRights : GenericAll<br/><br/>
-InheritanceType : None<br/><br/>
-ObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-ObjectFlags : None<br/><br/>
-AccessControlType : Allow<br/><br/>
-IdentityReference : NT AUTHORITY\SYSTEM<br/><br/>
-IsInherited : False<br/><br/>
-InheritanceFlags : None<br/><br/>
-PropagationFlags : None<br/><br/>
+(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)<br/>
+ActiveDirectoryRights : GenericAll<br/>
+InheritanceType : None<br/>
+ObjectType : 00000000-0000-0000-0000-000000000000<br/>
+InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/>
+ObjectFlags : None<br/>
+AccessControlType : Allow<br/>
+IdentityReference : NT AUTHORITY\SYSTEM<br/>
+IsInherited : False<br/>
+InheritanceFlags : None<br/>
+PropagationFlags : None<br/>
 
-(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)<br/><br/>
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl,<br/><br/>
-WriteOwner<br/><br/>
-InheritanceType : None<br/><br/>
-ObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-ObjectFlags : None<br/><br/>
-AccessControlType : Allow<br/><br/>
-IdentityReference : BUILTIN\Administrators<br/><br/>
-IsInherited : False<br/><br/>
-InheritanceFlags : None<br/><br/>
-PropagationFlags : None<br/><br/>
+(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)<br/>
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl,<br/>
+WriteOwner<br/>
+InheritanceType : None<br/>
+ObjectType : 00000000-0000-0000-0000-000000000000<br/>
+InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/>
+ObjectFlags : None<br/>
+AccessControlType : Allow<br/>
+IdentityReference : BUILTIN\Administrators<br/>
+IsInherited : False<br/>
+InheritanceFlags : None<br/>
+PropagationFlags : None<br/>
 
-(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)<br/><br/>
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,<br/><br/>
-WriteOwner<br/><br/>
-InheritanceType : None<br/><br/>
-ObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-ObjectFlags : None<br/><br/>
-AccessControlType : Allow<br/><br/>
-IdentityReference : AD2025\Domain Admins<br/><br/>
-IsInherited : False<br/><br/>
-InheritanceFlags : None<br/><br/>
-PropagationFlags : None<br/><br/>
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)<br/>
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,<br/>
+WriteOwner<br/>
+InheritanceType : None<br/>
+ObjectType : 00000000-0000-0000-0000-000000000000<br/>
+InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/>
+ObjectFlags : None<br/>
+AccessControlType : Allow<br/>
+IdentityReference : AD2025\Domain Admins<br/>
+IsInherited : False<br/>
+InheritanceFlags : None<br/>
+PropagationFlags : None<br/>
 
-(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)<br/><br/>
-ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,<br/><br/>
-WriteOwner<br/><br/>
-InheritanceType : None<br/><br/>
-ObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/><br/>
-ObjectFlags : None<br/><br/>
-AccessControlType : Allow<br/><br/>
-IdentityReference : AD2025\Enterprise Admins<br/><br/>
-IsInherited : False<br/><br/>
-InheritanceFlags : None<br/><br/>
-PropagationFlags : None<br/><br/>
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)<br/>
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,<br/>
+WriteOwner<br/>
+InheritanceType : None<br/>
+ObjectType : 00000000-0000-0000-0000-000000000000<br/>
+InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/>
+ObjectFlags : None<br/>
+AccessControlType : Allow<br/>
+IdentityReference : AD2025\Enterprise Admins<br/>
+IsInherited : False<br/>
+InheritanceFlags : None<br/>
+PropagationFlags : None<br/>
 
-(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)<br/><br/>
-ActiveDirectoryRights : ExtendedRight<br/><br/>
-InheritanceType : None<br/><br/>
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)<br/>
+ActiveDirectoryRights : ExtendedRight<br/>
+InheritanceType : None<br/>
 ObjectType : ab721a53-1e2f-11d0-9819-00aa0040529b<br/>
 InheritedObjectType : 00000000-0000-0000-0000-000000000000<br/>
 ObjectFlags : ObjectAceTypePresent<br/>
