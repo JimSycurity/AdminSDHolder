@@ -1,0 +1,1159 @@
+**********************
+PowerShell transcript start
+Start time: 20250626143655
+Username: AD2025\Administrator
+RunAs User: AD2025\Administrator
+Configuration Name:
+Machine: SD-DC2025 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll
+Process ID: 3224
+PSVersion: 7.5.2
+PSEdition: Core
+GitCommitId: 7.5.2
+OS: Microsoft Windows 10.0.26100
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Transcript started, output file is C:\Scripts\AdminSDHolderData-SD-DC2025-20250626141848.txt
+PS AD:\> $rootDSE = [adsi]"LDAP://rootdse"
+PS AD:\> $defaultNC = $rootDSE.defaultNamingContext
+PS AD:\> $AdminSDHolderDN = "CN=AdminSDHolder,CN=System,$defaultNC"
+PS AD:\> $AdminSDHolderDE = [adsi]"LDAP://$AdminSDHolderDN"
+PS AD:\> $AdminSDHolderDE
+
+distinguishedName : {CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan}
+Path              : LDAP://CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan
+
+PS AD:\> $AdminSDHolderDE.ObjectSecurity
+
+Path Owner                Access
+---- -----                ------
+     AD2025\Domain Admins NT AUTHORITY\Authenticated Users Allow  …
+
+PS AD:\> $AdminSDHolderDE.ObjectSecurity.Sddl
+O:DAG:DAD:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
+PS AD:\> $AdminSDHolderDE.ObjectSecurity.Access
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\Authenticated Users
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericAll
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SYSTEM
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Administrators
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2025\Domain Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2025\Enterprise Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : Everyone
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty, ExtendedRight
+InheritanceType       : All
+ObjectType            : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : ContainerInherit
+PropagationFlags      : None
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Windows Authorization Access Group
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 6db69a1c-9422-11d1-aebd-0000f80367c1
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : bf967a7f-0de6-11d0-a285-00aa003049e2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : AD2025\Cert Publishers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+PS AD:\> $AdminSDHolderDE.ObjectSecurity.GetAccessRules($true, $true, [System.Security.Principal.SecurityIdentifier])
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : S-1-5-11
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericAll
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : S-1-5-18
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-544
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : S-1-5-21-1753113456-3794003277-551465778-512
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : S-1-5-21-1753113456-3794003277-551465778-519
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-1-0
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty, ExtendedRight
+InheritanceType       : All
+ObjectType            : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-10
+IsInherited           : False
+InheritanceFlags      : ContainerInherit
+PropagationFlags      : None
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-10
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-554
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-560
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 6db69a1c-9422-11d1-aebd-0000f80367c1
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-561
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-32-561
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : bf967a7f-0de6-11d0-a285-00aa003049e2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : S-1-5-21-1753113456-3794003277-551465778-517
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+PS AD:\> $PSVersionTable
+
+Name                           Value
+----                           -----
+PSVersion                      7.5.2
+PSEdition                      Core
+GitCommitId                    7.5.2
+OS                             Microsoft Windows 10.0.26100
+Platform                       Win32NT
+PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
+PSRemotingProtocolVersion      2.3
+SerializationVersion           1.1.0.1
+WSManStackVersion              3.0
+
+PS AD:\> Get-Host
+
+Name             : ConsoleHost
+Version          : 7.5.2
+InstanceId       : b10baea2-b728-4149-9291-6bc1889185f7
+UI               : System.Management.Automation.Internal.Host.InternalHostUserInterface
+CurrentCulture   : en-US
+CurrentUICulture : en-US
+PrivateData      : Microsoft.PowerShell.ConsoleHost+ConsoleColorProxy
+DebuggerEnabled  : True
+IsRunspacePushed : False
+Runspace         : System.Management.Automation.Runspaces.LocalRunspace
+
+PS AD:\> [Environment]::OSVersion.Platform
+Win32NT
+PS AD:\> [Environment]::OSVersion.Version
+
+Major  Minor  Build  Revision
+-----  -----  -----  --------
+10     0      26100  0
+
+PS AD:\> [Environment]::OSVersion.ServicePack
+
+PS AD:\> [Environment]::OSVersion.VersionString
+Microsoft Windows NT 10.0.26100.0
+PS AD:\> $acl = Get-Acl $adminSDHolderDN
+PS AD:\> $acl
+
+Path                                                                                                        Owner
+----                                                                                                        -----
+Microsoft.ActiveDirectory.Management\ActiveDirectory:://RootDSE/CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan AD2025\Dom…
+
+PS AD:\> $acl.gettype()
+
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     False    ActiveDirectorySecurity                  System.Security.AccessControl.DirectoryObjectSecurity
+
+PS AD:\> $adminSDHolderDE.ObjectSecurity.GetType()
+
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     False    ActiveDirectorySecurity                  System.Security.AccessControl.DirectoryObjectSecurity
+
+PS AD:\> $acl.sddl
+O:DAG:DAD:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
+PS AD:\> $acl.access
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\Authenticated Users
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericAll
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SYSTEM
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Administrators
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2025\Domain Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : CreateChild, DeleteChild, Self, WriteProperty, ExtendedRight, GenericRead, WriteDacl,
+                        WriteOwner
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : AD2025\Enterprise Admins
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : Everyone
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty, ExtendedRight
+InheritanceType       : All
+ObjectType            : 91e647de-d96f-4b70-9557-d63ff4f3ccd8
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : ContainerInherit
+PropagationFlags      : None
+
+ActiveDirectoryRights : ExtendedRight
+InheritanceType       : None
+ObjectType            : ab721a53-1e2f-11d0-9819-00aa0040529b
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : NT AUTHORITY\SELF
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 037088f8-0ae1-11d2-b422-00a0c968f939
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : bc0ac240-79a9-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : GenericRead
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 59ba2f42-79a2-11d0-9020-00c04fc2d3cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 5f202010-79a5-11d0-9020-00c04fc2d4cf
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Pre-Windows 2000 Compatible Access
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty
+InheritanceType       : None
+ObjectType            : 46a9b11d-60ae-405a-b7e8-ff8a58d456d2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Windows Authorization Access Group
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 6db69a1c-9422-11d1-aebd-0000f80367c1
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : 5805bc62-bdc9-4428-a5e2-856a0f4c185e
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : BUILTIN\Terminal Server License Servers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+ActiveDirectoryRights : ReadProperty, WriteProperty
+InheritanceType       : None
+ObjectType            : bf967a7f-0de6-11d0-a285-00aa003049e2
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : ObjectAceTypePresent
+AccessControlType     : Allow
+IdentityReference     : AD2025\Cert Publishers
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+
+PS AD:\> Import-Module NTObjectManager
+PS AD:\> $AdminSDHolderNTSD = $AdminSDHolderSD | ConvertTo-NtSecurityDescriptor
+PS AD:\> $AdminSDHolderNTSD.gettype()
+
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+True     False    SecurityDescriptor                       System.Object
+
+PS AD:\> $AdminSDHolderNTSD
+
+Owner                DACL ACE Count SACL ACE Count Integrity Level
+-----                -------------- -------------- ---------------
+AD2025\Domain Admins 23             NONE           NONE
+
+PS AD:\> $AdminSDHolderNTSD.ToSDDL() -split "(?=O:)|(?=G:)|(?=D:)|(?=S:)|(?=\()"
+
+O:DA
+G:DA
+D:PAI
+(A;;LCRPLORC;;;AU)
+(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)
+(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)
+(A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1753113456-3794003277-551465778-519)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)
+(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)
+(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)
+(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)
+(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58d456d2;;S-1-5-32-560)
+(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)
+(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)
+(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)
+PS AD:\> Format-Win32SecurityDescriptor -Name $AdminSDHolderDN -Type DsAll -ShowAll -ResolveObjectType
+Path: CN=AdminSDHolder,CN=System,DC=AD2025,DC=lan
+Type: DirectoryService
+Control: DaclPresent, DaclAutoInherited, DaclProtected
+
+<Owner>
+ - Name  : AD2025\Domain Admins
+ - Sid   : S-1-5-21-1753113456-3794003277-551465778-512
+
+<Group>
+ - Name  : AD2025\Domain Admins
+ - Sid   : S-1-5-21-1753113456-3794003277-551465778-512
+
+<DACL> (Protected, Auto Inherited)
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: User-Account-Restrictions
+ - InheritedObjectType: inetOrgPerson
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: User-Account-Restrictions
+ - InheritedObjectType: User
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: User-Logon
+ - InheritedObjectType: inetOrgPerson
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: User-Logon
+ - InheritedObjectType: User
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: Membership
+ - InheritedObjectType: inetOrgPerson
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: Membership
+ - InheritedObjectType: User
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: General-Information
+ - InheritedObjectType: inetOrgPerson
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: General-Information
+ - InheritedObjectType: User
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: RAS-Information
+ - InheritedObjectType: inetOrgPerson
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: RAS-Information
+ - InheritedObjectType: User
+
+ - Type  : AllowedObject
+ - Name  : AD2025\Cert Publishers
+ - SID   : S-1-5-21-1753113456-3794003277-551465778-517
+ - Mask  : 0x00000030
+ - Access: ReadProp|WriteProp
+ - Flags : None
+ - ObjectType: X509-Cert
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Windows Authorization Access Group
+ - SID   : S-1-5-32-560
+ - Mask  : 0x00000010
+ - Access: ReadProp
+ - Flags : None
+ - ObjectType: Token-Groups-Global-And-Universal
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Terminal Server License Servers
+ - SID   : S-1-5-32-561
+ - Mask  : 0x00000030
+ - Access: ReadProp|WriteProp
+ - Flags : None
+ - ObjectType: Terminal-Server
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Terminal Server License Servers
+ - SID   : S-1-5-32-561
+ - Mask  : 0x00000030
+ - Access: ReadProp|WriteProp
+ - Flags : None
+ - ObjectType: Terminal-Server-License-Server
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00020094
+ - Access: List|ReadProp|ListObject|ReadControl
+ - Flags : None
+ - InheritedObjectType: inetOrgPerson
+
+ - Type  : AllowedObject
+ - Name  : BUILTIN\Pre-Windows 2000 Compatible Access
+ - SID   : S-1-5-32-554
+ - Mask  : 0x00020094
+ - Access: List|ReadProp|ListObject|ReadControl
+ - Flags : None
+ - InheritedObjectType: User
+
+ - Type  : AllowedObject
+ - Name  : Everyone
+ - SID   : S-1-1-0
+ - Mask  : 0x00000100
+ - Access: ControlAccess
+ - Flags : None
+ - ObjectType: User-Change-Password
+
+ - Type  : AllowedObject
+ - Name  : NT AUTHORITY\SELF
+ - SID   : S-1-5-10
+ - Mask  : 0x00000100
+ - Access: ControlAccess
+ - Flags : None
+ - ObjectType: User-Change-Password
+
+ - Type  : AllowedObject
+ - Name  : NT AUTHORITY\SELF
+ - SID   : S-1-5-10
+ - Mask  : 0x00000130
+ - Access: ReadProp|WriteProp|ControlAccess
+ - Flags : ContainerInherit
+ - ObjectType: Private-Information
+
+ - Type  : Allowed
+ - Name  : AD2025\Domain Admins
+ - SID   : S-1-5-21-1753113456-3794003277-551465778-512
+ - Mask  : 0x000E01BF
+ - Access: CreateChild|DeleteChild|List|Self|ReadProp|WriteProp|ListObject|ControlAccess|ReadControl|WriteDac|WriteOwner
+ - Flags : None
+
+ - Type  : Allowed
+ - Name  : AD2025\Enterprise Admins
+ - SID   : S-1-5-21-1753113456-3794003277-551465778-519
+ - Mask  : 0x000E01BF
+ - Access: CreateChild|DeleteChild|List|Self|ReadProp|WriteProp|ListObject|ControlAccess|ReadControl|WriteDac|WriteOwner
+ - Flags : None
+
+ - Type  : Allowed
+ - Name  : BUILTIN\Administrators
+ - SID   : S-1-5-32-544
+ - Mask  : 0x000F01BF
+ - Access: CreateChild|DeleteChild|List|Self|ReadProp|WriteProp|ListObject|ControlAccess|Delete|ReadControl|WriteDac|WriteOwner
+ - Flags : None
+
+ - Type  : Allowed
+ - Name  : NT AUTHORITY\Authenticated Users
+ - SID   : S-1-5-11
+ - Mask  : 0x00020094
+ - Access: List|ReadProp|ListObject|ReadControl
+ - Flags : None
+
+ - Type  : Allowed
+ - Name  : NT AUTHORITY\SYSTEM
+ - SID   : S-1-5-18
+ - Mask  : 0x000F01FF
+ - Access: Full Access
+ - Flags : None
+
+PS AD:\> $cls = Get-DsObjectSchemaClass -DistinguishedName $AdminSDHolderDN
+PS AD:\> Search-Win32SecurityDescriptor -Name $AdminSDHolderDN -Type Ds -ObjectType $cls.SchemaID
+
+Name Depth User                                       Access
+---- ----- ----                                       ------
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access ReadProp
+     0     AD2025\Cert Publishers                     ReadProp|WriteProp
+     0     BUILTIN\Windows Authorization Access Group ReadProp
+     0     BUILTIN\Terminal Server License Servers    ReadProp|WriteProp
+     0     BUILTIN\Terminal Server License Servers    ReadProp|WriteProp
+     0     BUILTIN\Pre-Windows 2000 Compatible Access GenericRead
+     0     BUILTIN\Pre-Windows 2000 Compatible Access GenericRead
+     0     Everyone                                   ControlAccess
+     0     NT AUTHORITY\SELF                          ControlAccess
+     0     NT AUTHORITY\SELF                          ReadProp|WriteProp|ControlAccess
+     0     AD2025\Domain Admins                       CreateChild|DeleteChild|ControlAccess|WriteDac|WriteOwner|Generi…
+     0     AD2025\Enterprise Admins                   CreateChild|DeleteChild|ControlAccess|WriteDac|WriteOwner|Generi…
+     0     BUILTIN\Administrators                     CreateChild|DeleteChild|ControlAccess|Delete|WriteDac|WriteOwner…
+     0     NT AUTHORITY\Authenticated Users           GenericRead
+     0     NT AUTHORITY\SYSTEM                        GenericAll
+
+PS AD:\> Stop-Transcript
+**********************
+PowerShell transcript end
+End time: 20250626144412
+**********************

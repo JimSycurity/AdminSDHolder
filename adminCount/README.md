@@ -64,4 +64,9 @@ After forcing the ProtectAdminGroups task to run, the Domain Admins group now ha
 Now to kick off ProtectAdminGroups and check the results: - All principals are now protected by AdminSDHolder again, and each one of them, except the adminCount imposter user will now have a protected SACL:
 ![Local Image](AdminCount-BackTo91.png)
 
-    ![Local Image](DomainAdmin-SACLBackToAdminSDHolder.png)
+![Local Image](DomainAdmin-SACLBackToAdminSDHolder.png)
+
+With the Test-AdminCountStep8.csv/xlsx we see that the count of protected objects is back to 90 and the adminCount objects is 91.
+
+9. I've been wanting to test one more thing: What happens if you delete the AdminSDHolder object. To test this I'm going to set everything back to not having an adminCount. The security descriptor for AdminSDHolder has been modified by changing the SD Controls. It's my current understanding that if you delete the AdminSDHolder object it will be recreated by the next reboot of the PDCe. And also, I'm curious what happens if ProtectAdminGroups is run while AdminSDHolder doesn't exist. This will likely be highly disruptive to this AD forest and I'm only doing this in a lab. The first challenge with this test is that the AdminSDHolder object has systemFlags which prevent it from being deleted:
+   ![Local Image](AdminSDHolderProperties.png)
