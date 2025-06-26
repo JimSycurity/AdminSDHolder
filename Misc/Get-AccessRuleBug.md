@@ -18,9 +18,7 @@ However, none of the BUILTIN\Pre-Windows 2000 Compatible Access ACEs in the GetA
 
 The errant ACEs have been highlighted in **bold** font.
 
-```
-
-O:DA
+O:DA<br/>
 G:DA
 D:PAI
 (A;;LCRPLORC;;;AU)
@@ -325,5 +323,3 @@ IdentityReference : AD2025\Cert Publishers
 IsInherited : False
 InheritanceFlags : None
 PropagationFlags : None
-
-```
