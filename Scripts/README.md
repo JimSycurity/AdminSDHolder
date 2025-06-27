@@ -23,13 +23,15 @@ This script is a POC to show that if an object already has an exact match of the
 
 ## Test-AdminSDHolder.ps1
 
-The purpose of this script is to collect data about the AdminSDHolder for each domain in the forest and '
+The purpose of this script is to collect data about the AdminSDHolder for each domain in the forest and
 then compare all security principals in each domain in the forest to that AdminSDHolder, looking for either
 an exact SD match or a match based on implicit ACEs and other characteristics to account for instances
 where inheritence is unfortunately enabled on the AdminSDHolder object.
 
 The output is a CSV file with rows expressing each security principal that was compared and columns providing
 data on each principal, including enough information to determine whether that object is a protected object.
+
+_Note: I made an error in earlier versions of this script which caused computer objects and managed service accounts to not be collected. I've since fixed the script and will eventually go back and run captures again with the correct version. This error on my part does not, in my opinion, affect the integrity of the experiments or data collection as the results for security descriptor matches will be the same across object types._
 
 ## Find-AdminCountObjects.ps1
 
