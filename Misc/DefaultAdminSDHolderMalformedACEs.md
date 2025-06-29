@@ -76,6 +76,10 @@ $sd.Sddl
 This results in an empty InheritedObjectType in both the GetAccessRules() method and when viewd by SDDL:
 ![Local Image](SDWithIOTACE.png)
 
+System.DirectoryServices.ActiveDirectorySecurity and System.DirectoryServices.ActiveDirectoryAccessRule are applying constraints to this malformed ACE. And while they are not causing the attempt to error out, they are preventing the error of attempting to supply an InheritedObjectType when there are no inheritance flags configured.
+
+### Testing Security Descriptors from SDDL
+
 Then I thought I'd take a different approach and try to create a new instance of an AD security descriptor with multiple ACEs, each having InheritedObjectTypes. What I did is modify the SDDL for the [Schema Update 44](../SchemaAndDomainDefaults/AdminSDHolderDefaults/Schema44SD.png) AdminSDHolder security descriptor to remove all ACEs that are not for Pre-Win2k (RU):
 
 ```PowerShell
@@ -106,7 +110,9 @@ $sddlsd.Access
 Interestingly enough, adding another ACE does not reset the security descriptor like it does when modifying the actual AdminSDHolder security descriptor in an AD domain:
 ![Local Image](SdfromSDDLACEAdded.png)
 
-### Tests with TestContainer4
+This does make sense as modifications made by setting a security descriptor via SDDL will not apply the same constraints (or API) as when individual ActiveDirectoryAccessRules are added to make an ActiveDirectorySecurity object.
+
+### More SDDL Tests with TestContainer4
 
 Could we apply this security to an AD object? Would AD's additional constraints on security descriptors apply when comitting the data? Let's create an example object and try. In the $sddl2 string below I've taken the Pre-Win2k ACEs that have both an ObjectType and InheritedObjectType and combined them with the default Owner, Group, and SD Flags of the AdminSDHolder default security descriptor. I've also added an additional ACE allowing Domain Admins GenericRead, CreateChild, and DeleteChild.
 
@@ -123,6 +129,10 @@ Here's the security descriptor of TestContainer4 in ADUC Advanced. Note how ADUC
 
 Here's the security descriptor of TestContainer4 in LDP as both an image and [text dump](./2019/LDP-TestContainer4-Baseline.txt). Note that each Pre-Win2k ACE has "Flags" that correspond to the InheritedObjectType specified in each ACE. These are allowed by AD as I set the entire security descriptor at once via SDDL. Once I modify the security descriptor's DACL, the ACEs will be normalized.
 ![Local Image](./2019/LDP-TestContainer4-Baseline.png)
+
+We now know that creating an ActiveDirectorySecurity object from SDDL and applying it to an instance of an AD Object does not apply ACE constraints. Now we can try to figure out the exact security descriptor modification that triggers the results I noted earlier in the AdminSDHolder object in the ADPDCeTests.lan forest.
+
+### Testing TestContainer4 Modifications
 
 To test whether the constraints apply when I modify the security descriptor, the ACL, or specifically the DACL, I'll start by modifying the Group in the security descriptor of TestContainer4:
 ![Local Image](./2019/LDP-TestContainer4-ModifyGroup.png)
@@ -145,6 +155,9 @@ Nope! The SACL change in ADUC didn't modify the ACEs. I guess that makes sense. 
 That did it! Look at the difference between this screenshot and the previous screenshot. There are no more flags now on any ACE in the DACL. All of the Pre-Win2k ACEs lost their InheritedObjectType. This is the same behavior that I'm seeing when a default AdminSDHolder security descriptor is modified in ADUC, with the exception that multiple ReadProperty ACEs with specific ObjectTypes are consolidated in with the ReadProperty without any ObjectType ACE. The security descriptor APIs used by Active Directory Users and Computers enforce appropriate ACE constraints any time the DACL is committed. I've also uploaded an [LDP text dump of the security descriptor](./2019/LDP-TestContainer4-PostTests.txt) of TestContainer4 after I made the 3 changes in LDP and the 3 changes in ADUC, where the modification of the DACL in ADUC caused all ACEs to have constraints applied.
 
 ## Incorrect First Observations
+
+> [!NOTE]
+> I originally made some incorrect and mostly incomplete observations when first digging into the issue of these Pre-Win2k ACEs in the default AdminSDHolder security descriptor. I'm an imperfect being who makes a lot of mistakes. Mistakes are normal and part of the learning process. So I choose to leave some of my mistakes in my work to show how I went wrong and how I resolved the issue.
 
 In the GetAccessRules() method of the [System.Security.AccessControl.DirectoryObjectSecurity](https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.directoryobjectsecurity?view=net-9.0)
 class, which results in an [AuthorizationRuleCollection](https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.authorizationrulecollection?view=net-9.0) of [ActiveDirectoryAccessRule](https://learn.microsoft.com/en-us/dotnet/api/system.directoryservices.activedirectoryaccessrule?view=windowsdesktop-9.0) objects, there appears to be a bug in the display of InheritedObjectType property. It always displays an empty guid (00000000-0000-0000-0000-000000000000) instead of the actual value. I first noticed this when reviewing output of type [System.Security.AccessControl.ActiveDirectorySecurity](https://learn.microsoft.com/en-us/dotnet/api/system.directoryservices.activedirectorysecurity?view=windowsdesktop-9.0) across the various AdminSDHolder data collections.
