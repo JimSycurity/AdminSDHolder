@@ -14,7 +14,7 @@ IsInherited : False<br/>
 InheritanceFlags : None<br/>
 PropagationFlags : None<br/>
 
-### Introduction to Malformed Pre-Win2k ACEs in AdminSDHolder
+## Malformed Pre-Win2k ACEs in AdminSDHolder
 
 The example ACE in SDDL is an ObjectAllow grant for the Pre-Windows 2000 Compatible Access (Pre-Win2k) group to ReadProperty on the property set Remote Access Information (ObjectType 037088f8-0ae1-11d2-b422-00a0c968f939) on inetOrgPerson objects (InheritedObjectType 4828cc14-1437-45bc-9b07-ad6f015e5f28). The ActiveDirectoryAccessRule in the example shows the same information, except for the InheritedObjectType, which is an empty guid. When I orignally looked at this, I thought that the empty guid of all zeros was an error. However, with the way the security descriptors are supplied to Windows by the Schema in SDDL format, these Pre-Windows 2000 Compatible Access ACEs with an InheritedObjectType are not properly formed. When they are set by the SYSTEM directly there are no constraints applied, so even if incorrect, they are still applied. If and when any Windows APIs modify the security descriptor, the malformed ACEs are removed.
 
@@ -167,6 +167,9 @@ This behavior occurs accross Active Directory domain controllers from Windows Se
 The GetAccessRules() method on [System.Security.AccessControl.ActiveDirectorySecurity] is inherited from the parent class [System.Security.AccessControl.DirectoryObjectSecurity]. Regardless of whether the 'Access' CodeProperty or the GetAccessRules() method are called, the results in each ActiveDirectoryAccessRule are the same. It should go without saying, as they both result in an instance of the same object class, but the results are the same when accessing the DACL of an AD object via pure .NET methods or via Get-ACL.
 
 I've uploaded a [transcript](GetAccessRuleTranscript.txt) of PowerShell output confirming the bug. The transcript also demonstrates that James Forshaw's NTObjectManager module properly parses and displays the InheritedObjectType via the Format-Win32SecurityDescriptor function.
+
+> [!NOTE] Finding the Correct Path
+> While testing this I had blinders on or had developed tunnel vision only for AdminSDHolder. I confirmed the behavior on AdminSDHolder and AdminSDHolder across multiple forest with multiple DCs of various Windows OSes and saw the same behavior. But I wasn't looking at a broad enough sample of objects. Once I looked at some other objects and ensured I had objects with properly configured ACEs with InheritedObjectType guids and the correct corresponding Inheritance Flags I knew I had a case of tunnel vision. I started looking more broadly and realized the issue was not with how .NET was displaying these ACEs, but rather how these ACEs were formed in the first place: they were created by the system during DC promo using SDDL formatted security descriptors that are part of the AD schema updates.
 
 ## Default Security Descriptor Data
 
