@@ -85,6 +85,42 @@ $sddlsd.Access
 Interestingly enough, adding another ACE does not reset the security descriptor like it does when modifying the actual AdminSDHolder security descriptor in an AD domain:
 ![Local Image](SdfromSDDLACEAdded.png)
 
+Could we apply this security to an AD object? Would AD's additional constraints on security descriptors apply when comitting the data? Let's create an example object and try. In the $sddl2 string below I've taken the Pre2k ACEs that have both an ObjectType and InheritedObjectType and combined them with the default Owner, Group, and SD Flags of the AdminSDHolder default security descriptor. I've also added an additional ACE allowing Domain Admins GenericRead, CreateChild, and DeleteChild.
+
+```PowerShell
+$sddl2 = 'O:DAG:DAD:PAI(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(A;;RPRCLOLCCCDC;;;DA)'
+New-ADContainer -ContainerName 'TestContainer4' -ParentPath 'OU=Misconfigs,DC=AD2019,DC=lan' -SDDL $sddl2
+```
+
+Here's the command output showing the SDDL applied:
+![Local Image](./2019/New-ADContainer-TestContainer4.png)
+
+Here's the security descriptor of TestContainer4 in ADUC Advanced. Note how ADUC cannot properly describe this security descriptor.
+![Local Image](./2019/ADUC-TestContainer4-Baseline.png)
+
+Here's the security descriptor of TestContainer4 in LDP as both an image and [text dump](./2019/LDP-TestContainer4-Baseline.txt). Note that each Pre2k ACE has "Flags" that correspond to the InheritedObjectType specified in each ACE. These are allowed by AD as I set the entire security descriptor at once via SDDL. Once I modify the security descriptor's DACL, the ACEs will be normalized.
+![Local Image](./2019/LDP-TestContainer4-Baseline.png)
+
+To test whether the constraints apply when I modify the security descriptor, the ACL, or specifically the DACL, I'll start by modifying the Group in the security descriptor of TestContainer4:
+![Local Image](./2019/LDP-TestContainer4-ModifyGroup.png)
+
+Modifying the security descriptor by changing the group did not cause AD to apply constraints to the ACEs. How about if we modify the ACL by adding a SACL ACE entry?
+![Local Image](./2019/LDP-TestContainer4-ModifySACL.png)
+
+Modifying the SACL didn't cause AD to apply constraints to the ACEs. So I'll modify the DACL now by changing the Domain Admins ACE from GenericRead, CreateChild, DeleteChild to GenericAll:
+![Local Image](./2019/LDP-TestContainer4-ModifyDACL.png)
+
+That didn't change anything either. So it's not AD itself that is applying constraints to the ACEs as I'm seeing in other domains. Perhaps it is specific security descriptor APIs, like those used in ADUC? I'll change the Owner Administrator in the ADUC SD advanced settings and then view the SD in LDP:
+![Local Image](./2019/LDP-TestContainer4-ModifyOwnerADUC.png)
+
+That didn't change the ACEs. I'll modify the SACL this time in ADUC SD advanced settings by removing the Domain Admins audit ACE and then view the security descriptor in LDP:
+![Local Image](./2019/LDP-TestContainer4-ModifySACLADUC.png)
+
+Nope! The SACL change in ADUC didn't modify the ACEs. I guess that makes sense. Now we'll modify the DACL by changing the Domain Admins ACE back to GenericRead, CreateChild, DeleteChild from GenericAll. Or at least as close to that as we can easily do in ADUC, and then view the security descriptor in LDP:
+![Local Image](./2019/LDP-TestContainer4-ModifyDACLADUC.png)
+
+That did it! Look at the difference between this screenshot and the previous screenshot. There are no more flags now on any ACE in the DACL. All of the Pre2k ACEs lost their InheritedObjectType. This is the same behavior that I'm seeing when a default AdminSDHolder security descriptor is modified in ADUC, with the exception that multiple ReadProperty ACEs with specific ObjectTypes are consolidated in with the ReadProperty without any ObjectType ACE. The security descriptor APIs used by Active Directory Users and Computers enforce appropriate ACE constraints any time the DACL is committed. I've also uploaded an [LDP text dump of the security descriptor](./2019/LDP-TestContainer4-PostTests.txt) of TestContainer4 after I made the 3 changes in LDP and the 3 changes in ADUC, where the modification of the DACL in ADUC caused all ACEs to have constraints applied.
+
 ## Incorrect First Observations
 
 In the GetAccessRules() method of the [System.Security.AccessControl.DirectoryObjectSecurity](https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.directoryobjectsecurity?view=net-9.0)

@@ -40,3 +40,11 @@ This is a function that does what it says it does. It was written by Claude.
 ## Clear-AdminCount.ps1
 
 This function accepts pipeline input of DistinguishedNames to check if the object has an adminCount of 1, and if so, clear it. This is not intended for production use. One of the key takeaways from my research and whitepaper is that once an object is privileged, it must always be treated as privileged. Do not clear the adminCount in production environments! Also written by Claude.
+
+## New-ADContainer.ps1
+
+A Claude-written function to create an AD Container (same object class as AdminSDHolder object) in a specified parent path and with a specified security descriptor as provided by SDDL. Used primarily for tests in the \Misc\2019 directory.
+
+## New-ADUserWithAdminSDSecurity.ps1
+
+Another Claude-written function to create an AD User (or InetOrgPerson) in a specified path with the same security descriptor as the AdminsDHolder object in that domain. Primarily used for tests in the \Misc\ directory.
