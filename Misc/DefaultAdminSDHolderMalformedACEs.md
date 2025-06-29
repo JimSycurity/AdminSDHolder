@@ -14,6 +14,8 @@ IsInherited : False<br/>
 InheritanceFlags : None<br/>
 PropagationFlags : None<br/>
 
+### Introduction to Malformed Pre-Win2k ACEs in AdminSDHolder
+
 The example ACE in SDDL is an ObjectAllow grant for the Pre-Windows 2000 Compatible Access (Pre-Win2k) group to ReadProperty on the property set Remote Access Information (ObjectType 037088f8-0ae1-11d2-b422-00a0c968f939) on inetOrgPerson objects (InheritedObjectType 4828cc14-1437-45bc-9b07-ad6f015e5f28). The ActiveDirectoryAccessRule in the example shows the same information, except for the InheritedObjectType, which is an empty guid. When I orignally looked at this, I thought that the empty guid of all zeros was an error. However, with the way the security descriptors are supplied to Windows by the Schema in SDDL format, these Pre-Windows 2000 Compatible Access ACEs with an InheritedObjectType are not properly formed. When they are set by the SYSTEM directly there are no constraints applied, so even if incorrect, they are still applied. If and when any Windows APIs modify the security descriptor, the malformed ACEs are removed.
 
 The intent of this ACE appears to be allow members of Pre-Win2k to read all of the properties in the Remote Access Information property set on descendant inetOrgPerson objects. However, while AdminSDHolder is a container that could theoretically have descendant child objects, it doesn't. And the objects AdminSDHolder protects are those object instances, not descendant objects of AdminSDHolder. They're descendants of whichever OU or container they are placed in. And while objects that AdminSDHolder protects could have child objects, that's not the norm and the majority of the ACEs in the default AdminSDHolder DACL do not have inheritance or propagation flags which would allow them to be inherited by child objects.
@@ -24,6 +26,25 @@ In any default AdminSDHolder security descriptor there are multiple ObjectAllow 
 ![Local Image](./2019/DefaultAdminSDHolderSD2019SDDL.png)
 
 All of the Pre-Win2k ACEs with the InheritedObjectType of User have existed since Windows Server 2000 and were configured by [Schema Update 13](../SchemaAndDomainDefaults/AdminSDHolderDefaults/Schema13SD.png). The additional Pre-Win2k ACEs with the InheritedObjectType of inetOrgPerson have been around since [Schema Update 30](../SchemaAndDomainDefaults/AdminSDHolderDefaults/Schema30SD.png), which coincides with the release to manufacturer of Windows Server 2003.
+
+### ACE Constraints
+
+While doing some testing with the AdminSDHolder security descriptor in the ADPDCeTests.lan forest, I made some changes to the AdminSDHolder security descriptor using the advanced security properties in Active Directory Users and Computers (ADUC). I was skeptical of the Pre-Win2k ACEs in the default AdminSDHolder security descriptor and so I added a new ACE for ADPDCETests\Cert Publishers with an ObjectType of userCertificate and an InheritedObjectType of Users, but without any inheritance or propagation flags set. I noted that this new ACE did not include any Flags when viewing the security descriptor in LDP. The InheritedObjectType was truncated from the ACE because it's not a valid configuration.
+
+Next, I added another ACE for ADPDCETests\InheritedObjectTypeTest with both an ObjectType, an InheritedObjectType, and inheritance flags. This ACE displayed correctly in LDP because it is a valid ACE with valid propagation capacity. But I was surprised by something else at this point: all of the numerous Pre-Win2k ACEs were now gone, replaced by a single GenericRead ACE:
+![Local Image](./PDCeTests/LDP-AdminSDHolderPostADUCModifyDACL.png)
+
+At first, I didn't believe what I was seeing so I went back and looked at the default AdminSDHolder SD for this forest prior to making any changes to the security descriptor or specifically the DACL:
+![Local Image](../PDCeTests/2012R2+2016/5%20-%202019PDCe/AdminSDHolder2019.png)
+
+Indeed, the AdminSDHolder object in this forest had a security descriptor consistent with the Schema44 security descriptor:
+![Local Image](../SchemaAndDomainDefaults/AdminSDHolderDefaults/Schema44SD.png)
+
+But after modifying the DACL in ADUC, the 12 Pre-Win2k ACEs were consolidated down into 1.
+
+Time for some more testing...
+
+### Test ACEs and SDs as .NET Objects
 
 I did some testing and attempted to create a new instance of an ActiveDirectoryAccessRule which has an InheritedObjectType and no InheritanceFlags using the following:
 
@@ -85,7 +106,9 @@ $sddlsd.Access
 Interestingly enough, adding another ACE does not reset the security descriptor like it does when modifying the actual AdminSDHolder security descriptor in an AD domain:
 ![Local Image](SdfromSDDLACEAdded.png)
 
-Could we apply this security to an AD object? Would AD's additional constraints on security descriptors apply when comitting the data? Let's create an example object and try. In the $sddl2 string below I've taken the Pre2k ACEs that have both an ObjectType and InheritedObjectType and combined them with the default Owner, Group, and SD Flags of the AdminSDHolder default security descriptor. I've also added an additional ACE allowing Domain Admins GenericRead, CreateChild, and DeleteChild.
+### Tests with TestContainer4
+
+Could we apply this security to an AD object? Would AD's additional constraints on security descriptors apply when comitting the data? Let's create an example object and try. In the $sddl2 string below I've taken the Pre-Win2k ACEs that have both an ObjectType and InheritedObjectType and combined them with the default Owner, Group, and SD Flags of the AdminSDHolder default security descriptor. I've also added an additional ACE allowing Domain Admins GenericRead, CreateChild, and DeleteChild.
 
 ```PowerShell
 $sddl2 = 'O:DAG:DAD:PAI(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(A;;RPRCLOLCCCDC;;;DA)'
@@ -98,7 +121,7 @@ Here's the command output showing the SDDL applied:
 Here's the security descriptor of TestContainer4 in ADUC Advanced. Note how ADUC cannot properly describe this security descriptor.
 ![Local Image](./2019/ADUC-TestContainer4-Baseline.png)
 
-Here's the security descriptor of TestContainer4 in LDP as both an image and [text dump](./2019/LDP-TestContainer4-Baseline.txt). Note that each Pre2k ACE has "Flags" that correspond to the InheritedObjectType specified in each ACE. These are allowed by AD as I set the entire security descriptor at once via SDDL. Once I modify the security descriptor's DACL, the ACEs will be normalized.
+Here's the security descriptor of TestContainer4 in LDP as both an image and [text dump](./2019/LDP-TestContainer4-Baseline.txt). Note that each Pre-Win2k ACE has "Flags" that correspond to the InheritedObjectType specified in each ACE. These are allowed by AD as I set the entire security descriptor at once via SDDL. Once I modify the security descriptor's DACL, the ACEs will be normalized.
 ![Local Image](./2019/LDP-TestContainer4-Baseline.png)
 
 To test whether the constraints apply when I modify the security descriptor, the ACL, or specifically the DACL, I'll start by modifying the Group in the security descriptor of TestContainer4:
@@ -119,7 +142,7 @@ That didn't change the ACEs. I'll modify the SACL this time in ADUC SD advanced 
 Nope! The SACL change in ADUC didn't modify the ACEs. I guess that makes sense. Now we'll modify the DACL by changing the Domain Admins ACE back to GenericRead, CreateChild, DeleteChild from GenericAll. Or at least as close to that as we can easily do in ADUC, and then view the security descriptor in LDP:
 ![Local Image](./2019/LDP-TestContainer4-ModifyDACLADUC.png)
 
-That did it! Look at the difference between this screenshot and the previous screenshot. There are no more flags now on any ACE in the DACL. All of the Pre2k ACEs lost their InheritedObjectType. This is the same behavior that I'm seeing when a default AdminSDHolder security descriptor is modified in ADUC, with the exception that multiple ReadProperty ACEs with specific ObjectTypes are consolidated in with the ReadProperty without any ObjectType ACE. The security descriptor APIs used by Active Directory Users and Computers enforce appropriate ACE constraints any time the DACL is committed. I've also uploaded an [LDP text dump of the security descriptor](./2019/LDP-TestContainer4-PostTests.txt) of TestContainer4 after I made the 3 changes in LDP and the 3 changes in ADUC, where the modification of the DACL in ADUC caused all ACEs to have constraints applied.
+That did it! Look at the difference between this screenshot and the previous screenshot. There are no more flags now on any ACE in the DACL. All of the Pre-Win2k ACEs lost their InheritedObjectType. This is the same behavior that I'm seeing when a default AdminSDHolder security descriptor is modified in ADUC, with the exception that multiple ReadProperty ACEs with specific ObjectTypes are consolidated in with the ReadProperty without any ObjectType ACE. The security descriptor APIs used by Active Directory Users and Computers enforce appropriate ACE constraints any time the DACL is committed. I've also uploaded an [LDP text dump of the security descriptor](./2019/LDP-TestContainer4-PostTests.txt) of TestContainer4 after I made the 3 changes in LDP and the 3 changes in ADUC, where the modification of the DACL in ADUC caused all ACEs to have constraints applied.
 
 ## Incorrect First Observations
 
