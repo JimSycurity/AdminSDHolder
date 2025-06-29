@@ -205,7 +205,7 @@ Set-AdminSDHolderSecurity -SDDL $sddl -BackupCurrentSecurity
 
 - [ReadUser](./ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4)
 
-https://github.com/JimSycurity/AdminSDHolder/blob/main/Misc/ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4
+<video src="./ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4" width="600" controls></video>
 
 - [ReadInetOrgPerson]()
 
