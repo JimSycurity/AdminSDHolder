@@ -201,9 +201,23 @@ Set-AdminSDHolderSecurity -SDDL $sddl -BackupCurrentSecurity
 
 ![Local Image](./ADPDCeTestMalformedACEs/4-ADUCAdminSDHolderSD.png)
 
-5. Review Effective Access:
+5. Review Effective Access on AdminSDHolder object:
 
 - [ReadUser](./ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4)
+
+https://github.com/JimSycurity/AdminSDHolder/blob/main/Misc/ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4
+
+- [ReadInetOrgPerson]()
+
+- [WriteUser]()
+
+- [WriteInetOrgPerson]()
+
+6. Run ProtectAdminGroups task manually
+
+7. Review Effective Access on User object protected by AdminSDHolder:
+
+8. Review Effective Access on InetOrgPerson object protected by AdminSDHolder:
 
 ## Incorrect First Observations
 
