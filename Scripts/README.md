@@ -13,6 +13,8 @@ determine which objects are protected by AdminSDHolder programatically.
    include transitive group membership when the object is protected.
 3. Start the Protection Operation on the PDCe
 
+> [!WARNING] For lab use only!
+
 ## Get-PowerShellSD.ps1
 
 This script captures data from an AD Domain including data about the domain itself. It then collects the security descriptor of the AdminSDHolder object in multiple formats and outputs it to a text file.
@@ -20,6 +22,8 @@ This script captures data from an AD Domain including data about the domain itse
 ## SecurityDescriptorMatchTest.ps1
 
 This script is a POC to show that if an object already has an exact match of the security descriptor of AdminSDHolder and then is added to a group such that it is in scope of the ProtectAdminGroups task, the object will not be protected by AdminSDHolder and will not receive an adminCount of 1 because the security descriptor already matches.
+
+> [!WARNING] For lab use only!
 
 ## Test-AdminSDHolder.ps1
 
@@ -31,7 +35,8 @@ where inheritence is unfortunately enabled on the AdminSDHolder object.
 The output is a CSV file with rows expressing each security principal that was compared and columns providing
 data on each principal, including enough information to determine whether that object is a protected object.
 
-_Note: I made an error in earlier versions of this script which caused computer objects and managed service accounts to not be collected. I've since fixed the script and will eventually go back and run captures again with the correct version. This error on my part does not, in my opinion, affect the integrity of the experiments or data collection as the results for security descriptor matches will be the same across object types._
+> [!NOTE] Note:
+> I made an error in earlier versions of this script which caused computer objects and managed service accounts to not be collected. I've since fixed the script and will eventually go back and run captures again with the correct version. This error on my part does not, in my opinion, affect the integrity of the experiments or data collection as the results for security descriptor matches will be the same across object types.
 
 ## Find-AdminCountObjects.ps1
 
@@ -41,6 +46,8 @@ This is a function that does what it says it does. It was written by Claude.
 
 This function accepts pipeline input of DistinguishedNames to check if the object has an adminCount of 1, and if so, clear it. This is not intended for production use. One of the key takeaways from my research and whitepaper is that once an object is privileged, it must always be treated as privileged. Do not clear the adminCount in production environments! Also written by Claude.
 
+> [!WARNING] For lab use only!
+
 ## New-ADContainer.ps1
 
 A Claude-written function to create an AD Container (same object class as AdminSDHolder object) in a specified parent path and with a specified security descriptor as provided by SDDL. Used primarily for tests in the \Misc\2019 directory.
@@ -48,3 +55,9 @@ A Claude-written function to create an AD Container (same object class as AdminS
 ## New-ADUserWithAdminSDSecurity.ps1
 
 Another Claude-written function to create an AD User (or InetOrgPerson) in a specified path with the same security descriptor as the AdminsDHolder object in that domain. Primarily used for tests in the \Misc\ directory.
+
+## Set-AdminSDHolderSecurity.ps1
+
+This Claude-written script takes the input of a security descriptor in SDDL format and applies it to the AdminSDHolder object specified or of the local domain. Note that Claude added several misconceptions to the script, which I noted with comments in the script and the addition of callouts. Primarily used for tests in the \Misc\ directory.
+
+> [!WARNING] Do not use this in a production environment! For lab use only!

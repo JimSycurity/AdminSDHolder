@@ -154,6 +154,57 @@ Nope! The SACL change in ADUC didn't modify the ACEs. I guess that makes sense. 
 
 That did it! Look at the difference between this screenshot and the previous screenshot. There are no more flags now on any ACE in the DACL. All of the Pre-Win2k ACEs lost their InheritedObjectType. This is the same behavior that I'm seeing when a default AdminSDHolder security descriptor is modified in ADUC, with the exception that multiple ReadProperty ACEs with specific ObjectTypes are consolidated in with the ReadProperty without any ObjectType ACE. The security descriptor APIs used by Active Directory Users and Computers enforce appropriate ACE constraints any time the DACL is committed. I've also uploaded an [LDP text dump of the security descriptor](./2019/LDP-TestContainer4-PostTests.txt) of TestContainer4 after I made the 3 changes in LDP and the 3 changes in ADUC, where the modification of the DACL in ADUC caused all ACEs to have constraints applied.
 
+## Validating Malformed ACEs
+
+I thought about this a bit more and figured it was worthwhile to attempt to validate that these malformed ACEs are indeed malformed by mocking up some security descriptors via SDDL that have malformed ACEs I can methodically test for functionality. Instead of using the Pre-Win2k group, I'll create a few custom groups. I'll also be sure to use ObjectType guids that the advanced security settings in ADUC are capable of displaying, unlike those in the default AdminSDHolder security descriptor. I'll perform these tests in the ADPDCeTests.lan forest and place collected data in the /Misc/ADPDCeTestsMalformedACEs directory of this GitHub repository.
+
+1. Collect some baseline data:
+
+- [AdminSDHolder-SD-Baseline.txt](./ADPDCeTestMalformedACEs/AdminSDHolder-SD-Baseline.txt)
+- [Test-AdminSDHolderBaseline.xslx](./ADPDCeTestMalformedACEs/Test-AdminSDHolderBaseline.xlsx)
+  > [!NOTE] TestSDUser2
+  > Note that the user CN=TestSDUser2,CN=TestAdminSDHolderSD2,OU=Misconfigs,DC=ADPDCeTests,DC=lan was previously created with the New-ADUserWithAdminSDSecurity.ps1 script, which is why it has an adminCount of 0 but has a security descriptor that is an ImplicitSDMatch with that of AdminSDHolder. This is an issue with my hashing comparison design that I'll need to address in SharpHound.
+
+2. Create some groups:
+   ![Local Image](./ADPDCeTestMalformedACEs/2-NewGroups.png)
+
+3. Gather the SIDs of the new groups:
+
+```PowerShell
+# Commands
+Get-ADGroup -Identity 'ReadUser' | Select-Object -Property Name, DistinguishedName, SID
+Get-ADGroup -Identity 'ReadInetOrgPerson' | Select-Object -Property Name, DistinguishedName, SID
+Get-ADGroup -Identity 'WriteUser' | Select-Object -Property Name, DistinguishedName, SID
+Get-ADGroup -Identity 'WriteInetOrgPerson' | Select-Object -Property Name, DistinguishedName, SID
+
+# Output
+Name               DistinguishedName                                         SID
+----               -----------------                                         ---
+ReadUser           CN=ReadUser,OU=Misconfigs,DC=ADPDCeTests,DC=lan           S-1-5-21-2601650231-2489531028-1063739222-3452
+ReadInetOrgPerson  CN=ReadInetOrgPerson,OU=Misconfigs,DC=ADPDCeTests,DC=lan  S-1-5-21-2601650231-2489531028-1063739222-3453
+WriteUser          CN=WriteUser,OU=Misconfigs,DC=ADPDCeTests,DC=lan          S-1-5-21-2601650231-2489531028-1063739222-3454
+WriteInetOrgPerson CN=WriteInetOrgPerson,OU=Misconfigs,DC=ADPDCeTests,DC=lan S-1-5-21-2601650231-2489531028-1063739222-3455
+```
+
+3. Replace the AdminSDHolder DACL to give it some test ACEs. I'll use the Public Information property set, which has a guid of e48d0154-bcf8-11d1-8702-00c04fb96050:
+   For reference, the 4828cc14-1437-45bc-9b07-ad6f015e5f28 guid corresponds to the inetOrgPerson objectClass and the bf967aba-0de6-11d0-a285-00aa003049e2 guid is the User objectClass.
+
+```PowerShell
+$sddl = 'O:DAG:DAD:PAI(OA;;RP;e48d0154-bcf8-11d1-8702-00c04fb96050;4828cc14-1437-45bc-9b07-ad6f015e5f28;S-1-5-21-2601650231-2489531028-1063739222-3453)(OA;;RP;e48d0154-bcf8-11d1-8702-00c04fb96050;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-2601650231-2489531028-1063739222-3452)(OA;;WP;e48d0154-bcf8-11d1-8702-00c04fb96050;4828cc14-1437-45bc-9b07-ad6f015e5f28;S-1-5-21-2601650231-2489531028-1063739222-3455)(OA;;WP;e48d0154-bcf8-11d1-8702-00c04fb96050;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-2601650231-2489531028-1063739222-3455)(A;;RCLCLO;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)'
+Set-AdminSDHolderSecurity -SDDL $sddl -BackupCurrentSecurity
+```
+
+![Local Image](./ADPDCeTestMalformedACEs/3-Set-AdminSDHolderSecurity.png)
+
+4. Review the resulting AdminSDHolder security descriptor:
+   ![Local Image](./ADPDCeTestMalformedACEs/4-LDPAdminSDHolderSD.png)
+
+![Local Image](./ADPDCeTestMalformedACEs/4-ADUCAdminSDHolderSD.png)
+
+5. Review Effective Access:
+
+- [ReadUser](./ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4)
+
 ## Incorrect First Observations
 
 > [!NOTE]
@@ -177,6 +228,9 @@ Below, the same security descriptor is presented in SDDL format (newlines added 
 
 Note in the SDDL format that all ACEs for the trustee BUILTIN\Pre-Windows 2000 Compatible Access (RU) include an InheritedObjectType.
 However, none of the BUILTIN\Pre-Windows 2000 Compatible Access ACEs in the GetAccessRules output contain that InheritedObjectType guid.
+
+> [!NOTE]
+> The ACEs displayed as instances of the ActiveDirectoryAccessRule class do not have the InheritedObjectType guid because those ACEs are malformed and the InheritedObjectType does not apply to an ACE which does not also have the capacity to propagate to a child object of that object class.
 
 The errant ACEs have been highlighted in **bold** font.
 
