@@ -1,7 +1,7 @@
 # AdminSDHolder Malformed ACEs Issue
 
-> [!NOTE] TL;DR:
-> Microsoft has included unecessary, malformed access control entries in the default security descriptor of AdminSDHolder since the first version of Windows 2000 was released.
+> [!NOTE]
+> TL;DR: Microsoft has included unecessary, malformed access control entries in the default security descriptor of AdminSDHolder since the first version of Windows 2000 was released.
 
 While exploring AdminSDHolder security descriptors, I noticed issues with the InheritedObjectType property on the default AdminSDHolder security descriptor. Originally I thought this was an issue with the way the instances of the ActiveDirectoryAccessRule class displayed InheritedObjectType data due to discrepencies between the output there and from viewing the DACL as an SDDL string. For example:
 
