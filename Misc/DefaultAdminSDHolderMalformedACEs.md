@@ -186,8 +186,9 @@ WriteUser          CN=WriteUser,OU=Misconfigs,DC=ADPDCeTests,DC=lan          S-1
 WriteInetOrgPerson CN=WriteInetOrgPerson,OU=Misconfigs,DC=ADPDCeTests,DC=lan S-1-5-21-2601650231-2489531028-1063739222-3455
 ```
 
-3. Replace the AdminSDHolder DACL to give it some test ACEs. I'll use the Public Information property set, which has a guid of e48d0154-bcf8-11d1-8702-00c04fb96050:
-   For reference, the 4828cc14-1437-45bc-9b07-ad6f015e5f28 guid corresponds to the inetOrgPerson objectClass and the bf967aba-0de6-11d0-a285-00aa003049e2 guid is the User objectClass.
+3. Replace the AdminSDHolder DACL to give it some test ACEs. I'll use the [Public Information](https://learn.microsoft.com/en-us/windows/win32/adschema/r-public-information) property set, which has a guid of e48d0154-bcf8-11d1-8702-00c04fb96050 and includes multiple individual attributes.
+
+For reference, the 4828cc14-1437-45bc-9b07-ad6f015e5f28 guid corresponds to the inetOrgPerson objectClass and the bf967aba-0de6-11d0-a285-00aa003049e2 guid is the User objectClass.
 
 ```PowerShell
 $sddl = 'O:DAG:DAD:PAI(OA;;RP;e48d0154-bcf8-11d1-8702-00c04fb96050;4828cc14-1437-45bc-9b07-ad6f015e5f28;S-1-5-21-2601650231-2489531028-1063739222-3453)(OA;;RP;e48d0154-bcf8-11d1-8702-00c04fb96050;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-2601650231-2489531028-1063739222-3452)(OA;;WP;e48d0154-bcf8-11d1-8702-00c04fb96050;4828cc14-1437-45bc-9b07-ad6f015e5f28;S-1-5-21-2601650231-2489531028-1063739222-3455)(OA;;WP;e48d0154-bcf8-11d1-8702-00c04fb96050;bf967aba-0de6-11d0-a285-00aa003049e2;S-1-5-21-2601650231-2489531028-1063739222-3455)(A;;RCLCLO;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)'
@@ -205,19 +206,114 @@ Set-AdminSDHolderSecurity -SDDL $sddl -BackupCurrentSecurity
 
 - [ReadUser](./ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4)
 
-<video src="./ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.mp4" width="600" controls></video>
+![Local Image](./ADPDCeTestMalformedACEs/5-ReadUserEffectiveAccess.gif)
 
-- [ReadInetOrgPerson]()
+- [ReadInetOrgPerson](./ADPDCeTestMalformedACEs/5-ReadInetOrgPersonEffectiveAccess.mp4)
 
-- [WriteUser]()
+![Local Image](./ADPDCeTestMalformedACEs/5-ReadInetOrgPersonEffectiveAccess.gif)
 
-- [WriteInetOrgPerson]()
+- [WriteUser](./ADPDCeTestMalformedACEs/5-WriteUserEffectiveAccess.mp4)
+
+![Local Image](./ADPDCeTestMalformedACEs/5-WriteUserEffectiveAccess.gif)
+
+- [WriteInetOrgPerson](./ADPDCeTestMalformedACEs/5-WriteInetOrgPersonEffectiveAccess.mp4)
+
+![Local Image](.//ADPDCeTestMalformedACEs/5-WriteInetOrgPersonEffectiveAccess.gif)
 
 6. Run ProtectAdminGroups task manually
 
-7. Review Effective Access on User object protected by AdminSDHolder:
+```PowerShell
+# Force AdminSDHolder to run manually
+$PDCDNSName = ([System.DirectoryServices.ActiveDirectory.Domain]::GetComputerDomain()).PdcRoleOwner.Name
+$PDCERootDSE = [adsi]”LDAP://$PDCDNSName/RootDSE”
+$PDCERootDSE.Put('runProtectAdminGroupsTask', '1')
+$PDCERootDSE.SetInfo()
+```
 
-8. Review Effective Access on InetOrgPerson object protected by AdminSDHolder:
+7. Review Effective Access on BA_User, which is protected by AdminSDHolder:
+   ![Local Image](./ADPDCeTestMalformedACEs/7-ADUCBA_UserSecurityDescriptor.png)
+   ![Local Image](./ADPDCeTestMalformedACEs/7-LDPBA_UserSD.png)
+
+Note that ADUC security properties are not displaying the WriteUser ACE, but LDP is.
+
+Interestingly enough, even though I can't create this ACE via .NET class ActiveDirectoryAccessRule or via the ADUC security advanced properties, the ReadUser ACE does grant access to read the Public Information property set. Maybe this isn't as malformed as I previously thought?
+
+- [ReadUser](./ADPDCeTestMalformedACEs/7-ReadUserEffectiveAccess.mp4)
+  ![Local Image](./ADPDCeTestMalformedACEs/7-ReadUserEffectiveAccess.gif)
+
+Nope! It still looks like this is a malformed ACE. I hypothesize that reason why ReadUser is granted rights to read the Public Information property set is not because this particular ACE has an InheritedObjectType of User, it's because the ACE exists and the SecurityReferenceMonitor ignores the InheritedObjectType for an objectClass which can have that property set. This is why the ReadInetOrgPerson security principal is granted Read Public Information. I also hypothesize that when I view the effective access on a group or computer object that ReadUser will be granted Read Public Information there also, as long as the Public Information property set can apply to that object class.
+
+- [ReadInetOrgUser](./ADPDCeTestMalformedACEs/7-ReadInetOrgPersonEffectiveAccess.mp4)
+  ![Local Image](./ADPDCeTestMalformedACEs/7-ReadInetOrgPersonEffectiveAccess.gif)
+
+I was curious how the effective access on the WriteAccess ACE would play out. With it not showing up in the ADUC security properties I felt there was a good chance it wouldn't be an effective ACE at all, and this is the case:
+
+- [WriteUser](./ADPDCeTestMalformedACEs/7-WriteUserEffectiveAccess.mp4)
+  ![Local Image](./ADPDCeTestMalformedACEs/7-WriteUserEffectiveAccess.gif)
+
+I'm going to make an educated guess that WriteInetOrgUser will be granted Write Public Information (on a User object). And I was correct!
+
+- [WriteInetOrgPerson](./ADPDCeTestMalformedACEs/7-WriteInetOrgPersonEffectiveAccess.mp4)
+  ![Local Image](./ADPDCeTestMalformedACEs/7-WriteInetOrgPersonEffectiveAccess.gif)
+
+8. Review Effective Access on BA_inetOrg object protected by AdminSDHolder:
+   ![Local Image](./ADPDCeTestMalformedACEs/8-ADUC-BA_inetOrgSD.png)
+   ![Local Image](./ADPDCeTestMalformedACEs/8-LDP-BA_inetOrgSD.png)
+
+Note that ADUC security properties are not displaying the WriteUser ACE, but LDP is.
+
+For this section, unless there are different or unexpected results I'm just going to use a screenshot instead of a video capture of the full results.
+
+- ReadUser - Allowed
+  ![Local Image](./ADPDCeTestMalformedACEs/8-ReadUserEffectiveAccess.png)
+
+- ReadInetOrgPerson - Allowed
+  ![Local Image](./ADPDCeTestMalformedACEs/8-ReadInetOrgPersonEffectiveAccess.png)
+
+- WriteUser - Denied (ACE doesn't populate in ADUC either)
+  ![Local Image](./ADPDCeTestMalformedACEs/8-WriteUserEffectiveAccess.png)
+
+- WriteInetOrgPerson - Allowed
+  ![Local Image](./ADPDCeTestMalformedACEs/8-WriteInetOrgPersonEffectiveAccess.png)
+
+9. Review Effective Access on BA_Computer and BA_GDGroup:
+
+- BA_Computer:
+  Security descriptor in ADUC doesn't display WriteUser ACE, otherwise as expected. LDP security descriptor displays all ACEs
+  ReadUser - Allowed
+  ReadInetOrgPerson - Allowed
+  WriteUser - Denied (ACE doesn't populate in ADUC either)
+  WriteInetOrgUser - Allowed
+- BA_GDGroup:
+  Security descriptor in ADUC doesn't display WriteUser ACE, otherwise as expected. LDP security descriptor displays all ACEs
+  ReadUser - Denied (Group objectClass doesn't support Public Information property set)
+  ReadInetOrgPerson - Denied (Group objectClass doesn't support Public Information property set)
+  WriteUser - Denied (Group objectClass doesn't support Public Information property set)
+  WriteInetOrgUser - Denied (Group objectClass doesn't support Public Information property set)
+
+I also checked BA_gmsa and found that the results were the same as BA_Computer. gMSA accounts can have the Public Information property set applied.
+
+10. For a final test as to whether non-inherited ACEs with an InheritedObjectType are malformed, I'll modify the DACL of BA_User in ADUC by modifying the Authenticated Users ACE to add Read group membership to the DACL and committing the changes. This will be to determine what happens to the ReadUser, ReadInetOrgUser, WriteUser, and WriteInetOrgUser ACEs when the API used by ADUC security writes the DACL.
+    ![Local Image](./ADPDCeTestMalformedACEs/10-ADUC-BA_UserSD.png)
+
+![Local Image](./ADPDCeTestMalformedACEs/10-LDP-BA_UserSD.png)
+
+As expected, when I modified the Authenticated Users ACE to add Read Group Membership, that permission was split off into a new ACE. This change caused the ADUC security properties to commit the modified DACL back to Active Directory using the APIs that ADUC uses. The malformed ACEs related to ReadUser, ReadInetOrgPerson, and WriteInetOrgPerson had their InheritedObjectType (flags) removed. The malformed WriteUser ACE was removed completely.
+
+Hopefully this walkthrough demonstrates how several of the ACEs in the default security descriptor of AdminSDHolder are malformed, and have been malformed for 25+ years.
+
+And beyond being malformed, the ACEs are duplicative and excessive. Since the very first AdminSDHolder security descriptor, there have been 5 ACEs attempting to grant the Pre-Win2k group rights to read the property sets Remote Access Information, General Information, Group Membership, Account Restrictions, and Logon Information. All 5 of those ACEs are unnecessary when there is an ACE which grants Pre-Win2k GenericRead. GenericRead in Active Director maps to ListContents, ListItem, ReadProperty, and ReadPermissions. The single GenericRead ACE, which includes ReadProperty access rights, does the work of the 5 individual ReadProperty property set ACEs and more.
+![Local Image](./ADPDCeTestMalformedACEs/Schema13ExcessiveACEs.png)
+
+Then in Windows Server 2003 with Schema version 30 the duplicative, excessive ACEs were duplicated for the inetOrgPerson class, which is included for compatibility with LDAP standards. This means that by default, there are 10 ACEs on the default AdminSDHolder security descriptor which provide no value at all and are effectively malformed. None of those 10 property set ACEs matter because either one of the malformed GenericRead ACEs provides all the access rights those individual property set ACEs would and more.
+
+Schema version 40 came out when Windows Server 2008 was released to manufacturers. This is the default security descriptor for AdminSDHolder ever since. In this version 2 additional ACEs were added:
+
+- Grant Allow BUILTIN\Terminal Server License Servers ReadProperty WriteProperty to the Terminal Server License Server property set
+- Grant Allow NT AUTHORITY\SELF ReadProperty WriteProperty ControlAccess to the Private Information property set.
+  The other noticable change with schema version 40 is that the DACL is now in canonical order.
+
+Schema version 40 retains the 10 duplicative, excessive, malformed ACEs and the other 2 malformed ACEs with their InheritedObjectType. And we still have those malformed ACEs today, unless a security descriptor or DACL API has fixed it for you.
 
 ## Incorrect First Observations
 
