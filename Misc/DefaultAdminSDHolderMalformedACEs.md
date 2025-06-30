@@ -30,6 +30,9 @@ In any default AdminSDHolder security descriptor there are multiple ObjectAllow 
 
 All of the Pre-Win2k ACEs with the InheritedObjectType of User have existed since Windows Server 2000 and were configured by [Schema Update 13](../SchemaAndDomainDefaults/AdminSDHolderDefaults/Schema13SD.png). The additional Pre-Win2k ACEs with the InheritedObjectType of inetOrgPerson have been around since [Schema Update 30](../SchemaAndDomainDefaults/AdminSDHolderDefaults/Schema30SD.png), which coincides with the release to manufacturer of Windows Server 2003.
 
+> [!NOTE]
+> The intent of the various [Pre-Win2k](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/7a76a403-ed8d-4c39-adb7-a3255cab82c5) ACEs in the AdminSDHolder default security descriptor matters. If the intent was to limit these ACEs to only apply to User and InetOrgPerson objects, then this configuration results in a minor escalation of privilege vulnerability in instances where the Pre-Win2k group contain the well-known security principals Everyone or Anonymous. In instances where the Pre-Win2k group contains no members or only Authenticated Users there is no escalation of privilege, however minor it is.
+
 ### ACE Constraints
 
 While doing some testing with the AdminSDHolder security descriptor in the ADPDCeTests.lan forest, I made some changes to the AdminSDHolder security descriptor using the advanced security properties in Active Directory Users and Computers (ADUC). I was skeptical of the Pre-Win2k ACEs in the default AdminSDHolder security descriptor and so I added a new ACE for ADPDCETests\Cert Publishers with an ObjectType of userCertificate and an InheritedObjectType of Users, but without any inheritance or propagation flags set. I noted that this new ACE did not include any Flags when viewing the security descriptor in LDP. The InheritedObjectType was truncated from the ACE because it's not a valid configuration.
