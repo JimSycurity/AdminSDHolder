@@ -321,6 +321,84 @@ Schema version 40 came out when Windows Server 2008 was released to manufacturer
 
 Schema version 40 retains the 10 duplicative, excessive, malformed ACEs and the other 2 malformed ACEs with their InheritedObjectType. And we still have those malformed ACEs today, unless a security descriptor or DACL API has fixed it for you.
 
+## Using NTObjectManager
+
+I was thinking about this again from the aspect of looking at it with James Forshaw's NTObjectManager, specifically the Get-AccessibleDsObject cmdlet which allows for using the same access check API that Active Directory's DSA uses. It's documented [here on James' blog](https://www.tiraniddo.dev/2022/07/access-checking-active-directory.html) and in his amazing book [Windows Security Internals](https://nostarch.com/windows-security-internals). In order to test to see if a guest account, specifically the Guest user, if enabled, would be able to read properties on a computer object that AdminSDHolder protects when the Everyone well-known principal is a member of the Pre-Win2k group. This is important because the Guest account is not included in the Authenticated Users well-known principal, but it is part of the Everyone well-known principal. I can't test the information disclosure with any user that authenticates to the system because then it will be included in Authenticated Users, which is granted a GenericRead ACE on the AdminSDHolder container and all protected objects. However, if Guest can read these properties, then it is gaining that access through the Pre-Windows 2000 Compatible Access group where Everyone is a member.
+
+I chose the AD2025.lan forest as this is running on Windows Server 2025, the latest server OS. I added the Everyone principal to the Pre-Win2k group, which simulates an AD forest which has been upgraded through the years from Windows Server 2003 in compatibility mode to a current OS version. I also enabled the Guest account, which is unfortunately is a configuration I've also seen far too often in enterprise AD environments. I've already install the NTObjectManager module on all the hosts in my lab, so I can get to it.
+![Local Image](/Misc/ADPDCeTestMalformedACEs/NTO1.png)
+
+![Local Image](/Misc/ADPDCeTestMalformedACEs/NTO2.png)
+
+![Local Image](/Misc/ADPDCeTestMalformedACEs/NTO3.png)
+
+```PowerShell
+Import-Module NTObjectManager
+$BA_Computer = Get-AccessibleDsObject -UserName AD2025\Guest -DistinguishedName 'CN=BA_Computer,OU=AdminSDHolderTests,DC=AD2025,DC=lan'
+$BA_Computer|select *
+
+# Output
+DistinguishedName        : CN=BA_computer,OU=AdminSDHolderTests,DC=AD2025,DC=lan
+Name                     : BA_computer
+Domain                   :
+GrantedAccess            : List, ReadProp, ListObject, ReadControl
+GrantedAccessNoType      : List, ReadProp, ListObject, ReadControl
+MaximumGrantedAccess     : List, ReadProp, ListObject, ControlAccess, ReadControl
+Modifiable               : False
+Controllable             : True
+SchemaClass              : computer
+DynamicAuxiliaryClasses  : {}
+ObjectClass              : computer
+ExtendedRights           : {DNS-Host-Name-Attributes, DNS-Host-Name-Attributes, MS-TS-GatewayAccess, Personal-Information...}
+Classes                  : {msFVE-RecoveryInformation, ms-net-ieee-80211-GroupPolicy, remoteStorageServicePoint, serviceInstance...}
+CreateableClasses        : {}
+AnyCreateableClasses     : False
+DeletableClasses         : {}
+AnyDeletableClasses      : False
+Attributes               : {streetAddress, homePostalAddress, assistant, info...}
+ReadableAttributes       : {streetAddress, homePostalAddress, assistant, info...}
+WritableAttributes       : {}
+AnyWritableAttributes    : False
+PropertySets             : {DNS-Host-Name-Attributes, DNS-Host-Name-Attributes, MS-TS-GatewayAccess, Personal-Information...}
+ReadablePropertySets     : {DNS-Host-Name-Attributes, DNS-Host-Name-Attributes, MS-TS-GatewayAccess, Personal-Information...}
+WritablePropertySets     : {}
+Control                  : {Allowed-To-Authenticate, Receive-As, Send-As, User-Change-Password...}
+GrantedControl           : {User-Change-Password}
+AnyGrantedControl        : True
+WriteValidated           : {DS-Validated-Write-Computer, Validated-MS-DS-Additional-DNS-Host-Name, Validated-SPN, Validated-MS-DS-Additional-DNS-Host-Name...}
+GrantedWriteValidated    : {}
+AnyGrantedWriteValidated : False
+SecurityDescriptor       : O:DAG:DAD:PAI(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;4c164200-20c0-11d0-a768-00aa006e0529;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;4828cc14-1
+                           437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;5f202010-79a5-11d0-9020-00c04fc2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04fc2d4cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;bc0ac240-79a9-11d0-9020-00c04f
+                           c2d4cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;59ba2f42-79a2-11d0-9020-00c04fc2d3cf;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RP;037088f8-0ae1
+                           -11d2-b422-00a0c968f939;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;RP;037088f8-0ae1-11d2-b422-00a0c968f939;bf967aba-0de6-11d0-a285-00aa003049e2;RU)(OA;;RPWP;bf967a7f-0de6-11d0-a285-00aa003049e2;;CA)(OA;;RP;46a9b11d-60ae-405a-b7e8-ff8a58
+                           d456d2;;S-1-5-32-560)(OA;;RPWP;6db69a1c-9422-11d1-aebd-0000f80367c1;;S-1-5-32-561)(OA;;RPWP;5805bc62-bdc9-4428-a5e2-856a0f4c185e;;S-1-5-32-561)(OA;;LCRPLORC;;4828cc14-1437-45bc-9b07-ad6f015e5f28;RU)(OA;;LCRPLORC;;bf967aba-0de6-11d0-a285-0
+                           0aa003049e2;RU)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;WD)(OA;;CR;ab721a53-1e2f-11d0-9819-00aa0040529b;;PS)(OA;CI;RPWPCR;91e647de-d96f-4b70-9557-d63ff4f3ccd8;;PS)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;DA)(A;;CCDCLCSWRPWPLOCRRCWDWO;;;EA)(A;;CC
+                           DCLCSWRPWPLOCRSDRCWDWO;;;BA)(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)
+Owner                    : AD2025\Domain Admins
+TokenInfo                : User: S-1-5-21-1753113456-3794003277-551465778-501
+UserName                 : AD2025\Guest
+IsRead                   : True
+IsWrite                  : False
+IsExecute                : False
+IsAll                    : False
+Deleted                  : False
+
+
+$BA_Computer.ReadablePropertySets
+
+Name                      RightsId
+----                      --------
+DNS-Host-Name-Attributes  72e39547-7b18-11d1-adef-00c04fd8d5cd
+DNS-Host-Name-Attributes  72e39547-7b18-11d1-adef-00c04fd8d5cd
+MS-TS-GatewayAccess       ffa6f046-ca4b-4feb-b40d-04dfee722543
+Personal-Information      77b5b886-944a-11d1-aebd-0000f80367c1
+Public-Information        e48d0154-bcf8-11d1-8702-00c04fb96050
+User-Account-Restrictions 4c164200-20c0-11d0-a768-00aa006e0529
+```
+
+The Guest account is able to read all of the attributes and applicable property sets of this computer object. Furthermore Guest is granted List, ListObject, and ReadControl rights due to the Pre-Win2k GenericRead ACE that is attempted to be restricted to only Users and InetOrgPerson objects. You'll also note that Guest has the control access right User-Change-Password. This is because there is an Everyone ACE granting that right. All other rights in this maximum allowed access check are provided by the Pre-Win2k ACEs.
+
 ## Incorrect First Observations
 
 > [!NOTE]
