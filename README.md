@@ -2,13 +2,20 @@
 
 Additional documentation for AdminSDHolder Misconceptions and Misconfigurations research paper.
 
+## adminCount
+[Additional documentation](./adminCount/README.md) around the adminCount property and demonstrations of why adminCount is not an accurate way to determine privileged account status.
+
 ## Child Objects
 
-This folder contains data from tests performed to determine if AdminSDHolder would protect child objects of protected objects.
+This folder contains data from [tests](./ChildObjects/README.md) performed to determine if AdminSDHolder would protect child objects of protected objects.
+
+## Exchange
+
+Microsoft Exchange server tends to be one of the more common causes of AdminSDHolder misconfigurations that I have noted in AD environments. This folder contains [data and tests](./Exchange/README.md) showing how various Exchange server versions impact AdminSDHolder security.
 
 ## Inheritance
 
-This folder contains data from a set of tests performed around when the DACL_Protected flag is removed from the AdminSDHolder object, which enables DACL inheritance on objects protected by AdminSDHolder, and the AdminSDHolder itself. The tests were performed in the AD2025.lan forest, specifically in the Inheritance.AD2025.lan child domain of my home lab.
+This folder contains [data from a set of tests](./Inheritance/README.md) performed around when the DACL_Protected flag is removed from the AdminSDHolder object, which enables DACL inheritance on objects protected by AdminSDHolder, and the AdminSDHolder itself. The tests were performed in the AD2025.lan forest, specifically in the Inheritance.AD2025.lan child domain of my home lab.
 
 DACL Inheritance Enabled contains screenshots and data captured from when the AdminSDHolder's DACL_Protected flag is removed, rendering the configuration in a less secure state.
 
@@ -42,9 +49,11 @@ Note: I made an error in the Test-AdminSDHolder.ps1 script that caused it to not
 
 ## PDCeTests
 
+[Data and tests](./PDCeTests/README.md) that demonstrate how the PDCe FSMO role holder in a domain is the only DC which matters for the purposes of determining what the default AdminSDHolder container security descriptor is and how the ProtectAdminGroups background task functions.
+
 ## SchemaAdminDomainDefaults
 
-This folder contains data collected from various AD Schema versions. This demonstrates the various AdminSDHolder security descriptors over schema versions. The other intention is to demonstrate the defaultSecurityDescriptor in the AD Schema across common security principals and OUs.
+This folder contains [data](./SchemaAndDomainDefaults/README.md) collected from various AD Schema versions. This demonstrates the various AdminSDHolder security descriptors over schema versions. The other intention is to demonstrate the defaultSecurityDescriptor in the AD Schema across common security principals and OUs.
 
 ## Scripts
 
@@ -52,8 +61,12 @@ A set of cobbled together scripts for performing the tests and collecting the da
 
 ## Misconfiguration Sources
 
-I'd like to build a library of technical documentation and blogs that encourage users of certain products to make unnecessary configurations to the AdminSDHolder object or the security processes around it.
+I'd like to build a [library of technical documentation and blogs](./Misconfiguration%20Sources/README.md) that encourage users of certain products to make unnecessary configurations to the AdminSDHolder object or the security processes around it.
 
 ## Diagrams
 
+Some drawio diagrams in PDF format which [chart out the flow](AdminSDHolder_ProtectiveOperation-Code.drawio.pdf) of operation in the ProtectAdminGroups background task.
+
 ## Matrix
+
+The [AdminSDHolderTruthMatrix.xlsx](./AdminSDHolderTruthMatrix.xlsx) is an aggregation of data I've collected during this project to which AD objects are protected across various versions of the Windows Server OS as it relates to the PDCe for a domain.
