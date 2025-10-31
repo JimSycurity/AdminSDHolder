@@ -2,6 +2,10 @@
 
 Additional documentation for AdminSDHolder Misconceptions and Misconfigurations research paper.
 
+You can read a summary of the document in this blog post: https://specterops.io/blog/2025/10/31/adminsdholder-misconceptions-misconfigurations-and-myths/
+
+The research paper is available as an eBook PDF here: https://specterops.io/resources/adminsdholder/
+
 ## adminCount
 [Additional documentation](./adminCount/README.md) around the adminCount property and demonstrations of why adminCount is not an accurate way to determine privileged account status.
 
